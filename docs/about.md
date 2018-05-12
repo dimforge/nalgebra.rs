@@ -40,14 +40,14 @@ You can contribute to this website by completing, improving, and correcting
 it. Do not hesitate to correct even the smallest, insignificant detail
 (especially English mistakes, including typography). We love nitpicking!  This
 website is composed of a set of markdown files located on the
-[gh-pages](https://github.com/sebcrozet/nalgebra/tree/gh-pages) branch of the
-main **nalgebra** repository. It is compiled using
+[nalgebra.org](https://github.com/sebcrozet/nalgebra.org) repository. It is compiled using
 [MkDocs v0.17.2](http://www.mkdocs.org/). As explained in the next section,
-you need to fork, fix, and create a pull request targeting the **gh-pages**
-branch to make your contribution ready to integrate into our code base. There
-are no specific rules, except that all compilable code to generate illustrations
+you need to fork, fix, and create a pull request targeting the **master**
+branch of the **nalgebra.org** repositiory to make your contribution ready
+to integrate into our code base. There are no specific rules, except that all
+compilable code to generate illustrations
 must be located on the `src` folder.  Downloadable examples have to be located
-on the `examples` directory of the main project, i.e., on the **master** branch.
+on the `examples` directory of the main project [repository](https://github.com/sebcrozet/nalgebra).
 
 
 #### Working on the library
