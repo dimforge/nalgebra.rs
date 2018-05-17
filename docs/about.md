@@ -81,11 +81,15 @@ The list of constributors can be found [there](https://github.com/sebcrozet/nalg
 * Andreas Longva
 * Anselm Eickhoff
 * Alexander Atman
+* Alexandre Chêne
 * Andre Braga Reis
 * Camille Viot
 * Casey Rodarmor
 * Connor McCluskey
 * Danny Fritz
+* Erlend Sogge Heggen
+* Frederic Wagner
+* Gohla
 * Ian Danforth
 * Jac
 * Jack Wrenn
