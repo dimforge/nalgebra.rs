@@ -67,9 +67,25 @@ Donations made to the lead developer are also appreciated. However, do not
 forget that **donating is not a requirement**. You are and will always be free
 to use **nalgebra** for any purpose, including commercial applications, without
 paying anything (see the [BSD-3
-licence](https://github.com/sebcrozet/nalgebra/blob/master/LICENSE)).
-<div style="float:right">
+licence](https://github.com/sebcrozet/nalgebra/blob/master/LICENSE)). For recurrent
+donations, you may use Patron (first button, monthly donations only) or Liberapay
+(second button, weekly, monthly, or yearly donations):
+<div style="text-align:center">
 <a href="https://www.patreon.com/bePatron?u=7111380" ><img src="../img/become_a_patron_button.png" alt="Become a Patron!" /></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<script src="https://liberapay.com/sebcrozet/widgets/button.js"></script>
+<noscript><a href="https://liberapay.com/sebcrozet/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
+</div>
+<br/>
+<br/>
+For one-time donations, you may use PayPal:
+<div style="text-align:center">
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="ZCA2NXW6EJ9ZU">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+</form>
 </div>
 
 # Contributors
