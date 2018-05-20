@@ -79,6 +79,7 @@ The list of constributors can be found [there](https://github.com/sebcrozet/nalg
 * 8zu
 * Adam Rzepka
 * Andreas Longva
+* Andrei Vasiliu
 * Anselm Eickhoff
 * Alexander Atman
 * Alexandre Chêne
