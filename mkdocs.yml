@@ -10,6 +10,7 @@ pages:
     - 'Projections': projections.md
     - 'Computer graphics recipes': cg_recipes.md
     - 'Perfomance tricks': performance_tricks.md
+    - 'Wasm & Embedded targets': wasm_and_embedded_programming.md
     - 'Generic programming': generic_programming.md
     - 'FAQ': faq.md
   - '<i class="fa fa-align-left"></i>&nbsp API Documentation': rustdoc_nalgebra.md
@@ -24,8 +25,8 @@ site_favicon: img/favicon.ico
 site_url: http://nalgebra.org
 
 # the third-party extenison mdx_math.py comes with a setup.py script
-# Thank you Dmitry Shachnev (https://github.com/mitya57/python-markdown-math) 
-markdown_extensions: 
+# Thank you Dmitry Shachnev (https://github.com/mitya57/python-markdown-math)
+markdown_extensions:
     - extra
     - mdx_math:
         enable_dollar_delimiter: True #for use of inline $..$

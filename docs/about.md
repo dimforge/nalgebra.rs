@@ -67,9 +67,11 @@ Donations made to the lead developer are also appreciated. However, do not
 forget that **donating is not a requirement**. You are and will always be free
 to use **nalgebra** for any purpose, including commercial applications, without
 paying anything (see the [BSD-3
-licence](https://github.com/sebcrozet/nalgebra/blob/master/LICENSE)). For recurrent
-donations, you may use Patron (first button, monthly donations only) or Liberapay
-(second button, weekly, monthly, or yearly donations):
+licence](https://github.com/sebcrozet/nalgebra/blob/master/LICENSE)). Recurrent
+donations, even the smallest, are the best way to encourage the dedication of a
+significant amount of time for open source activites. You may use Patreon (first
+button, monthly donations only) or Liberapay (second button, weekly, monthly, or
+yearly donations):
 <div style="text-align:center">
 <a href="https://www.patreon.com/bePatron?u=7111380" ><img src="../img/become_a_patron_button.png" alt="Become a Patron!" /></a>
 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -78,7 +80,9 @@ donations, you may use Patron (first button, monthly donations only) or Liberapa
 </div>
 <br/>
 <br/>
-For one-time donations, you may use PayPal:
+For one-time donations, you may use PayPall (with or without an account):
+<br/>
+<br/>
 <div style="text-align:center">
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick">
@@ -155,4 +159,5 @@ those images under the CC 3.0 BY license:
 * <u>camera.svg</u>: made by [Madebyoliver](http://www.flaticon.com/authors/madebyoliver).
 * <u>rotation.svg</u>: made by [Madebyoliver](http://www.flaticon.com/authors/madebyoliver).
 * <u>genericity.svg</u>: made by [Freepik](http://www.freepik.com).
+* <u>cpu.svg</u>: made by [Freepik](http://www.freepik.com).
 * <u>decomposition.svg</u>: made by [Vaadin](http://www.flaticon.com/authors/vaadin).
