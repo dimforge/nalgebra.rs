@@ -124,6 +124,21 @@
   </tr>
 
   <tr>
+      <td>[![](../img/cpu.svg)](../wasm_and_embedded_programming)</td>
+      <td style="vertical-align:middle">
+      <a href="../wasm_and_embedded_programming" id="no_highlight">
+      <div>
+      <big>**Wasm and Embedded programming**</big>
+      <span class="home_dummy_link">&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></span>
+      <br>
+      Use and compile nalgebra for browser applications or targets that do not support
+      the Rust standard library.
+      </div>
+      </a>
+      </td>
+  </tr>
+
+  <tr>
       <td>[![](../img/genericity.svg)](../generic_programming)</td>
       <td style="vertical-align:middle">
       <a href="../generic_programming" id="no_highlight">

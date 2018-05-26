@@ -20,7 +20,7 @@ Serialization with [serde](https://serde.rs) can be enabled by enabling the
 
 ### Matrices and vectors
 
-* Within this reference, `N` is the scalar type, `R`, `C` and `D` are type-level integers.  
+* Within this reference, `N` is the scalar type, `R`, `C` and `D` are type-level integers.
 * Matrices are stored in column-major order.
 * Vectors are type aliases for matrices with only one column or one row.
 * Overloaded operators: `*`, `/`, `+`, `-` (binary and unary), and corresponding assignement operators.
@@ -208,7 +208,7 @@ Slice are references to sub-matrices. They do not own their data and cannot be
 converted to arrays as their data buffer may not be contiguous in memory.
 Mutable slices are obtained using the same methods suffixed by `_mut`, e.g.,
 `.row_mut(i)`. They can also be constructed from a data array `&[N]` using the
-constructors of matrix slice type aliases, e.g., `MatrixSlice3::new(data)`.
+constructors of matrix slice type aliases, e.g., `MatrixSlice3::from_slice(data)`.
 
 
 `.row(i)`                             <span style="float:right;">A matrix row.</span><br />
@@ -321,7 +321,7 @@ iteration (set to infinite by default):
 
 ------
 
-#### Lapack integration 
+#### Lapack integration
 Lapack-based decompositions are available using the **nalgebra-lapack** crate.
 Refer the the [dedicated
 section](decompositions_and_lapack/#lapack-integration) for details regarding
