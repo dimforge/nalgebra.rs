@@ -12,7 +12,7 @@ Ph.D Student. His researches are about finding new methods to perform fast
 collision detection between complex CAD models that include smooth trimmed
 surfaces like NURBS.  Besides his fulltime job, he works on **nalgebra** trying
 to help making Rust a great language for the development of real-time
-geometry-intensive applications. For more informations about his professional
+geometry-intensive applications. For more information about his professional
 background, check out his
 [LinkedIn](https://www.linkedin.com/pub/s%C3%A9bastien-crozet/25/875/416/en)
 profile.
@@ -43,7 +43,7 @@ website is composed of a set of markdown files located on the
 [nalgebra.org](https://github.com/sebcrozet/nalgebra.org) repository. It is compiled using
 [MkDocs v0.17.2](http://www.mkdocs.org/). As explained in the next section,
 you need to fork, fix, and create a pull request targeting the **master**
-branch of the **nalgebra.org** repositiory to make your contribution ready
+branch of the **nalgebra.org** repository to make your contribution ready
 to integrate into our code base. There are no specific rules, except that all
 compilable code to generate illustrations
 must be located on the `src` folder.  Downloadable examples have to be located
@@ -69,7 +69,7 @@ to use **nalgebra** for any purpose, including commercial applications, without
 paying anything (see the [BSD-3
 licence](https://github.com/sebcrozet/nalgebra/blob/master/LICENSE)). Recurrent
 donations, even the smallest, are the best way to encourage the dedication of a
-significant amount of time for open source activites. You may use Patreon (first
+significant amount of time for open source activities. You may use Patreon (first
 button, monthly donations only) or Liberapay (second button, weekly, monthly, or
 yearly donations):
 <div style="text-align:center">
