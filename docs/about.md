@@ -109,6 +109,7 @@ The list of constributors can be found [there](https://github.com/sebcrozet/nalg
 * Connor McCluskey
 * Danny Fritz
 * Erlend Sogge Heggen
+* Florian Hanke
 * Frederic Wagner
 * Gohla
 * Ian Danforth

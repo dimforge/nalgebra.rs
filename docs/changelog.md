@@ -4,6 +4,25 @@ This lists the change brought by all major releases. The corresponding source
 code may be found based on tags on
 [github](https://github.com/sebcrozet/nalgebra/releases).
 
+### Version 0.15.0
+The most notable change of this release is the support for using part of the library without the rust standard
+library (i.e. it supports `#![no_std]`). See the corresponding [documentation](wasm_and_embedded_programming).
+
+#### Modified
+  * Rename the `core` module to `base` to avoid conflicts with the `core` crate implicitly imported when
+    `#![no_std]` is enabled.
+  * Constructors of the `MatrixSlice*` types have been renamed from `new_*` to `from_slice_*`. This was
+    necessary to avoid the `incoherent_fundamental_impls` lint that is going to become a hard error.
+
+#### Added
+  * Add `UnitQuaternion` constructor `::new_eps(...)` and `::from_scaled_axis_eps(...)` that return the
+    identity if the magnitude of the input axisangle is smaller than the epsilon provided.
+  * Add methods `.rotation_between_axis(...)` and `.scaled_rotation_between_axis(...)` to `UnitComplex`
+    to compute the rotation matrix between two 2D **unit** vectors.
+  * Add methods `.axis_angle()` to `UnitComplex` and `UnitQuaternion` in order to retrieve both the
+    unit rotation axis and the rotation angle simultaneously.
+  * Add functions to construct a random matrix with a user-defined distribution: `::from_distribution(...)`.
+
 ### Version 0.14.0
 
 #### Modified
