@@ -94,7 +94,7 @@ For one-time donations, you may use PayPall (with or without an account):
 
 # Contributors
 
-The list of constributors can be found [there](https://github.com/sebcrozet/nalgebra/graphs/contributors). Here are additional contributors, including Patrons:
+The list of contributors can be found [there](https://github.com/sebcrozet/nalgebra/graphs/contributors). Here are additional contributors, including Patrons:
 
 * 8zu
 * Adam Rzepka
