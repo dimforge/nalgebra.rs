@@ -120,6 +120,7 @@ The list of contributors can be found [there](https://github.com/sebcrozet/nalge
 * Jeb Brooks
 * Jeff Muizelaar
 * Jeff Parsons
+* Jordan Miner
 * J. Ryan Stinnett
 * Kasper Møller Andersen
 * Kyle Gretchev
@@ -130,6 +131,7 @@ The list of contributors can be found [there](https://github.com/sebcrozet/nalge
 * Nathan Flurry
 * Nerijus Arlauskas
 * Olivier Saut
+* Pascal
 * Paul Houghton
 * Rick Richardson
 * Sanghyeon Seo
