@@ -48,7 +48,7 @@
   </tr>
 
   <tr>
-      <td>[![](../img/decomposition.svg)](../lapack)</td>
+      <td>[![](../img/decomposition.svg)](../decompositions_and_lapack)</td>
       <td style="vertical-align:middle">
       <a href="../decompositions_and_lapack" id="no_highlight">
       <div>
