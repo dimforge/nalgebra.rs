@@ -97,6 +97,7 @@ For one-time donations, you may use PayPall (with or without an account):
 The list of contributors can be found [there](https://github.com/sebcrozet/nalgebra/graphs/contributors). Here are additional contributors, including Patrons:
 
 * 8zu
+* A
 * Adam Rzepka
 * Andreas Longva
 * Andrei Vasiliu
@@ -126,8 +127,9 @@ The list of contributors can be found [there](https://github.com/sebcrozet/nalge
 * Kyle Gretchev
 * Kjetil Kjeka
 * Leonard Dahlmann
-* "memoryruins"
 * Mark Stacey
+* memoryruins
+* moyashi
 * Nathan Flurry
 * Nerijus Arlauskas
 * Olivier Saut
