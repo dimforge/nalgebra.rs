@@ -128,6 +128,7 @@ The list of contributors can be found [there](https://github.com/sebcrozet/nalge
 * Kjetil Kjeka
 * Leonard Dahlmann
 * Mark Stacey
+* Matthieu Pizenberg
 * memoryruins
 * moyashi
 * Nathan Flurry
@@ -137,6 +138,7 @@ The list of contributors can be found [there](https://github.com/sebcrozet/nalge
 * Paul Houghton
 * Rick Richardson
 * Sanghyeon Seo
+* Sean Jensen-Grey
 * Simon N Heath
 * Trym Nilsen
 * Ty Overby
