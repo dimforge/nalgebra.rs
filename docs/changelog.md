@@ -7,7 +7,7 @@ code may be found based on tags on
 ### Version 0.16
 All dependencies have been updated to their latest versions.
 
-### Modified
+#### Modified
   * Adjust `UnitQuaternion`s, `Rotation3`s, and `Rotation2`s generated from the `Standard` distribution to be uniformly distributed.
 #### Added
   * Add a feature `stdweb` to activate the dependency feature `rand/stdweb`.
@@ -321,7 +321,8 @@ since it now allowed to write for a type `T` that implements `ApproxEq`:
 
 -----
 
-### Version 0.9.#### Modified
+### Version 0.9
+#### Modified
 
 Renamed:
 
@@ -369,7 +370,8 @@ crate for vectors, rotations and points. To enable them, activate the
 
 -----
 
-### Version 0.8.#### Modified
+### Version 0.8
+#### Modified
 Almost everything (types, methods, and traits) now use full names instead
 of abbreviations (e.g. `Vec3` becomes `Vector3`). Most changes are abvious.
 Note however that:
@@ -385,7 +387,8 @@ e.g., `vec.rs` becomes `vector.rs`.
 
 -----
 
-### Version 0.7.#### Added
+### Version 0.7
+#### Added
 * Added implementation of assignement operators (+=, -=, etc.) for
   everything.
 #### Modified
@@ -395,7 +398,8 @@ e.g., `vec.rs` becomes `vector.rs`.
 -----
 
 
-### Version 0.6.**Announcement:** a users forum has been created for `nalgebra`, `ncollide`, and `nphysics`. See
+### Version 0.6
+**Announcement:** a users forum has been created for `nalgebra`, `ncollide`, and `nphysics`. See
 you [there](http://users.nphysics.org)!
 
 #### Added
