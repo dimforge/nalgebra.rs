@@ -10,7 +10,7 @@ cat $cssfile >> $tmpcssfile
 cat custom_flatly/css/bootstrap-custom.min2.css >> $tmpcssfile
 cat custom_flatly/css/base2.css >> $tmpcssfile
 cat custom_flatly/css/font-awesome.min.css >> $tmpcssfile
-sed -i '' -e 's/margin-left: 230px;//g' $tmpcssfile
+sed -i '' -e 's/margin-left:[ ]*230px;//g' $tmpcssfile
 mv $tmpcssfile $cssfile
 
 files=`find ./docs/rustdoc -name \*.html -printf '%p '`
