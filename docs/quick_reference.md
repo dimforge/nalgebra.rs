@@ -284,11 +284,13 @@ the variables $\mathbf{v}$ and $\mathbf{V}$ designs the `self` argument.
 `.gemm(alpha, A, B, beta)` <span style="float:right;">Computes $V = \alpha A B + \beta V$ where $A$ and $B$ are matrices.</span><br />
 `.gemv_symm(...)`          <span style="float:right;">Is the same as `.gemv` except that `self` is assumed symmetric.</span><br />
 `.ger_symm(...)`           <span style="float:right;">Is the same as `.ger` except that `self` is assumed symmetric.</span><br />
-`.gemv_tr(...)`          <span style="float:right;">Is the same as `.gemv` except that the transpose of `A` is considered.</span><br />
+`.gemv_tr(...)`            <span style="float:right;">Is the same as `.gemv` except that the transpose of `A` is considered.</span><br />
 
 Other operations that work like blas operations (i.e., in-place and real coefficients) are implemented:
 
-`.iamax()`                 <span style="float:right;">Returns the index of the vector component with the smallest absolute value.</span><br />
+`.imax()`                  <span style="float:right;">Returns the index of the vector component with the greatest (signed) value.</span><br />
+`.imin()`                  <span style="float:right;">Returns the index of the vector component with the greatest (signed) value.</span><br />
+`.iamin()`                 <span style="float:right;">Returns the index of the vector component with the smallest absolute value.</span><br />
 `.cmpy(alpha, a, b, beta)` <span style="float:right;">Computes the component-wise multiplication: $\mathbf{v}_i = \alpha \mathbf{a}_i * \mathbf{b}_i + \beta \mathbf{v}_i$.</span><br/>
 `.cdpy(alpha, a, b, beta)` <span style="float:right;">Computes the component-wise division: $\mathbf{v}_i = \alpha \mathbf{a}_i / \mathbf{b}_i + \beta \mathbf{v}_i$.</span><br/>
 `.quadform(alpha, M, B, beta)`    <span style="float:right;">Computes the quadratic form $V = \alpha B^TMB + \beta V$.</span><br />
