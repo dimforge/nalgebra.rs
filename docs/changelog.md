@@ -4,7 +4,18 @@ This lists the change brought by all major releases. The corresponding source
 code may be found based on tags on
 [github](https://github.com/sebcrozet/nalgebra/releases).
 
-### Version 0.15.0
+### Version 0.16
+All dependencies have been updated to their latest versions.
+
+### Modified
+  * Adjust `UnitQuaternion`s, `Rotation3`s, and `Rotation2`s generated from the `Standard` distribution to be uniformly distributed.
+#### Added
+  * Add a feature `stdweb` to activate the dependency feature `rand/stdweb`.
+  * Add blas-like methods `.imin()` and `.imax()` that return the index of the minimum and maximum entry of a vector.
+  * Add construction of a `Point` from an array by implementing the `From` trait.
+  * Add support for generating uniformly distributed random unit column vectors using the `Standard` distribution.
+
+### Version 0.15
 The most notable change of this release is the support for using part of the library without the rust standard
 library (i.e. it supports `#![no_std]`). See the corresponding [documentation](wasm_and_embedded_programming).
 
@@ -23,7 +34,7 @@ library (i.e. it supports `#![no_std]`). See the corresponding [documentation](w
     unit rotation axis and the rotation angle simultaneously.
   * Add functions to construct a random matrix with a user-defined distribution: `::from_distribution(...)`.
 
-### Version 0.14.0
+### Version 0.14
 
 #### Modified
   * Allow the `Isometry * Unit<Vector>` multiplication.
@@ -58,7 +69,7 @@ library (i.e. it supports `#![no_std]`). See the corresponding [documentation](w
     `UnitQuaternion::rotation_between_axis(...)` that take Unit vectors instead of
     Vector as arguments.
 
-### Version 0.13.0
+### Version 0.13
 
 The **nalgebra-lapack** crate has been updated. This now includes a broad range
 matrix decompositions using LAPACK bindings.
@@ -179,7 +190,7 @@ Resizing:
 
 -----
 
-### Version 0.12.0
+### Version 0.12
 The main change of this release is the update of the dependency serde to 1.0.
 
 #### Added
@@ -188,7 +199,7 @@ The main change of this release is the update of the dependency serde to 1.0.
 
 -----
 
-### Version 0.11.0
+### Version 0.11
 The [website](http://nalgebra.org) has been fully rewritten and gives a good
 overview of all the added/modified features.
 
@@ -296,7 +307,7 @@ only:
 
 -----
 
-### Version 0.10.0
+### Version 0.10
 #### Added
 Binary operations are now allowed between references as well. For example
 `Vector3<f32> + &Vector3<f32>` is now possible.
@@ -310,8 +321,7 @@ since it now allowed to write for a type `T` that implements `ApproxEq`:
 
 -----
 
-### Version 0.9.0
-#### Modified
+### Version 0.9.#### Modified
 
 Renamed:
 
@@ -359,8 +369,7 @@ crate for vectors, rotations and points. To enable them, activate the
 
 -----
 
-### Version 0.8.0
-#### Modified
+### Version 0.8.#### Modified
 Almost everything (types, methods, and traits) now use full names instead
 of abbreviations (e.g. `Vec3` becomes `Vector3`). Most changes are abvious.
 Note however that:
@@ -376,8 +385,7 @@ e.g., `vec.rs` becomes `vector.rs`.
 
 -----
 
-### Version 0.7.0
-#### Added
+### Version 0.7.#### Added
 * Added implementation of assignement operators (+=, -=, etc.) for
   everything.
 #### Modified
@@ -387,8 +395,7 @@ e.g., `vec.rs` becomes `vector.rs`.
 -----
 
 
-### Version 0.6.0
-**Announcement:** a users forum has been created for `nalgebra`, `ncollide`, and `nphysics`. See
+### Version 0.6.**Announcement:** a users forum has been created for `nalgebra`, `ncollide`, and `nphysics`. See
 you [there](http://users.nphysics.org)!
 
 #### Added
