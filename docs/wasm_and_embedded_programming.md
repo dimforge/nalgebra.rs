@@ -34,6 +34,11 @@ Note that the **nalgebra-lapack** crate on the other hand does not support being
 without the Rust standard library yet.
 
 ### Compiling without standard library
+
+!!! Warning
+    Compiling without the standard library is necessary **only for embedded development**.
+    You do not need to disable libstd when compiling to wasm!
+
 **nalgebra** supports the `std` feature which is enabled by default. Disabling this
 feature will prevent **nalgebra** itself from linking to `libstd`. To achieve this
 you have to compile with a nightly version of the Rust compiler and declare your **nalgebra**
