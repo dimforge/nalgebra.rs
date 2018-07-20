@@ -41,7 +41,7 @@ dependency with `default-features = false`, i.e., like the following:
 
 ```toml
 [dependencies]
-nalgebra = { version = "0.15", default-features = false }
+nalgebra = { version = "0.16", default-features = false }
 ```
 
 This will affect what feature can be used. In particular:
@@ -60,7 +60,7 @@ This will affect what feature can be used. In particular:
 
 ```toml
 [dependencies]
-nalgebra = { version = "0.15", default-features = false, features = [ "alloc" ] }
+nalgebra = { version = "0.16", default-features = false, features = [ "alloc" ] }
 ```
 
 ### Trigonometry and power functions
@@ -84,7 +84,7 @@ with the following dependency:
 
 ```toml
 [dependencies]
-nalgebra = { version = "0.15", default-features = false }
+nalgebra = { version = "0.16", default-features = false }
 ```
 
 will cause the compiler to output a link error ending like this:
