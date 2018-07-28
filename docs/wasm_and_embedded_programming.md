@@ -53,9 +53,7 @@ This will affect what feature can be used. In particular:
 
 * All vector and matrix operations on statically-sized matrices and statically-sized vectors will
   continue work out-of-the box. Of course, this includes all the **matrix decompositions**!
-* Geometric operations that depend on trigonometric functions (like the creation of a quaternion from
-  an angle and axis) are available but will trigger link errors for the trigonometric function being used.
-  The next [section](#trigonometry-and-power-functions) shows how to fix this.
+* Geometric operations will continue to work out-of-the box.
 * Creating random matrices or vectors without an user-provided distribution will not be available. Therefore
   the `::new_random()` constructor will not exist. You may still use `::from_distribution(...)` instead.
 * Dynamically sized vectors `DVector` and dynamically sized matrices `DMatrix` will not be available unless you activate
@@ -67,76 +65,3 @@ This will affect what feature can be used. In particular:
 [dependencies]
 nalgebra = { version = "0.16", default-features = false, features = [ "alloc" ] }
 ```
-
-### Trigonometry and power functions
-All trigonometric, power, and rounding functions for floating point numbers
-depend on compiler intrinsics that are not available when a library is compiled
-without `libstd`. Therefore, whenever your **nalgebra** dependency is compiled without
-`libstd`, link errors will be generated whenever a feature relying on one
-of those function is used. For example, compiling the following rust code:
-
-```rust
-#![no_std]
-extern crate nalgebra as na;
-use na::UnitComplex;
-
-fn foo() -> UnitComplex<f64> {
-    UnitComplex::new(2.0)
-}
-```
-
-with the following dependency:
-
-```toml
-[dependencies]
-nalgebra = { version = "0.16", default-features = false }
-```
-
-will cause the compiler to output a link error ending like this:
-
-```yaml
-  = note: Undefined symbols for architecture x86_64:
-            "_alga_sin_f64", referenced from:
-                _$LT$f64$u20$as$u20$alga..general..real..Real$GT$::sin_cos::h66a220f1c62a00d2 in project_name-c4e18277ea3b910c.147srt92n3an30z.rcgu.o
-            "_alga_cos_f64", referenced from:
-                _$LT$f64$u20$as$u20$alga..general..real..Real$GT$::sin_cos::h66a220f1c62a00d2 in project_name-c4e18277ea3b910c.147srt92n3an30z.rcgu.o
-          ld: symbol(s) not found for architecture x86_64
-          clang: error: linker command failed with exit code 1 (use -v to see invocation)
-```
-
-It means that to use this feature (here initializing a unit complex number from an angle)
-**nalgebra** needs to know how to compute `sin` and `cos`. You can provide those information
-by defining the `alga_sin_f64` and `alga_cos_f64` function (if 32-bit floats were used, you
-would need `alga_sin_f32` and `alga_cos_f32`). Those function must follow the standard "Rust"
-calling convention, be declared public, and have the `#[no_mangle]` attribute to avoid name
-mangling. Not that the link errors show functions names with leading underscore `_` that
-must not appear at the start of the name of your own function definitions. Taking all those
-restrictions into account would look like the following:
-
-```rust
-#![no_std]
-extern crate nalgebra as na;
-use na::UnitComplex;
-
-#[no_mangle]
-pub fn alga_sin_f64(x: f64) -> f64 {
-  // Your implementation of sin.
-}
-
-#[no_mangle]
-pub fn alga_cos_f64(x: f64) -> f64 {
-  // Your implementation of cos.
-}
-
-fn foo() -> UnitComplex<f64> {
-    UnitComplex::new(2.0)
-}
-```
-
-The actual implementation of trigonometric and power functions will depend on your specific target.
-If something like `libm` is available on the targeted platform then you can simply add the corresponding
-bindings as a dependency to you project and call them as part of your implementation of `alga_sin_f64`
-and `alga_cos_f64`.
-Otherwise, you might want to take a look at the `math.rs` [project](https://github.com/nagisa/math.rs) which
-features pure-rust implementation of some of the common trigonometric functions. Though keep in mind that,
-as far as we know, `math.rs` is not published to crates.io and might not be maintained anymore.
