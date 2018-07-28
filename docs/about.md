@@ -127,12 +127,14 @@ The list of contributors can be found [there](https://github.com/sebcrozet/nalge
 * Kyle Gretchev
 * Kjetil Kjeka
 * Leonard Dahlmann
+* Maksim Ustichenko
 * Mark Stacey
 * Matthieu Pizenberg
 * memoryruins
 * moyashi
 * Nathan Flurry
 * Nerijus Arlauskas
+* Nico Orrù
 * Olivier Saut
 * Pascal
 * Paul Houghton
