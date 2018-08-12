@@ -271,7 +271,7 @@ output[(i, j)]`. Additional rows and columns are filled with `val`.
 
 -----
 
-#### Blas andoperations
+#### Blas operations
 **nalgebra** implements some Blas operations in pure Rust. In the following,
 the variables $\mathbf{v}$ and $\mathbf{V}$ designs the `self` argument.
 
