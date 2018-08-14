@@ -151,7 +151,7 @@ Converting a transformation to one that is more general is possible with the
 `na::try_convert(...)` which returns a non-`None` value in case of success. For
 example, converting a `Similarity2` to an `Isometry2` will succeed only if the
 similarity scaling factor is one (which is checked at run-time by
-`::try_convert(...)`). Note that if you do not which to consume your input
+`::try_convert(...)`). Note that if you do not want to consume your input
 value upon conversion, use `na::convert_ref(...)` and
 `na::try_convert_ref(...)` with references instead.
 
