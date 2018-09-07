@@ -102,14 +102,17 @@ The list of contributors can be found [there](https://github.com/sebcrozet/nalge
 * Andreas Longva
 * Andrei Vasiliu
 * Anselm Eickhoff
+* Alain Cuvillier
 * Alexander Atman
 * Alexandre Chêne
 * Andre Braga Reis
 * Camille Viot
 * Casey Primozic
 * Casey Rodarmor
+* Chris Heyes
 * Connor McCluskey
 * Danny Fritz
+* Eduard Knyshov
 * Erlend Sogge Heggen
 * Florian Hanke
 * Frederic Wagner
@@ -135,8 +138,11 @@ The list of contributors can be found [there](https://github.com/sebcrozet/nalge
 * Michael Carpenter
 * moyashi
 * Nathan Flurry
+* Nathaniel Pisarski
 * Nerijus Arlauskas
 * Nico Orrù
+* Nicholas Farley
+* Nifker
 * Olivier Saut
 * Pascal
 * Paul Houghton
@@ -149,6 +155,23 @@ The list of contributors can be found [there](https://github.com/sebcrozet/nalge
 * Vikentiy Fesunov
 * Wesley Wiser
 * Zane
+* [Alexander Mistakidis](https://github.com/aamistak)
+* [Ben Foppa](https://github.com/bfops)
+* [Brandon Waskiewicz](https://github.com/brandonw)
+* [Clément Renault](https://github.com/Kerollmops)
+* [Corey Richardson](https://github.com/cmr)
+* [Dabo Ross](https://github.com/daboross)
+* [Eduard Bopp](https://github.com/aepsil0n)
+* [Felix Rath](https://github.com/Futile)
+* [Jake Kerr](https://github.com/jakerr)
+* [Jeroen Bollen](https://github.com/Binero)
+* [John P Mayer](https://github.com/johnpmayer)
+* [Matt Brennan](https://github.com/quarterto)
+* [Michael Riss](https://github.com/MichaelRiss)
+* [Peter Nguyen](https://github.com/artichokes)
+* [Smith Wendell](https://github.com/wackywendell)
+* [Sven Nilsen](https://github.com/bvssvni)
+* [Wesley Powell](https://github.com/wspowell)
 
 
 If your name should be on this list but isn't because your constribution is not
