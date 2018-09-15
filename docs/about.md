@@ -28,7 +28,7 @@ Contribution are greatly appreciated and can be technical as well as financial.
 
 You are of course welcome to contribute to the source code of **nalgebra** and
 to this website. Simply make sure to [open an
-issue](https://github.com/sebcrozet/nalgebra/issues) on GitHub if you intend to
+issue](https://github.com/rustsim/nalgebra/issues) on GitHub if you intend to
 perform a large contribution. This should prevent other people from stepping
 silently on your toes and ensure your work is going to be merged when it is
 ready.
@@ -40,21 +40,21 @@ You can contribute to this website by completing, improving, and correcting
 it. Do not hesitate to correct even the smallest, insignificant detail
 (especially English mistakes, including typography). We love nitpicking!  This
 website is composed of a set of markdown files located on the
-[nalgebra.org](https://github.com/sebcrozet/nalgebra.org) repository. It is compiled using
+[nalgebra.org](https://github.com/rustsim/nalgebra.org) repository. It is compiled using
 [MkDocs v0.17.2](http://www.mkdocs.org/). As explained in the next section,
 you need to fork, fix, and create a pull request targeting the **master**
 branch of the **nalgebra.org** repository to make your contribution ready
 to integrate into our code base. There are no specific rules, except that all
 compilable code to generate illustrations
 must be located on the `src` folder.  Downloadable examples have to be located
-on the `examples` directory of the main project [repository](https://github.com/sebcrozet/nalgebra).
+on the `examples` directory of the main project [repository](https://github.com/rustsim/nalgebra).
 
 
 #### Working on the library
 
 If you intend to work on the source code of **nalgebra**, you should start by
 [forking](https://help.github.com/articles/fork-a-repo) the
-[repository](https://github.com/sebcrozet/nalgebra). Once you are done making
+[repository](https://github.com/rustsim/nalgebra). Once you are done making
 modifications to your own copy of **nalgebra**, you have to [create a pull
 request](https://help.github.com/articles/creating-a-pull-request) targeting
 the **master** branch so that your contribution can be reviewed, commented, and
@@ -67,7 +67,7 @@ Donations made to the lead developer are also appreciated. However, do not
 forget that **donating is not a requirement**. You are and will always be free
 to use **nalgebra** for any purpose, including commercial applications, without
 paying anything (see the [BSD-3
-licence](https://github.com/sebcrozet/nalgebra/blob/master/LICENSE)). Recurrent
+licence](https://github.com/rustsim/nalgebra/blob/master/LICENSE)). Recurrent
 donations, even the smallest, are the best way to encourage the dedication of a
 significant amount of time for open source activities. You may use Patreon (first
 button, monthly donations only) or Liberapay (second button, weekly, monthly, or
@@ -94,7 +94,7 @@ For one-time donations, you may use PayPall (with or without an account):
 
 # Contributors
 
-The list of contributors can be found [there](https://github.com/sebcrozet/nalgebra/graphs/contributors). Here are additional contributors, including Patrons:
+The list of contributors can be found [there](https://github.com/rustsim/nalgebra/graphs/contributors). Here are additional contributors, including Patrons:
 
 * 8zu
 * A
@@ -176,7 +176,7 @@ The list of contributors can be found [there](https://github.com/sebcrozet/nalge
 
 If your name should be on this list but isn't because your constribution is not
 code-related please send an [email](mailto:developer@crozet.re) or open an
-issue on [GitHub](https://github.com/sebcrozet/ncollide/issues). You will be
+issue on [GitHub](https://github.com/rustsim/ncollide/issues). You will be
 listed above this paragraph.
 
 **Thanks** to all of you for your support!

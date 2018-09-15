@@ -12,7 +12,7 @@ binary operations, etc. Simply search for the name of the operation you want on
 the root module [documentation](rustdoc_nalgebra) or the [quick
 reference](../quick_reference) and it will likely be listed as a free
 function or a method. If you can't find what you need, feel free to open an
-[issue](https://github.com/sebcrozet/nalgebra/issues) or ask about it on the
+[issue](https://github.com/rustsim/nalgebra/issues) or ask about it on the
 [user forum](https://discourse.nphysics.org/c/nalgebra).
 
 

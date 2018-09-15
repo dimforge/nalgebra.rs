@@ -22,7 +22,7 @@ Please make sure:
 
 If you did all that and small `nalgebra` methods still show un in your
 benchmarks, please fill an
-[issue](https://github.com/sebcrozet/nalgebra/issues) or tell us about it on
+[issue](https://github.com/rustsim/nalgebra/issues) or tell us about it on
 the [users forum](http://users.nphysics.org/c/nalgebra).
 
 --------
@@ -48,7 +48,7 @@ is arranged in memory the same way as the array `[ 11, 21, 31, 12, 22, 32, 13,
 
 Because **nalgebra** relies on a lot of generics, some error messages might be
 hard to understand. Please, open an
-[issue](https://github.com/sebcrozet/nalgebra/issues) or create a post on the
+[issue](https://github.com/rustsim/nalgebra/issues) or create a post on the
 [users forum](http://users.nphysics.org/c/nalgebra) to get help. We take the
 quality of error messages seriously, so providing details about how you got
 them can be useful to improve them in the future.
