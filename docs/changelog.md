@@ -200,7 +200,7 @@ The main change of this release is the update of the dependency serde to 1.0.
 -----
 
 ### Version 0.11
-The [website](http://nalgebra.org) has been fully rewritten and gives a good
+The [website](https://nalgebra.org) has been fully rewritten and gives a good
 overview of all the added/modified features.
 
 This version is a major rewrite of the library. Major changes are:
@@ -223,10 +223,10 @@ This version is a major rewrite of the library. Major changes are:
 
 #### Added
 Lots of features including rectangular matrices, slices, and Serde
-serialization. Refer to the brand new [website](http://nalgebra.org) for more
+serialization. Refer to the brand new [website](https://nalgebra.org) for more
 details. The following free-functions have been added as well:
 
-  * `::id()` that returns the universal [identity element](http://nalgebra.org/performance_tricks/#the-id-type)
+  * `::id()` that returns the universal [identity element](https://nalgebra.org/performance_tricks/#the-id-type)
     of type `Id`.
   * `::inf_sup()` that returns both the infimum and supremum of a value at the
     same time.
@@ -400,7 +400,7 @@ e.g., `vec.rs` becomes `vector.rs`.
 
 ### Version 0.6
 **Announcement:** a users forum has been created for `nalgebra`, `ncollide`, and `nphysics`. See
-you [there](http://users.nphysics.org)!
+you [there](https://users.nphysics.org)!
 
 #### Added
 * Added a dependency to [generic-array](https://crates.io/crates/generic-array). Feature-gated:

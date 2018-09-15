@@ -1,6 +1,6 @@
 # Getting started
 **nalgebra** relies on the official Rust package manager
-[Cargo](http://crates.io) for dependency resolution and compilation. Therefore,
+[Cargo](https://crates.io) for dependency resolution and compilation. Therefore,
 making **nalgebra** ready to be used by your project is simply a matter of
 adding a new dependency to your `Cargo.toml` file.
 

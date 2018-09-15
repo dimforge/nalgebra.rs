@@ -18,12 +18,12 @@ Please make sure:
 2. You did **not** enable [incremental
    compilation](https://internals.rust-lang.org/t/incremental-compilation-beta).
    This prevents some optimization that may cause a 30x slow-down! We observed
-   this running the [nphysics](http://nphysics.org) examples in particular.
+   this running the [nphysics](https://nphysics.org) examples in particular.
 
 If you did all that and small `nalgebra` methods still show un in your
 benchmarks, please fill an
 [issue](https://github.com/rustsim/nalgebra/issues) or tell us about it on
-the [users forum](http://users.nphysics.org/c/nalgebra).
+the [users forum](https://users.nphysics.org/c/nalgebra).
 
 --------
 
@@ -49,7 +49,7 @@ is arranged in memory the same way as the array `[ 11, 21, 31, 12, 22, 32, 13,
 Because **nalgebra** relies on a lot of generics, some error messages might be
 hard to understand. Please, open an
 [issue](https://github.com/rustsim/nalgebra/issues) or create a post on the
-[users forum](http://users.nphysics.org/c/nalgebra) to get help. We take the
+[users forum](https://users.nphysics.org/c/nalgebra) to get help. We take the
 quality of error messages seriously, so providing details about how you got
 them can be useful to improve them in the future.
 
@@ -103,5 +103,5 @@ a raw matrix to be usable by, e.g., a shader.
 Some figures on the front page are licenced under CC 3.0 BY licence and their
 respective authors are credited [there](../about#image-credits).  All the other
 figures on the guide have been created using
-[Inkscape](http://www.inkscape.org/) and may be modified, published, and
+[Inkscape](https://www.inkscape.org/) and may be modified, published, and
 redistributed anywhere without asking or even telling anybody!

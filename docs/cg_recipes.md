@@ -238,7 +238,7 @@ be mapped to a single point on screen-space (the display device's 2D coordinate
 system). The following shows one such line $\mathcal{L}$ in view space,
 normalized device coordinates, and screen-space.  More details about the
 different coordinate systems use in compute graphics can be found
-[there](http://learnopengl.com/#!Getting-started/Coordinate-Systems).
+[there](https://learnopengl.com/#!Getting-started/Coordinate-Systems).
 
 <center>
 ![3D-space to screen-space](../img/view_to_screen_space.svg)
