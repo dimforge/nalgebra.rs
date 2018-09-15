@@ -3,7 +3,7 @@
 </center>
 <br/>
 <center>
-[![Travis.ci Status](https://travis-ci.org/sebcrozet/nalgebra.svg?branch=master)](https://travis-ci.org/sebcrozet/nalgebra)
+[![Travis.ci Status](https://travis-ci.org/rustsim/nalgebra.svg?branch=master)](https://travis-ci.org/rustsim/nalgebra)
 [![Crates.io Status](https://meritbadge.herokuapp.com/nalgebra)](https://crates.io/crates/nalgebra)
 [![License (3-Clause BSD)](https://img.shields.io/badge/license-BSD%203--Clause-blue.svg?style=flat)](https://opensource.org/licenses/BSD-3-Clause)
 <div style="text-align:center">
