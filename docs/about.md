@@ -110,6 +110,7 @@ The list of contributors can be found [there](https://github.com/rustsim/nalgebr
 * Casey Primozic
 * Casey Rodarmor
 * Chris Heyes
+* Christopher Armstrong
 * Connor McCluskey
 * Danny Fritz
 * Eduard Knyshov
@@ -122,6 +123,7 @@ The list of contributors can be found [there](https://github.com/rustsim/nalgebr
 * Jack Wrenn
 * Jan Nockemann
 * Jason Knight
+* Jean Mertz
 * Jeb Brooks
 * Jeff Muizelaar
 * Jeff Parsons
@@ -171,7 +173,7 @@ The list of contributors can be found [there](https://github.com/rustsim/nalgebr
 * [Peter Nguyen](https://github.com/artichokes)
 * [Smith Wendell](https://github.com/wackywendell)
 * [Sven Nilsen](https://github.com/bvssvni)
-* [Wesley Powell](https://github.com/wspowell)
+* [Wesley Powell](https://github.com/wspowell)n
 
 
 If your name should be on this list but isn't because your constribution is not
