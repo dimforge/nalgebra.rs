@@ -1,8 +1,8 @@
 #! /bin/sh
 
 echo "Integrating rust documentation to the website..."
-cssfile=./docs/rustdoc/rustdoc.css
-tmpcssfile=./docs/rustdoc/rustdoc.css.tmp
+cssfile=./docs/$1/rustdoc.css
+tmpcssfile=./docs/$1/rustdoc.css.tmp
 
 echo '@import url("//fonts.googleapis.com/css?family=Lato:400,700,900,400italic");' > $tmpcssfile
 echo '@import url("//cdn.rawgit.com/piscis/github-fork-ribbon-css-bem/v0.1.22/dist/gh-fork-ribbon-bem.min.css");' >> $tmpcssfile
@@ -13,7 +13,7 @@ cat custom_flatly/css/font-awesome.min.css >> $tmpcssfile
 sed -i '' -e 's/margin-left:[ ]*230px;//g' $tmpcssfile
 mv $tmpcssfile $cssfile
 
-files=`find ./docs/rustdoc -name \*.html -printf '%p '`
+files=`find ./docs/$1 -name \*.html -printf '%p '`
 sidebar='<nav class="sidebar">'
 sub='<nav class="sub">'
 container='<div class="container">'
