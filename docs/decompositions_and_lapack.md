@@ -248,8 +248,8 @@ Several implementations of Lapack exist. The desired one should be selected on
 your `Cargo.toml` file by enabling the related feature for your
 **nalgebra-lapack** dependency. The currently supported implementations are:
 
-* [OpenBLAS](www.openblas.net) enabled by the `openblas` feature.
-* [netlib](www.netlib.org) enabled by the `netlib` feature.
+* [OpenBLAS](https://www.openblas.net) enabled by the `openblas` feature.
+* [netlib](https://www.netlib.org) enabled by the `netlib` feature.
 * [Accelerate](https://developer.apple.com/reference/accelerate) enabled by the
   `accelerate` feature on Mac OS only.
 
