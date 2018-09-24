@@ -112,6 +112,21 @@
       </a>
       </td>
   </tr>
+  
+  <tr>
+      <td>[![](../img/logo_glm.svg)](../nalgebra_glm)</td>
+      <td style="vertical-align:middle">
+      <a href="../nalgebra_glm" id="no_highlight">
+      <div>
+      <big>**A simplified API for computer graphics**</big>
+      <span class="home_dummy_link">&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></span>
+      <br>
+      Use the **nalgebra-glm** crate for a simpler, straight-to-the-point, graphics programming-oriented functions operating
+      on **nalgebra** types. This is inspired by the great C++ GLM library.
+      </div>
+      </a>
+      </td>
+  </tr>
 
   <tr>
       <td>[![](../img/performance.svg)](../performance_tricks)</td>

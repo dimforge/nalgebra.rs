@@ -6,6 +6,12 @@ work almost exclusively with 4×4 matrices, **nalgebra** defines a wider number
 of [transformation types](../points_and_transformations/#transformations) that
 the user is strongly encouraged to use instead.
 
+!!! Note
+    You are encouraged to look at the **nalgebra-glm** crate as well. This provides
+    a simpler interface for manipulating vectors and matrices using homogeneous
+    coordinates. It is inspired from the popular C++ [GLM](https://glm.g-truc.net/) library. You will find
+    more details on a [dedicated page](nalgebra_glm.md) of this user guide.
+
 
 ## Transformations using Matrix4
 In the field of CG, a 4×4 matrix usually has a specific interpretation: it is

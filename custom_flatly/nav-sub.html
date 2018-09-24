@@ -1,6 +1,18 @@
 {% if not nav_item.children %}
 <li {% if nav_item.active %}class="active"{% endif %}>
-    <a href="{{ nav_item.url }}">{{ nav_item.title }}</a>
+    {% if nav_item.title == 'nalgebra' %}
+        <li {% if nav_item.active %} class="active" {% endif %}>
+            <a href="{{ base_url }}/rustdoc/nalgebra/index.html">{{ nav_item.title }}</a>
+        </li>
+    {% else %}
+        {% if nav_item.title == 'nalgebra-glm' %}
+            <li {% if nav_item.active %} class="active" {% endif %}>
+                <a href="{{ base_url }}/rustdoc_glm/nalgebra_glm/index.html">{{ nav_item.title }}</a>
+            </li>
+            {% else %}
+            <a href="{{ nav_item.url }}">{{ nav_item.title }}</a>
+        {% endif %}
+    {% endif %}
 </li>
 {% else %}
   <li class="dropdown-submenu">
