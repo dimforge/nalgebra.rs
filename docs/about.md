@@ -130,8 +130,9 @@ The list of contributors can be found [there](https://github.com/rustsim/nalgebr
 * Jordan Miner
 * J. Ryan Stinnett
 * Kasper Møller Andersen
-* Kyle Gretchev
+* Kristian Fjeld Hasselknippe
 * Kjetil Kjeka
+* Kyle Gretchev
 * Leonard Dahlmann
 * Maksim Ustichenko
 * Mark Stacey
@@ -150,6 +151,7 @@ The list of contributors can be found [there](https://github.com/rustsim/nalgebr
 * Paul Houghton
 * Rick Richardson
 * Sanghyeon Seo
+* Scott Beca
 * Sean Jensen-Grey
 * Simon N Heath
 * Trym Nilsen
@@ -173,7 +175,7 @@ The list of contributors can be found [there](https://github.com/rustsim/nalgebr
 * [Peter Nguyen](https://github.com/artichokes)
 * [Smith Wendell](https://github.com/wackywendell)
 * [Sven Nilsen](https://github.com/bvssvni)
-* [Wesley Powell](https://github.com/wspowell)n
+* [Wesley Powell](https://github.com/wspowell)
 
 
 If your name should be on this list but isn't because your constribution is not
