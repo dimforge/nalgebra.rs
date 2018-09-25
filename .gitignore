@@ -7,4 +7,6 @@ target
 run.sh
 doc
 docs/rustdoc
+docs/rustdoc_glm
 site
+.idea
