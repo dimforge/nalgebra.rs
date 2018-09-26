@@ -80,7 +80,7 @@ yearly donations):
 </div>
 <br/>
 <br/>
-For one-time donations, you may use PayPall (with or without an account):
+For one-time donations, you may use PayPal (with or without an account):
 <br/>
 <br/>
 <div style="text-align:center">
@@ -178,7 +178,7 @@ The list of contributors can be found [there](https://github.com/rustsim/nalgebr
 * [Wesley Powell](https://github.com/wspowell)
 
 
-If your name should be on this list but isn't because your constribution is not
+If your name should be on this list but isn't because your contribution is not
 code-related please send an [email](mailto:developer@crozet.re) or open an
 issue on [GitHub](https://github.com/rustsim/ncollide/issues). You will be
 listed above this paragraph.

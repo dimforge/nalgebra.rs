@@ -29,7 +29,7 @@ interesting features. For example, the `LU` structure returned by the
 
 Methods prefixed by `.try_` allow the customization of the error epsilon `eps`
 and of a hard limit of iteration number `max_niter` for iterative algorithms.
-`None` is returned if the given number of iterations is exceedeed before
+`None` is returned if the given number of iterations is exceeded before
 convergence. By default, the relative and absolute error epsilons are equal to
 the floating-point epsilon (i.e. the difference between 1 and the least value
 greater than 1 that is representable).
@@ -62,8 +62,8 @@ Method            | Effect
 `.l()`            | Retrieves the lower-triangular factor $L$ of this decomposition, setting its strictly upper-triangular part to 0. |
 `.l_dirty()`      | Retrieves  reference to the lower-triangular factor $L$ of this decomposition. Its strictly upper-triangular part is not set to 0 and may contain garbage. |
 `.inverse()`      | Computes the inverse of the decomposed matrix.
-`.solve(b)`       | Solves the system $Ax = b$ where $A$ is represented by `self` and $x$ the unkown. |
-`.solve_mut(b)`   | Overwrites `b` with the solution of the system $Ax = b$ where $A$ is represented by `self` and $x$ the unkown. |
+`.solve(b)`       | Solves the system $Ax = b$ where $A$ is represented by `self` and $x$ the unknown. |
+`.solve_mut(b)`   | Overwrites `b` with the solution of the system $Ax = b$ where $A$ is represented by `self` and $x$ the unknown. |
 `.unpack()`       | Consumes `self` to return the lower-triangular factor $L$ of this decomposition, setting its strictly upper-triangular part to 0. |
 `.unpack_dirty()` | Consumes `self` to return the lower-triangular factor $L$ of this decomposition. Its strictly upper-triangular part is not set to 0 and may contain garbage. |
 
@@ -86,8 +86,8 @@ Method             | Effect
 `.q_tr_mul(rhs)`   | Overwrites `rhs` with the result of `self.q() * rhs`. This is much more efficient than computing $Q$ explicitly. |
 `.is_invertible()` | Determines if the decomposed matrix is invertible. |
 `.inverse()`       | Computes the inverse of the decomposed matrix.
-`.solve(b)`        | Solves the system $Ax = b$ where $A$ is represented by `self` and $x$ the unkown. |
-`.solve_mut(b)`    | Overwrites `b` with the solution of the system $Ax = b$ where `A` is represented by `self` and $x$ the unkown. |
+`.solve(b)`        | Solves the system $Ax = b$ where $A$ is represented by `self` and $x$ the unknown. |
+`.solve_mut(b)`    | Overwrites `b` with the solution of the system $Ax = b$ where `A` is represented by `self` and $x$ the unknown. |
 `.unpack()`        | Consumes `self` to return the two factors $(Q, R)$ of this decomposition. |
 
 
@@ -111,7 +111,7 @@ less efficient but more numerically stable. See also [the wikipedia
 article](https://en.wikipedia.org/wiki/LU_decomposition) for further details.
 
 <center>
-![LU decompositpon of a 3x3 matrix.](../img/LU.svg)
+![LU decomposition of a 3x3 matrix.](../img/LU.svg)
 </center>
 
 
@@ -123,8 +123,8 @@ Method                   | Effect
 `.is_invertible()`       | Determines if the decomposed matrix is invertible. |
 `.inverse()`             | Computes the inverse of the decomposed matrix.
 `.determinant()`         | Computes the determinant of the decomposed matrix.
-`.solve(b)`              | Solves the system $Ax = b$ where $A$ is represented by `self` and $x$ the unkown. |
-`.solve_mut(b)`          | Overwrites `b` with the solution of the system $Ax = b$ where $A$ is represented by `self` and $x$ the unkown. |
+`.solve(b)`              | Solves the system $Ax = b$ where $A$ is represented by `self` and $x$ the unknown. |
+`.solve_mut(b)`          | Overwrites `b` with the solution of the system $Ax = b$ where $A$ is represented by `self` and $x$ the unknown. |
 `.unpack()`              | Consumes `self` to return the three factors $(P, L, U)$ of this decomposition. The four factors $(P, L, U, Q)$ are returned when using full pivoting. |
 
 
@@ -135,7 +135,7 @@ $H$ being upper-Hessenberg means that all components below its first
 subdiagonal are zero. See also [the wikipedia
 article](https://en.wikipedia.org/wiki/Hessenberg_matrix) for further details.
 
-The hessenberg decomposition is typically used as an intermediat representation
+The hessenberg decomposition is typically used as an intermediate representation
 of a wide variety of algorithms that can benefit from its structure close to
 the structure of an upper-triangular matrix.
 
@@ -157,7 +157,7 @@ quasi-upper-triangular matrix $T$ such that $M = QTQ^*$. A
 quasi-upper-triangular matrix is a matrix which is upper-triangular except for
 some 2x2 blocks on its diagonal (i.e. some of its subdiagonal elements are
 sometimes non-zero and two consecutive diagonal elements cannot be zero
-simultanously).
+simultaneously).
 
 It is noteworthy that the diagonal elements of the quasi-upper-triangular
 matrix are the eigenvalues of the decomposed matrix. The complex eigenvalues of
@@ -196,7 +196,7 @@ Method                   | Effect
 `.recompose()`           | Recomputes the original matrix, i.e., $Q\Lambda{}Q^t$. Useful if some eigenvalues or eigenvectors have been manually modified.
 
 ## Singular Value Decomposition
-The Singular Value Decomposition (SVD) of a real rectangular matrix if composed
+The Singular Value Decomposition (SVD) of a real rectangular matrix is composed
 of two orthogonal matrices $U$ and $V$ and a diagonal matrix $\Sigma$ with positive
 (or zero) components. Typical uses of the SVD are the pseudo-inverse, rank
 computation, and the resolution of least-square problems.
@@ -214,7 +214,7 @@ Method                 | Effect
 `.recompose()`         | Reconstructs the matrix from its decomposition. Useful if some singular values or singular vectors have been manually modified.
 `.pseudo_inverse(eps)` | Computes the pseudo-inverse of the decomposed matrix. All singular values below `eps` will be interpreted as equal to zero.
 `.rank(eps)`           | Computes the rank of the decomposed matrix, i.e., the number of singular values strictly greater than `eps`.
-`.solve(b, eps)`       | Solves the linear system $Ax = b$ where $A$ is the decomposed square matrix and $x$ the unkonwn. All singular value smaller or equal to `eps` are interpreted as zero.
+`.solve(b, eps)`       | Solves the linear system $Ax = b$ where $A$ is the decomposed square matrix and $x$ the unknown. All singular value smaller or equal to `eps` are interpreted as zero.
 
 # Lapack integration
 
@@ -240,7 +240,7 @@ The `::try_new` constructors return `None` if the decomposition fails while
 
 
 The next subsections describe how to select the desired Lapack implementation,
-and provide more details reagarding each decomposition.
+and provide more details regarding each decomposition.
 
 ## Setting up **nalgebra-lapack**
 

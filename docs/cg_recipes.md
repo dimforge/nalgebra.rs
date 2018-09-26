@@ -21,7 +21,7 @@ rotation and translation. Though using 4x4 matrices is convenient because most
 so-called *homogeneous coordinates*, they do not have provide strong guarantees
 regarding their properties. For example, a method that takes a `Matrix4` in
 argument cannot have the guarantee that it is a pure rotation, an
-ispometry, or even an arbitrary but invertible transformation! That's why all
+isometry, or even an arbitrary but invertible transformation! That's why all
 the [transformation types](../points_and_transformations/#transformations) are
 recommended instead of raw matrices.
 

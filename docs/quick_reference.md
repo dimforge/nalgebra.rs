@@ -23,7 +23,7 @@ Serialization with [serde](https://serde.rs) can be enabled by enabling the
 * Within this reference, `N` is the scalar type, `R`, `C` and `D` are type-level integers.
 * Matrices are stored in column-major order.
 * Vectors are type aliases for matrices with only one column or one row.
-* Overloaded operators: `*`, `/`, `+`, `-` (binary and unary), and corresponding assignement operators.
+* Overloaded operators: `*`, `/`, `+`, `-` (binary and unary), and corresponding assignment operators.
 * Comparison operators `==`, `>=`, `<=`, `>`, `<`,  using column-major lexicographic ordering.
 * Mutable and non-mutable indexing: `the_vector[usize]` and `the_matrix[(usize, usize)]`.
 * All angles are in radian.
