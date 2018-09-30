@@ -84,7 +84,7 @@ Setter   | Meaning
 `.set_znear_and_zfar(...)` | Sets both clipping planes simultaneously. |
 
 ## Perspective projection
-A perspective projection `Perspective3` maps a frustrum to the double unit cube
+A perspective projection `Perspective3` maps a frustum to the double unit cube
 centered at the origin. It is a non-linear transformation that uses homogeneous
 coordinates to apply to each point a scale factor that depends on its distance
 to the viewer.
@@ -101,10 +101,10 @@ perspective projection is characterized by:
 
 Property | Meaning
 ---------|--------
-`aspect` | The aspect ratio of the frustrum faces on the $\mathbf{xy}$-plane. This is division of the width by the height of any section (parallel to the $\mathbf{xy}$-plane) of the frustrum .
-`fovy`   | The field of view along the $\mathbf{y}$ axis. This is the angle between uppermost and lowermost faces of the frustrum. |
-`znear`  | The distance between the viewer (the origin) and the closest face of the frustrum parallel to the $\mathbf{xy}$-plane. If used for a 3D rendering application, this is the closest clipping plane. |
-`zfar`   | The distance between the viewer (the origin) and the furthest face of the frustrum parallel to the $\mathbf{xy}$-plane. If used for a 3D rendering application, this is the furthest clipping plane. |
+`aspect` | The aspect ratio of the frustum faces on the $\mathbf{xy}$-plane. This is division of the width by the height of any section (parallel to the $\mathbf{xy}$-plane) of the frustum .
+`fovy`   | The field of view along the $\mathbf{y}$ axis. This is the angle between uppermost and lowermost faces of the frustum. |
+`znear`  | The distance between the viewer (the origin) and the closest face of the frustum parallel to the $\mathbf{xy}$-plane. If used for a 3D rendering application, this is the closest clipping plane. |
+`zfar`   | The distance between the viewer (the origin) and the furthest face of the frustum parallel to the $\mathbf{xy}$-plane. If used for a 3D rendering application, this is the furthest clipping plane. |
 
 <center>
 ![perspective projection properties](../img/perspective_props.svg)

@@ -6,7 +6,7 @@ to be used through operator overloading.
 
 ## The generic `Matrix` type
 We first give a short description of the generic `Matrix` type. Readers
-interested in the implementation details are refered to the section about
+interested in the implementation details are referred to the section about
 [implementation internals](../generic_programming/#implementation-internals).
 In practice, most use-cases are covered by type aliases that hide the most
 complicated type parameters.
@@ -429,7 +429,7 @@ a slice, i.e., actually copying the referenced components into a new matrix
 structure that owns its data. Whether or not the result of this cloning is a
 dynamically- or statically-sized matrix depends on the kind of slice.
 Fixed slices will yield a statically-sized matrix while dynamic slices yield
-a dynamically-sized matrice.
+a dynamically-sized matrix.
 
 <center>
 ![slice.clone_owned()](img/slice_clone_owned.svg)
@@ -477,7 +477,7 @@ preferred whenever the number of rows/columns to be inserted or removed is
 known at compile-time.
 
 It is strongly recommended to use fixed resizing whenever possible, especially
-when the matrix being resize has a size known at compiletime (and is thus
+when the matrix being resize has a size known at compile-time (and is thus
 statically allocated). Indeed, dynamic resizing will produce heap-allocated
 results because the size of the output matrix cannot be deduced at
 compile-time.

@@ -45,7 +45,7 @@ Here are a few rules chosen arbitrarily for **nalgebra-glm**:
 * Functions operating on vector will often end with the `_vec` suffix, possibly followed by the dimension of vector, e.g., `glm::rotate_vec2`.
   Similar functions operating on scalar numbers only often end with the `_scalar` suffix.
 * Every function related to quaternions start with the `quat_` prefix, e.g., `glm::quat_dot(q1, q2)`.
-* All the conversion functions have unique names as described [bellow](#conversions).
+* All the conversion functions have unique names as described [below](#conversions).
 
 ### Should I use nalgebra or nalgebra-glm?
 That depends on your tastes and your background. **nalgebra** is more powerful overall since it allows stronger typing,
@@ -112,7 +112,7 @@ It is often useful to convert one algebraic type to another. The two main approa
 For example `glm::mat3_to_mat4(m)` will convert the 3x3 matrix `m` into a 4x4 matrix by appending one column on its right
 and one row on its bottom. Diagonal elements added this way are set to `1`.
 * Using one of the `glm::convert`, `glm::try_convert`, or `glm::convert_unchecked` functions.
-These functions are directly re-exported from **nalgebra** and are extremely versatile as described bellow.
+These functions are directly re-exported from **nalgebra** and are extremely versatile as described below.
 
 The `glm::convert` function can convert any type into another algebraic type which equivalent but more general. For example,
 `let mat: Mat4 = glm::convert(isometry)` will convert an `Isometry3` (from the **nalgebra** crate) to a 4x4 matrix.

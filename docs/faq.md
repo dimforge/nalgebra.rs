@@ -20,7 +20,7 @@ Please make sure:
    This prevents some optimization that may cause a 30x slow-down! We observed
    this running the [nphysics](https://nphysics.org) examples in particular.
 
-If you did all that and small `nalgebra` methods still show un in your
+If you did all that and small `nalgebra` methods still show up in your
 benchmarks, please fill an
 [issue](https://github.com/rustsim/nalgebra/issues) or tell us about it on
 the [users forum](https://users.nphysics.org/c/nalgebra).

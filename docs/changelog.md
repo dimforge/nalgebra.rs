@@ -86,7 +86,7 @@ This adds support for serialization using the
     example, a step of, say, 3 on previous versions should now bet set to 2.
 
 #### Modified
-  * The trait `Axpy` has been replaced by a metod `.axpy`.
+  * The trait `Axpy` has been replaced by a method `.axpy`.
   * The alias `MatrixNM` is now deprecated. Use `MatrixMN` instead (we
     reordered M and N to be in alphabetical order).
   * In-place componentwise multiplication and division
@@ -121,7 +121,7 @@ This adds support for serialization using the
 
 Pure Rust implementation of some Blas operations:
 
-  * `.iamax()` retuns the index of the maximum value of a vector.
+  * `.iamax()` returns the index of the maximum value of a vector.
   * `.axpy(...)` computes `self = a * x + b * self`.
   * `.gemv(...)` computes `self = alpha * a * x + beta * self` with a matrix and vector `a` and `x`.
   * `.ger(...)` computes `self = alpha * x^t * y + beta * self` where `x` and `y` are vectors.
@@ -154,7 +154,7 @@ Matrix edition:
   * `.set_diagonal(...)` sets the matrix diagonal.
   * `.set_row(...)` sets a selected row.
   * `.set_column(...)` sets a selected column.
-  * `.fill_lower_triangle(...)` fills some sub-diagonals bellow the main diagonal with a value.
+  * `.fill_lower_triangle(...)` fills some sub-diagonals below the main diagonal with a value.
   * `.fill_upper_triangle(...)` fills some sub-diagonals above the main diagonal with a value.
   * `.swap_rows(...)` swaps two rows.
   * `.swap_columns(...)` swaps two columns.
@@ -373,7 +373,7 @@ crate for vectors, rotations and points. To enable them, activate the
 ### Version 0.8
 #### Modified
 Almost everything (types, methods, and traits) now use full names instead
-of abbreviations (e.g. `Vec3` becomes `Vector3`). Most changes are abvious.
+of abbreviations (e.g. `Vec3` becomes `Vector3`). Most changes are obvious.
 Note however that:
 - `::sqnorm` becomes `::norm_squared`.
 - `::sqdist` becomes `::distance_squared`.
@@ -389,7 +389,7 @@ e.g., `vec.rs` becomes `vector.rs`.
 
 ### Version 0.7
 #### Added
-* Added implementation of assignement operators (+=, -=, etc.) for
+* Added implementation of assignment operators (+=, -=, etc.) for
   everything.
 #### Modified
 * Points and vectors are now linked to each other with associated types
