@@ -134,7 +134,9 @@ The list of contributors can be found [there](https://github.com/rustsim/nalgebr
 * Kjetil Kjeka
 * Kyle Gretchev
 * Leonard Dahlmann
+* Lucas Kent
 * Maksim Ustichenko
+* Mark McCaskey
 * Mark Stacey
 * Matthieu Pizenberg
 * memoryruins
@@ -147,8 +149,11 @@ The list of contributors can be found [there](https://github.com/rustsim/nalgebr
 * Nicholas Farley
 * Nifker
 * Olivier Saut
+* ozkriff
 * Pascal
 * Paul Houghton
+* Rafael
+* rage
 * Rick Richardson
 * Sanghyeon Seo
 * Scott Beca
