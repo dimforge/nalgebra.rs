@@ -38,7 +38,7 @@ raw transformation matrix.
 Method                     | Description
 ---------------------------|--------------
 `::new_scaling(s)`         | An uniform scaling matrix with scaling factor `s`. |
-`::new_nonuniorm_scaling(vs)`  | A non-uniform scaling matrix with scaling factors along each coordinate given by the coordinates of the vector `vs`. |
+`::new_nonuniform_scaling(vs)`  | A non-uniform scaling matrix with scaling factors along each coordinate given by the coordinates of the vector `vs`. |
 `::new_translation(t)`     | A pure translation matrix specified by the displacement vector `t`. |
 `::new_rotation_wrt_point(axang, pt)` | A composition of rotation and translation such that the point `pt` is left invariant. The rotational part is specified as a rotation axis multiplied by the rotation angle. |
 `::from_scaled_axis(axang)`   | A pure rotation matrix specified by a rotation axis multiplied by the rotation angle. |
