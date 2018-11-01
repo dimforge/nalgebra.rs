@@ -3,6 +3,7 @@
 </center>
 <br/>
 <center>
+[![Join us on Discord](https://img.shields.io/discord/507548572338880513.svg?logo=discord&colorB=7289DA)](https://discord.gg/vt9DJSW)
 [![Travis.ci Status](https://travis-ci.org/rustsim/nalgebra.svg?branch=master)](https://travis-ci.org/rustsim/nalgebra)
 [![Crates.io Status](https://meritbadge.herokuapp.com/nalgebra)](https://crates.io/crates/nalgebra)
 [![License (3-Clause BSD)](https://img.shields.io/badge/license-BSD%203--Clause-blue.svg?style=flat)](https://opensource.org/licenses/BSD-3-Clause)
