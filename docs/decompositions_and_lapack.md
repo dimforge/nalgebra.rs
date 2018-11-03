@@ -218,26 +218,28 @@ Method                 | Effect
 
 # Linear System Resolution 
 
-To get up and running the following example demonstrates creation of a `4x4` matrix $A$, 4 element column vector $b$, and the resolution of the column vector $x$ which satisfies the equation $Ax = b$.
+To get up and running the following example demonstrates creation of a `4x4` matrix $A$, 4 element column vector $b$, and the resolution of the column vector $x$ which satisfies the equation $Ax = b$. 
 
 ```
 //main.rs
-extern crate nalgebra as na;
+extern crate nalgebra as na; //2015 edition crate syntax
 use na::linalg;
 use na::{Matrix4,Vector4};
 
 
 fn main() {
-    let m = Matrix4::new(1.0,1.0,2.0,-5.0,
-                           2.0,5.0,-1.0,-9.0,
-                           2.0,1.0,-1.0,3.0,
-                           1.0,3.0,2.0,7.0);
-    let b = Vector4::new(3.0,-3.0,-11.0,-5.0);
-    let decomp = linalg::LU::new(m);
+    let m = Matrix4::new(1.0, 1.0,  2.0, -5.0,
+                         2.0, 5.0, -1.0, -9.0,
+                         2.0, 1.0, -1.0,  3.0,
+                         1.0, 3.0,  2.0,  7.0);
+    let mut b = Vector4::new(3.0, -3.0, -11.0, -5.0);
+    let decomp = m.lu();
     println!("{:?}",decomp.solve(&b));
-
+    decomp.solve_mut(&mut  b);
+    println!("{}",b);
 }
 ```
+
 
 # Lapack integration
 
