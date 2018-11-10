@@ -2,7 +2,7 @@
 
 Matrix decomposition is a family of methods that aim to represent a matrix as
 the product of several matrices. Those factors can either allow more efficient
-operations like inversion or linear system resolution, and might provide some
+operations like inversion or [linear system resolution](#linear-system-resolution), and might provide some
 insight regarding intrinsic properties of some data to be analysed (e.g. by
 observing singular values, eigenvectors, etc.) Some decompositions are
 implemented in pure Rust or available as bindings to a Fortran Lapack
@@ -216,30 +216,68 @@ Method                 | Effect
 `.rank(eps)`           | Computes the rank of the decomposed matrix, i.e., the number of singular values strictly greater than `eps`.
 `.solve(b, eps)`       | Solves the linear system $Ax = b$ where $A$ is the decomposed square matrix and $x$ the unknown. All singular value smaller or equal to `eps` are interpreted as zero.
 
-# Linear System Resolution 
+# Linear system resolution 
 
-To get up and running the following example demonstrates creation of a `4x4` matrix $A$, 4 element column vector $b$, and the resolution of the column vector $x$ which satisfies the equation $Ax = b$. 
+As a simple example the following example demonstrates creation of a general `4x4` matrix $A$, a column
+vector $b$, and the resolution of the column vector $x$ which satisfies the equation $Ax = b$.
 
+<ul class="nav nav-tabs">
+  <li class="active"><a id="tab_nav_link" data-toggle="tab" href="#linear_system_resolution">Example</a></li>
+
+  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/sebcrozet/nalgebra/master/examples/linear_system_resolution.rs')"></div>
+</ul>
+
+<div class="tab-content" markdown="1">
+  <div id="linear_system_resolution" class="tab-pane in active">
+```rust
+let a = Matrix4::new(
+    1.0, 1.0,  2.0, -5.0,
+    2.0, 5.0, -1.0, -9.0,
+    2.0, 1.0, -1.0,  3.0,
+    1.0, 3.0,  2.0,  7.0,
+);
+let mut b = Vector4::new(3.0, -3.0, -11.0, -5.0);
+let decomp = a.lu();
+let x = decomp.solve(&b).expect("Linear resolution failed.");
+assert_relative_eq!(a * x, b);
+
+/*
+ * It is possible to perform the resolution in-place.
+ * This is particularly useful to avoid allocations when
+ * `b` is a `DVector` or a `DMatrix`.
+ */
+assert!(decomp.solve_mut(&mut b), "Linear resolution failed.");
+assert_relative_eq!(x, b);
+
+/*
+ * It is possible to solve multiple systems
+ * simultaneously by using a matrix for `b`.
+ */
+let b = Matrix4x3::new(
+     3.0,  2.0,  0.0,
+    -3.0,  0.0,  0.0,
+    -11.0, 5.0, -3.0,
+    -5.0,  10.0, 4.0,
+);
+let x = decomp.solve(&b).expect("Linear resolution failed.");
+assert_relative_eq!(a * x, b);
 ```
-//main.rs
-extern crate nalgebra as na; //2015 edition crate syntax
-use na::linalg;
-use na::{Matrix4,Vector4};
+  </div>
+</div>
 
+The example above relies on a LU decomposition of the matrix `m`. Other decompositions can be used as well, depending
+on what properties the matrix involved in the linear solve has:
 
-fn main() {
-    let m = Matrix4::new(1.0, 1.0,  2.0, -5.0,
-                         2.0, 5.0, -1.0, -9.0,
-                         2.0, 1.0, -1.0,  3.0,
-                         1.0, 3.0,  2.0,  7.0);
-    let mut b = Vector4::new(3.0, -3.0, -11.0, -5.0);
-    let decomp = m.lu();
-    println!("{:?}",decomp.solve(&b));
-    decomp.solve_mut(&mut  b);
-    println!("{}",b);
-}
-```
+* The **cholesky decomposition** will be more efficient if the matrix is known to be symmetric-positive-definite.
+* The **SVD** decomposition will be useful if the matrix is known to be singular or near-singular. This will allow
+  resolution of systems, ignoring dimensions with near-zero singular values.
+* The **LU** and **QR** are good for invertible matrix with no specific properties. Right now, only resolution of
+  invertible, square systems are implemented.
 
+!!! Note
+    If the given `b` is a matrix then `.solve(&b)` and `.solve_mut(&mut b)` will still solve `Ax = b`, where `x` is
+    also a matrix. This is equivalent to solving several systems with different right-hand-sidesß (each being one column
+    of the `b` matrix).
 
 # Lapack integration
 
