@@ -136,6 +136,7 @@ Method                          | Description
 `::from_iterator(...)`         | Creates a matrix filled with the content of the given iterator. The iterator must provide the matrix components in column-major order. |
 `::from_row_slice(...)`        | Creates a matrix filled with the content of the given slice. Elements of the slice are provided in row-major order (which is the usual mathematical notation.) |
 `::from_column_slice(...)`     | Creates a matrix filled with the content of the given slice. Elements of the slice are provided in column-major order.
+`::from_vec(...)`              | Creates a matrix filled with the content of the given `Vec`. Elements of the vec are provided in column-major order. Constructing a dynamically-sized matrix this way consumes the vec to avoid allocations. |
 `::from_fn(...)`               | Creates a matrix filled with the values returned by the given closure of type `FnMut(usize, usize) -> N`. This closure is called exactly once per matrix component and is given as parameter each matrix component's 0-based indices. |
 `::identity(...)`              | Creates a matrix with `1` on its diagonal and `0` elsewhere. If the matrix to be constructed is not square, only the largest square submatrix formed by its first rows and columns is set to the identity matrix. All the other components are `0`. |
 `::from_diagonal_element(...)` | Creates a matrix with its diagonal filled with the given element and `0` elsewhere. If the matrix to be constructed is not square, only the largest square submatrix formed by its first rows and columns is set to the identity matrix. All the other components are set to `0`. |
@@ -145,7 +146,7 @@ Method                          | Description
 <ul class="nav nav-tabs">
   <li class="active"><a id="tab_nav_link" data-toggle="tab" href="#matrix_construction">Example</a></li>
 
-  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/sebcrozet/nalgebra/master/examples/matrix_construction.rs')"></div>
+  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/rustsim/nalgebra/master/examples/matrix_construction.rs')"></div>
 </ul>
 
 <div class="tab-content" markdown="1">
@@ -193,11 +194,11 @@ let dm = DMatrix::from_row_slice(4, 3, &[
     0.0, 0.0, 1.0,
     0.0, 0.0, 0.0
 ]);
-
-let dm1 = DMatrix::from_diagonal_element(4, 3, 1.0);
-let dm2 = DMatrix::identity(4, 3);
-let dm3 = DMatrix::from_fn(4, 3, |r, c| if r == c { 1.0 } else { 0.0 });
-let dm4 = DMatrix::from_iterator(4, 3, [
+let dm1 = DMatrix::from_vec(4, 3, vec![1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0]);
+let dm2 = DMatrix::from_diagonal_element(4, 3, 1.0);
+let dm3 = DMatrix::identity(4, 3);
+let dm4 = DMatrix::from_fn(4, 3, |r, c| if r == c { 1.0 } else { 0.0 });
+let dm5 = DMatrix::from_iterator(4, 3, [
     // Components listed column-by-column.
     1.0, 0.0, 0.0, 0.0,
     0.0, 1.0, 0.0, 0.0,
@@ -206,6 +207,7 @@ let dm4 = DMatrix::from_iterator(4, 3, [
 
 assert_eq!(dm, dm1); assert_eq!(dm, dm2);
 assert_eq!(dm, dm3); assert_eq!(dm, dm4);
+assert_eq!(dm, dm5);
 ```
   </div>
 </div>
