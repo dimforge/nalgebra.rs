@@ -77,7 +77,7 @@ appended or prepended to.
 <ul class="nav nav-tabs">
   <li class="active"><a id="tab_nav_link" data-toggle="tab" href="#transform_matrix4">Example</a></li>
 
-  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/sebcrozet/nalgebra/master/examples/transform_matrix4.rs')"></div>
+  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/rustsim/nalgebra/master/examples/transform_matrix4.rs')"></div>
 </ul>
 
 <div class="tab-content" markdown="1">
@@ -135,7 +135,7 @@ There are two main ways to deal with this issue:
 <ul class="nav nav-tabs">
   <li class="active"><a id="tab_nav_link" data-toggle="tab" href="#transform_vector_point3">Example</a></li>
 
-  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/sebcrozet/nalgebra/master/examples/transform_vector_point3.rs')"></div>
+  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/rustsim/nalgebra/master/examples/transform_vector_point3.rs')"></div>
 </ul>
 
 <div class="tab-content" markdown="1">
@@ -191,7 +191,7 @@ requires the use of a raw `Matrix4` or a dedicated
 <ul class="nav nav-tabs">
   <li class="active"><a id="tab_nav_link" data-toggle="tab" href="#mvp">Example</a></li>
 
-  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/sebcrozet/nalgebra/master/examples/mvp.rs')"></div>
+  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/rustsim/nalgebra/master/examples/mvp.rs')"></div>
 </ul>
 
 <div class="tab-content" markdown="1">
@@ -268,7 +268,7 @@ corresponding line in view-space. It follows three steps:
 <ul class="nav nav-tabs">
   <li class="active"><a id="tab_nav_link" data-toggle="tab" href="#screen_to_view_coords">Example</a></li>
 
-  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/sebcrozet/nalgebra/master/examples/screen_to_view_coords.rs')"></div>
+  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/rustsim/nalgebra/master/examples/screen_to_view_coords.rs')"></div>
 </ul>
 
 <div class="tab-content" markdown="1">
@@ -312,7 +312,7 @@ slices](../vectors_and_matrices/#matrix-slicing).
 <ul class="nav nav-tabs">
   <li class="active"><a id="tab_nav_link" data-toggle="tab" href="#raw_pointer">Example</a></li>
 
-  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/sebcrozet/nalgebra/master/examples/raw_pointer.rs')"></div>
+  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/rustsim/nalgebra/master/examples/raw_pointer.rs')"></div>
 </ul>
 
 <div class="tab-content" markdown="1">
@@ -349,7 +349,7 @@ using the method `.to_homogeneous()`. This will return a `Matrix2` or a
 <ul class="nav nav-tabs">
   <li class="active"><a id="tab_nav_link" data-toggle="tab" href="#transformation_pointer">Example</a></li>
 
-  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/sebcrozet/nalgebra/master/examples/transformation_pointer.rs')"></div>
+  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/rustsim/nalgebra/master/examples/transformation_pointer.rs')"></div>
 </ul>
 
 <div class="tab-content" markdown="1">

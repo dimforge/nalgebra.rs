@@ -43,7 +43,7 @@ bound does not have to be specified if `Real` already is.
 <ul class="nav nav-tabs">
   <li class="active"><a id="tab_nav_link" data-toggle="tab" href="#scalar_genericity">Example</a></li>
 
-  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/sebcrozet/nalgebra/master/examples/scalar_genericity.rs')"></div>
+  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/rustsim/nalgebra/master/examples/scalar_genericity.rs')"></div>
 </ul>
 
 <div class="tab-content" markdown="1">
@@ -122,7 +122,7 @@ compiler.  There are two ways of obtain this kind of abstraction in
   <li><a id="tab_nav_link" data-toggle="tab" href="#with_dim_genericity">With structural genericity</a></li>
   <li><a id="tab_nav_link" data-toggle="tab" href="#without_dim_genericity">Without dimensional genericity</a></li>
 
-  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/sebcrozet/nalgebra/master/examples/dimensional_genericity.rs')"></div>
+  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/rustsim/nalgebra/master/examples/dimensional_genericity.rs')"></div>
 </ul>
 
 <div class="tab-content" markdown="1">

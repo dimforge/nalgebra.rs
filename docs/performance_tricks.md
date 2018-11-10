@@ -24,7 +24,7 @@ the length of one vector along a given direction:
   <li class="active"><a id="tab_nav_link" data-toggle="tab" href="#with_unit">With Unit</a></li>
   <li><a id="tab_nav_link" data-toggle="tab" href="#without_unit">Without Unit</a></li>
 
-  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/sebcrozet/nalgebra/master/examples/unit_wrapper.rs')"></div>
+  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/rustsim/nalgebra/master/examples/unit_wrapper.rs')"></div>
 </ul>
 
 <div class="tab-content" markdown="1">
@@ -69,7 +69,7 @@ matrix multiplications.
 <ul class="nav nav-tabs">
   <li class="active"><a id="tab_nav_link" data-toggle="tab" href="#identity">Example</a></li>
 
-  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/sebcrozet/nalgebra/master/examples/identity.rs')"></div>
+  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/rustsim/nalgebra/master/examples/identity.rs')"></div>
 </ul>
 
 <div class="tab-content" markdown="1">

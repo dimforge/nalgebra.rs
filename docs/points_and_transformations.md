@@ -48,7 +48,7 @@ point. In particular:
 <ul class="nav nav-tabs">
   <li class="active"><a id="tab_nav_link" data-toggle="tab" href="#transform_vector_point">Example</a></li>
 
-  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/sebcrozet/nalgebra/master/examples/transform_vector_point.rs')"></div>
+  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/rustsim/nalgebra/master/examples/transform_vector_point.rs')"></div>
 </ul>
 
 <div class="tab-content" markdown="1">
@@ -83,7 +83,7 @@ Constructor                 | Effect
 <ul class="nav nav-tabs">
   <li class="active"><a id="tab_nav_link" data-toggle="tab" href="#point_construction">Example</a></li>
 
-  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/sebcrozet/nalgebra/master/examples/point_construction.rs')"></div>
+  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/rustsim/nalgebra/master/examples/point_construction.rs')"></div>
 </ul>
 
 <div class="tab-content" markdown="1">
@@ -159,7 +159,7 @@ value upon conversion, use `na::convert_ref(...)` and
 <ul class="nav nav-tabs">
   <li class="active"><a id="tab_nav_link" data-toggle="tab" href="#transform_conversion">Example</a></li>
 
-  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/sebcrozet/nalgebra/master/examples/transform_conversion.rs')"></div>
+  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/rustsim/nalgebra/master/examples/transform_conversion.rs')"></div>
 </ul>
 
 <div class="tab-content" markdown="1">
@@ -371,7 +371,7 @@ and efficient.
   <li class="active"><a id="tab_nav_link" data-toggle="tab" href="#dedicated_types">Dedicated types</a></li>
   <li><a id="tab_nav_link" data-toggle="tab" href="#homogeneous_coords">Homogeneous coords</a></li>
 
-  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/sebcrozet/nalgebra/master/examples/homogeneous_coordinates.rs')"></div>
+  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/rustsim/nalgebra/master/examples/homogeneous_coordinates.rs')"></div>
 </ul>
 
 <div class="tab-content" markdown="1">

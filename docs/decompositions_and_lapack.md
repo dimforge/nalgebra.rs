@@ -224,7 +224,7 @@ vector $b$, and the resolution of the column vector $x$ which satisfies the equa
 <ul class="nav nav-tabs">
   <li class="active"><a id="tab_nav_link" data-toggle="tab" href="#linear_system_resolution">Example</a></li>
 
-  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/sebcrozet/nalgebra/master/examples/linear_system_resolution.rs')"></div>
+  <div class="btn-primary" onclick="window.open('https://raw.githubusercontent.com/rustsim/nalgebra/master/examples/linear_system_resolution.rs')"></div>
 </ul>
 
 <div class="tab-content" markdown="1">
