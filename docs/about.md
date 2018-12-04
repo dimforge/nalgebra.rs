@@ -112,6 +112,7 @@ The list of contributors can be found [there](https://github.com/rustsim/nalgebr
 * Chris Heyes
 * Christopher Armstrong
 * Connor McCluskey
+* Damien Dubé
 * Danny Fritz
 * Eduard Knyshov
 * Erlend Sogge Heggen
@@ -127,6 +128,7 @@ The list of contributors can be found [there](https://github.com/rustsim/nalgebr
 * Jeb Brooks
 * Jeff Muizelaar
 * Jeff Parsons
+* Johan Andersson
 * Jordan Miner
 * J. Ryan Stinnett
 * Kasper Møller Andersen
@@ -159,6 +161,7 @@ The list of contributors can be found [there](https://github.com/rustsim/nalgebr
 * Scott Beca
 * Sean Jensen-Grey
 * Simon N Heath
+* Thomas Niederberger
 * Trym Nilsen
 * Ty Overby
 * Vikentiy Fesunov
