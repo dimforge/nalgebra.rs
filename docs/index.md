@@ -93,7 +93,7 @@
       <span class="home_dummy_link">&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></span>
       <br>
       Orthographic and perspective projections that agree with
-      computer-graphics convensions.
+      computer-graphics conventions.
       </div>
       </a>
       </td>
