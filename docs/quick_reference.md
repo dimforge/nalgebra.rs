@@ -165,9 +165,9 @@ compile-time of the matrix being created.
 `.transpose()`                    <span style="float:right;">Matrix transposition.</span><br />
 `.transpose_mut()`                <span style="float:right;">In-place matrix transposition.</span><br />
 `.transpose_to(output)`           <span style="float:right;">Transposes a matrix to the given output.</span><br />
-`.conjugate_transpose()`          <span style="float:right;">Complex matrix transposed conjugate.</span><br />
-`.conjugate_transpose_mut()`      <span style="float:right;">In-place complex matrix transposed conjugate.</span><br />
-`.conjugate_transpose_to(output)` <span style="float:right;">Conjugate-transposes a complex matrix to the given output matrix.</span><br />
+`.adjoint()`          <span style="float:right;">Complex matrix transposed conjugate.</span><br />
+`.adjoint_mut()`      <span style="float:right;">In-place complex matrix transposed conjugate.</span><br />
+`.adjoint_to(output)` <span style="float:right;">Conjugate-transposes a complex matrix to the given output matrix.</span><br />
 `.try_inverse()`                  <span style="float:right;">Matrix inverse. Returns `None` if it fails.</span><br />
 `.try_inverse_mut()`              <span style="float:right;">In-place matrix inverse. Returns `false` if it fails.</span><br />
 
@@ -274,6 +274,7 @@ output[(i, j)]`. Additional rows and columns are filled with `val`.
 #### Blas operations
 **nalgebra** implements some Blas operations in pure Rust. In the following,
 the variables $\mathbf{v}$ and $\mathbf{V}$ designs the `self` argument.
+The notation `A^*` designs the adjoint matrix (conjugate-transpose) of `A`.
 
 `.iamax()`                 <span style="float:right;">Returns the index of the vector component with the greatest absolute value.</span><br />
 `.iamax_full()`            <span style="float:right;">Returns the index of the matrix component with the greatest absolute value.</span><br />
@@ -282,9 +283,17 @@ the variables $\mathbf{v}$ and $\mathbf{V}$ designs the `self` argument.
 `.gemv(alpha, A, x, beta)` <span style="float:right;">Computes $V = \alpha A \mathbf{x} + \beta V$ with a matrix and vector $a$ and $\mathbf{x}$.</span><br />
 `.ger(alpha, x, y, beta)`  <span style="float:right;">Computes $V = \alpha \mathbf{x}^T \mathbf{y} + \beta V$ where $\mathbf{x}$ and $\mathbf{y}$ are vectors.</span><br />
 `.gemm(alpha, A, B, beta)` <span style="float:right;">Computes $V = \alpha A B + \beta V$ where $A$ and $B$ are matrices.</span><br />
-`.gemv_symm(...)`          <span style="float:right;">Is the same as `.gemv` except that `self` is assumed symmetric.</span><br />
-`.ger_symm(...)`           <span style="float:right;">Is the same as `.ger` except that `self` is assumed symmetric.</span><br />
+`.sygemv(...)`             <span style="float:right;">Is the same as `.gemv` except that `self` is assumed symmetric.</span><br />
+`.syger(...)`              <span style="float:right;">Is the same as `.ger` except that `self` is assumed symmetric.</span><br />
 `.gemv_tr(...)`            <span style="float:right;">Is the same as `.gemv` except that the transpose of `A` is considered.</span><br />
+
+`.icamax()`                 <span style="float:right;">Returns the index of the complex vector component with the greatest L1-norm.</span><br />
+`.icamax_full()`            <span style="float:right;">Returns the index of the complex matrix component with the greatest L1-norm.</span><br />
+`.dotc(x)`                  <span style="float:right;">Computes the sesquilinear complex scalar product $\mathbf{v}^* \mathbf{x}$.</span><br />
+`.gerc(alpha, x, y, beta)`  <span style="float:right;">Computes $V = \alpha \mathbf{x}^* \mathbf{y} + \beta V$ where $\mathbf{x}$ and $\mathbf{y}$ are vectors.</span><br />
+`.hegemv(...)`              <span style="float:right;">Is the same as `.gemv` except that `self` is assumed hermitian.</span><br />
+`.hegerc(...)`              <span style="float:right;">Is the same as`.ger` except that `self` is assumed hermitian.</span><br />
+`.gemv_ad(...)`             <span style="float:right;">Is the same as `.gemv` except that the adjoint `A^*` of `A` is considered.</span><br />
 
 Other operations that work like blas operations (i.e., in-place and real coefficients) are implemented:
 
@@ -304,21 +313,21 @@ only. Refer to [Lapack integration](#nalgebra-lapack) for lapack-based decomposi
 
 `.bidiagonalize()`            <span style="float:right;">Bidiagonalization of a general matrix.</span><br />
 `.symmetric_tridiagonalize()` <span style="float:right;">Tridiagonalization of a general matrix.</span><br />
-`.cholesky()`                 <span style="float:right;">Cholesky factorization of a Symmetric-Definite-Positive square matrix.</span><br />
+`.cholesky()`                 <span style="float:right;">Cholesky factorization of a Hermitian-Definite-Positive square matrix.</span><br />
 `.qr()`                       <span style="float:right;">QR decomposition.</span><br />
 `.lu()`                       <span style="float:right;">LU decomposition with partial (row) pivoting.</span><br />
 `.full_piv_lu()`              <span style="float:right;">LU decomposition with full pivoting.</span><br />
 `.hessenberg()`               <span style="float:right;">Hessenberg form computation for a square matrix.</span><br />
-`.real_schur()`               <span style="float:right;">Real Schur decomposition of a square matrix.</span><br />
-`.symmetric_eigen()`          <span style="float:right;">Eigenvalue and eigenvectors computation of a symmetric matrix.</span><br />
+`.schur()`                    <span style="float:right;">Schur decomposition of a square matrix.</span><br />
+`.symmetric_eigen()`          <span style="float:right;">Eigenvalue and eigenvectors computation of a hermitian matrix.</span><br />
 `.svd()`                      <span style="float:right;">Singular Value Decomposition.</span><br />
 
 Iterative methods may take extra parameters to control their convergence: an
 error tolenence `eps` (set to machine epsilon by default) and maximum number of
 iteration (set to infinite by default):
 
-`.try_real_schur(eps, max_niter)`      <span style="float:right;">Real Schur decomposition of a square matrix.</span><br />
-`.try_symmetric_eigen(eps, max_niter)` <span style="float:right;">Eigenvalue and eigenvectors computation of a symmetric matrix.</span><br />
+`.try_schur(eps, max_niter)`           <span style="float:right;">Schur decomposition of a square matrix.</span><br />
+`.try_symmetric_eigen(eps, max_niter)` <span style="float:right;">Eigenvalue and eigenvectors computation of a hermitian matrix.</span><br />
 `.try_svd(eps, max_niter)`             <span style="float:right;">Singular Value Decomposition.</span><br />
 
 ------
@@ -334,9 +343,9 @@ following factorization are implemented:
 `QR::new(matrix)`             <span style="float:right;">QR decomposition.</span><br />
 `LU::new(matrix)`             <span style="float:right;">LU decomposition with partial (row) pivoting.</span><br />
 `Hessenberg::new(matrix)`     <span style="float:right;">Hessenberg form computation.</span><br />
-`RealSchur::new(matrix)`      <span style="float:right;">Real Schur decomposition of a square matrix.</span><br />
-`Eigen::new(matrix, compute_left, compute_right)` <span style="float:right;">Eigendecomposition of a symmetric matrix.</span><br />
-`SymmetricEigen::new(matrix)`                     <span style="float:right;">Eigendecomposition of a symmetric matrix.</span><br />
+`Schur::new(matrix)`          <span style="float:right;">Schur decomposition of a square matrix.</span><br />
+`Eigen::new(matrix, compute_left, compute_right)` <span style="float:right;">Eigendecomposition of a hermitian matrix.</span><br />
+`SymmetricEigen::new(matrix)`                     <span style="float:right;">Eigendecomposition of a hermitian matrix.</span><br />
 `SVD::new(matrix)`                                <span style="float:right;">Singular Value Decomposition.</span><br />
 
 ------

@@ -132,7 +132,7 @@ The list of contributors can be found [there](https://github.com/rustsim/nalgebr
 * Jeff Muizelaar
 * Jeff Parsons
 * Jeremy Stucki
-* Johan Andersson
+* Johan Anderson
 * Jordan Miner
 * Joseph Catrambone
 * J. Ryan Stinnett

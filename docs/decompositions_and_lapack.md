@@ -8,8 +8,7 @@ observing singular values, eigenvectors, etc.) Some decompositions are
 implemented in pure Rust or available as bindings to a Fortran Lapack
 implementation (refer to the section on
 [nalgebra-lapack](#lapack-integration)). In this section, we present
-decompositions implemented in pure Rust for **real** matrices (complex matrices
-are not supported yet):
+decompositions implemented in pure Rust for **real or complex** matrices:
 
 Decomposition            | Factors                   | Rust methods
 -------------------------|---------------------------|--------------
@@ -18,8 +17,8 @@ LU with partial pivoting | $P^{-1} ~ L ~ U$          | `.lu()`
 LU with full pivoting    | $P^{-1} ~ L ~ U ~ Q^{-1}$ | `.full_piv_lu()`
 Hessenberg               | $P ~ H ~ P^*$             | `.hessenberg()`
 Cholesky                 | $L ~ L^*$                 | `.cholesky()`
-Real Schur decomposition | $Q ~ U ~ Q^*$             | `.real_schur()` or `.try_real_schur(eps, max_iter)`
-Symmetric eigendecomposition | $U ~ \Lambda ~ U^*$   | `.symmetric_eigen()` or `.try_symmetric_eigen(eps, max_iter)`
+Schur decomposition      | $Q ~ U ~ Q^*$             | `.schur()` or `.try_schur(eps, max_iter)`
+Symmetric eigendecomposition | $U ~ \Lambda ~ U^*$   | `.hermitian_eigen()` or `.try_hermitian_eigen(eps, max_iter)`
 SVD                      | $U ~ \Sigma ~ V^*$        | `.svd(compute_u, compute_v)` or `.try_svd(compute_u, compute_v, eps, max_iter)`
 
 All those methods return a dedicated data structure representing the
@@ -38,12 +37,12 @@ In the following, all `.unpack` methods consume the decomposition data structure
 produce the factors with as little allocations as possible.
 
 ## Cholesky decomposition
-The Cholesky decompositon of a `n × n` Symmetric Definite Positive (SDP) matrix
+The Cholesky decompositon of a `n × n` Hermitian Definite Positive (SDP) matrix
 $M$ is composed of a `n × n` lower-triangular matrix $L$ such that $M = LL^*$.
 Where $L^*$ designates the conjugate-transpose of $L$.  If the input matrix is
 not SDP, such a decomposition does not exist and the matrix method
 `.cholesky(...)` returns `None`. Note that the input matrix is interpreted as a
-symmetric matrix. Only its lower-triangular part (including the diagonal) is
+hermitian matrix. Only its lower-triangular part (including the diagonal) is
 read by the Cholesky decomposition (its strictly upper-triangular is never
 accessed in memory). See [the wikipedia
 article](https://en.wikipedia.org/wiki/Cholesky_decomposition) for further
@@ -150,8 +149,8 @@ Method                   | Effect
 `.unpack()`              | Consumes `self` to return the two factors $(Q, H)$ of this decomposition. |
 `.unpack_h()`            | Consumes `self` to return the Hessenberg matrix $H$ of this decomposition. |
 
-## Real Schur decomposition
-The real Schur decomposition of a general `m × n` matrix $M$ is composed of an
+## Schur decomposition
+The Schur decomposition of a general `m × n` matrix $M$ is composed of an
 `m × min(n, m)` unitary matrix $Q$, and a `min(n, m) × m` upper
 quasi-upper-triangular matrix $T$ such that $M = QTQ^*$. A
 quasi-upper-triangular matrix is a matrix which is upper-triangular except for
@@ -160,27 +159,27 @@ sometimes non-zero and two consecutive diagonal elements cannot be zero
 simultaneously).
 
 It is noteworthy that the diagonal elements of the quasi-upper-triangular
-matrix are the eigenvalues of the decomposed matrix. The complex eigenvalues of
+matrix are the eigenvalues of the decomposed matrix. For real matrices, complex eigenvalues of
 the 2x2 blocks on the diagonal corresponds to a conjugate pair of complex
-eigenvalues. In the following example, the decomposed 4x4 matrix has two real
+eigenvalues. In the following example, the decomposed 4x4 real matrix has two real
 eigenvalues $\sigma_1$ and $\sigma_4$ and a conjugate pair of complex
 eigenvalues $\sigma_2$ and $\sigma_3$ equal to the complex eigenvalues of the
 2x2 diagonal block in the middle.
 
 <center>
-![Real Schur decomposition of a 4x4 matrix.](../img/real_schur.svg)
+![Schur decomposition of a 4x4 matrix.](../img/real_schur.svg)
 </center>
 
 Method                   | Effect
 -------------------------|-----------
-`.eigenvalues()`         | Retrieves the real eigenvalues of the decomposed matrix. `None` if some eigenvalues should be complex.
+`.eigenvalues()`         | Retrieves the eigenvalues of the decomposed matrix. `None` if the decomposed matrix is real but some of its eigenvalues should be complex.
 `.complex_eigenvalues()` | Retrieves all the eigenvalues of the decomposed matrix returned as complex numbers.
 `.unpack()`              | Consumes `self` to return the two factors $(Q, T)$ of this decomposition. |
 
-## Eigendecomposition of a symmetric matrix
-The eigendecomposition of a real square symmetric matrix $M$ is composed of an
+## Eigendecomposition of a hermitian matrix
+The eigendecomposition of a square hermitian matrix $M$ is composed of an
 unitary matrix $Q$ and a real diagonal matrix $\Lambda$ such that $M = Q\Lambda
-Q^t$. The columns of $Q$ are called the _eigenvectors_ of $M$ and the diagonal
+Q^*$. The columns of $Q$ are called the _eigenvectors_ of $M$ and the diagonal
 elements of $\Lambda$ its _eigenvalues_.
 
 The matrix $Q$ and the eigenvalues of the decomposed matrix are respectively
@@ -188,22 +187,22 @@ accessible as public the fields `eigenvectors` and `eigenvalues` of the
 `SymmetricEigen` structure.
 
 <center>
-![Eigendecomposition of a 3x3 symmetric matrix.](../img/symmetric_eigen.svg)
+![Eigendecomposition of a 3x3 hermitian matrix.](../img/symmetric_eigen.svg)
 </center>
 
 Method                   | Effect
 -------------------------|-----------
-`.recompose()`           | Recomputes the original matrix, i.e., $Q\Lambda{}Q^t$. Useful if some eigenvalues or eigenvectors have been manually modified.
+`.recompose()`           | Recomputes the original matrix, i.e., $Q\Lambda{}Q^*$. Useful if some eigenvalues or eigenvectors have been manually modified.
 
 ## Singular Value Decomposition
-The Singular Value Decomposition (SVD) of a real rectangular matrix is composed
+The Singular Value Decomposition (SVD) of a rectangular matrix is composed
 of two orthogonal matrices $U$ and $V$ and a diagonal matrix $\Sigma$ with positive
 (or zero) components. Typical uses of the SVD are the pseudo-inverse, rank
 computation, and the resolution of least-square problems.
 
 The singular values, left singular vectors, and right singular vectors are
 respectively stored on the public fields `singular_values`, `u` and `v_t`. Note
-that `v_t` represents the transpose of the matrix $V$.
+that `v_t` represents the adjoint (i.e. conjugate-transpose) of the matrix $V$.
 
 <center>
 ![SVD decomposition of a 3x3 matrix.](../img/SVD.svg)
@@ -268,7 +267,7 @@ assert_relative_eq!(a * x, b);
 The example above relies on a LU decomposition of the matrix `m`. Other decompositions can be used as well, depending
 on what properties the matrix involved in the linear solve has:
 
-* The **cholesky decomposition** will be more efficient if the matrix is known to be symmetric-positive-definite.
+* The **cholesky decomposition** will be more efficient if the matrix is known to be hermitian-positive-definite.
 * The **SVD** decomposition will be useful if the matrix is known to be singular or near-singular. This will allow
   resolution of systems, ignoring dimensions with near-zero singular values.
 * The **LU** and **QR** are good for invertible matrix with no specific properties. Right now, only resolution of
@@ -294,7 +293,7 @@ QR                       | $Q ~ R$                   | `QR::new(matrix)`
 LU with partial pivoting | $P^{-1} ~ L ~ U$          | `LU::new(matrix)`
 Hessenberg               | $P ~ H ~ P^*$             | `Hessenberg::new(matrix)`
 Cholesky                 | $L ~ L^*$                 | `Cholesky::new(matrix)`
-Real Schur decomposition | $Q ~ U ~ Q^*$             | `Schur::new(matrix)` or `Schur::try_new(matrix)`
+Schur decomposition | $Q ~ U ~ Q^*$             | `Schur::new(matrix)` or `Schur::try_new(matrix)`
 Symmetric eigendecomposition | $U ~ \Lambda ~ U^*$ | `SymmetricEigen::new(matrix)` or `SymmetricEigen::try_new(matrix)`
 SVD                      | $U ~ \Sigma ~ V^*$        | `SVD::new(matrix)` or `SVD::try_new(matrix)`
 
