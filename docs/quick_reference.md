@@ -126,13 +126,13 @@ compile-time of the matrix being created.
 
 <br/>
 
-`.iter()`                  <span style="float:right;">An iterator through the matrix components in column-major order.</span><br/>
-`.iter_mut()`              <span style="float:right;">A mutable iterator through the matrix components in column-major order.</span><br/>
-`.get_unchecked(i, j)`     <span style="float:right;">_[unsafe]_ Component at row `i` and column `j`. No bound checking.</span><br/>
-`.get_unchecked_mut(i, j)` <span style="float:right;">_[unsafe]_ Mutable component at row `i` and column `j`. No bound checking.</span><br/>
-`.swap_unchecked(i, j)`    <span style="float:right;">_[unsafe]_ Swaps two components. No bound checking.</span><br/>
-`.as_slice()`              <span style="float:right;">Reference to the internal column-major array of component.</span><br/>
-`.as_mut_slice()`          <span style="float:right;">Mutable reference to the internal column-major array of component.</span><br/>
+`.iter()`                    <span style="float:right;">An iterator through the matrix components in column-major order.</span><br/>
+`.iter_mut()`                <span style="float:right;">A mutable iterator through the matrix components in column-major order.</span><br/>
+`.get_unchecked((i, j))`     <span style="float:right;">_[unsafe]_ Component at row `i` and column `j`. No bound checking.</span><br/>
+`.get_unchecked_mut((i, j))` <span style="float:right;">_[unsafe]_ Mutable component at row `i` and column `j`. No bound checking.</span><br/>
+`.swap_unchecked(i, j)`      <span style="float:right;">_[unsafe]_ Swaps two components. No bound checking.</span><br/>
+`.as_slice()`                <span style="float:right;">Reference to the internal column-major array of component.</span><br/>
+`.as_mut_slice()`            <span style="float:right;">Mutable reference to the internal column-major array of component.</span><br/>
 
 <br/>
 
