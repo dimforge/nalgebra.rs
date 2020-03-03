@@ -5,6 +5,32 @@ code may be found based on tags on
 [github](https://github.com/rustsim/nalgebra/releases).
 
 
+### Version 0.20
+#### Added
+  * `cholesky.rank_one_update(...)` which performs a rank-one update on the cholesky decomposition of a matrix.
+  * `From<&Matrix>` is now implemented for matrix slices.
+  * `.try_set_magnitude(...)` which sets the magnitude of a vector, while keeping its direction.
+  * Implementetanions of `From` and `Into` for the conversion between matrix slices and standard (`&[N]` `&mut [N]`) slices.
+  
+#### Modified
+  * We started some major changes in order to allow non-Copy types to be used as scalar types inside of matrices/vectors.
+
+### Version 0.19
+#### Added
+  * `.remove_rows_at` and `remove_columns_at` which removes a set of rows or columns (specified by indices) from a matrix.
+  * Several formatting traits have been implemented for all matrices/vectors: `LowerExp`, `UpperExp`, `Octal`, `LowerHex`,
+  `UpperHex`, `Binary`, `Pointer`.
+  * `UnitQuaternion::quaternions_mean(...)` which computes the mean rotation of a set of unit quaternions. This implements
+  the algorithm from _Oshman, Yaakov, and Avishy Carmi, "Attitude estimation from vector observations using a genetic-algorithm-embedded quaternion particle filter."
+
+#### Modified
+  * It is now possible to get the `min/max` element of unsigned integer matrices.
+
+#### Added to nalgebra-glm
+  * Some infinite and reversed perspectives: `::infinite_perspective_rh_no`, `::infinite_perspective_rh_zo`,
+  `::reversed_perspective_rh_zo`, and `::reversed_infinite_perspective_rh_zo`.
+
+
 ### Version 0.18
 This release adds full complex number support to nalgebra. This includes all common vector/matrix operations as well
 as matrix decomposition. This excludes geometric type (like `Isometry`, `Rotation`, `Translation`, etc.) from the
