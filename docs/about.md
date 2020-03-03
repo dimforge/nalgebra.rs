@@ -57,7 +57,7 @@ If you intend to work on the source code of **nalgebra**, you should start by
 [repository](https://github.com/rustsim/nalgebra). Once you are done making
 modifications to your own copy of **nalgebra**, you have to [create a pull
 request](https://help.github.com/articles/creating-a-pull-request) targeting
-the **master** branch so that your contribution can be reviewed, commented, and
+the **dev** branch so that your contribution can be reviewed, commented, and
 eventually merged.
 
 
@@ -67,7 +67,7 @@ Donations made to the lead developer are also appreciated. However, do not
 forget that **donating is not a requirement**. You are and will always be free
 to use **nalgebra** for any purpose, including commercial applications, without
 paying anything (see the [BSD-3
-licence](https://github.com/rustsim/nalgebra/blob/master/LICENSE)). Recurrent
+licence](https://github.com/rustsim/nalgebra/blob/dev/LICENSE)). Recurrent
 donations, even the smallest, are the best way to encourage the dedication of a
 significant amount of time for open source activities. You may use Patreon (first
 button, monthly donations only) or Liberapay (second button, weekly, monthly, or
@@ -99,19 +99,25 @@ The list of contributors can be found [there](https://github.com/rustsim/nalgebr
 * 8zu
 * A
 * Adam Rzepka
+* Aidan Grant
 * Andreas Longva
 * Andrei Vasiliu
+* Andrew O'Neil
 * Anselm Eickhoff
 * Alain Cuvillier
 * Alexander Atman
 * Alexandre Chêne
 * Andre Braga Reis
 * batonius
+* Boris-Chengbiao Zhou
 * Camille Viot
 * Casey Primozic
 * Casey Rodarmor
+* Chai T. Rex
 * Chris Heyes
+* Christen Thomson
 * Christopher Armstrong
+* Conor Byron
 * Connor McCluskey
 * Damien Dubé
 * Danny Fritz
@@ -120,8 +126,14 @@ The list of contributors can be found [there](https://github.com/rustsim/nalgebr
 * Erlend Sogge Heggen
 * Florian Hanke
 * Frederic Wagner
+* Geert Depuydt
 * Gohla
+* Gustav Palmqvist
+* Hadrien Grasland
+* Hrvoje Bandov
 * Ian Danforth
+* Ilya Epifanov
+* is8ac
 * Jac
 * Jack Wrenn
 * Jan Nockemann
@@ -131,22 +143,29 @@ The list of contributors can be found [there](https://github.com/rustsim/nalgebr
 * Jeb Brooks
 * Jeff Muizelaar
 * Jeff Parsons
+* Jeff Petkau
 * Jeremy Stucki
-* Johan Anderson
+* Johan Andersson
+* Jonathan Shook
 * Jordan Miner
 * Joseph Catrambone
+* Joshua Powers
 * J. Ryan Stinnett
 * Kasper Møller Andersen
 * Kipton Barros
+* Krishna
 * Kristian Fjeld Hasselknippe
 * Kjetil Kjeka
 * Kyle Gretchev
 * Leander Gilles
 * Leonard Dahlmann
+* Lukas Eller
 * Lucas Kent
+* Mabry Cervin
 * Maksim Ustichenko
 * Mark McCaskey
 * Mark Stacey
+* Mason Smith
 * Matthieu Pizenberg
 * memoryruins
 * Michael Carpenter
@@ -162,18 +181,26 @@ The list of contributors can be found [there](https://github.com/rustsim/nalgebr
 * ozkriff
 * Pascal
 * Paul Houghton
+* popa910
 * Rafael
 * rage
 * Rick Richardson
 * Ruben Schmidmeister
 * Sanghyeon Seo
+* Satoshi Yoshikawa
 * Scott Beca
 * Sean Jensen-Grey
 * Sebastian Waisbrot
 * Simon N Heath
+* Stefan Berndtsson
+* Stephen Oates
 * Suddenly Corporeal
-* Thomas Niederberger
+* Sven-Hendrik Haase
+* taintur
 * tdittr
+* Thanadol Chitthamlerd
+* Thomas Niederberger
+* Tiago Antao
 * Trym Nilsen
 * Ty Overby
 * Tyler Hallada
@@ -201,7 +228,7 @@ The list of contributors can be found [there](https://github.com/rustsim/nalgebr
 
 If your name should be on this list but isn't because your contribution is not
 code-related please send an [email](mailto:developer@crozet.re) or open an
-issue on [GitHub](https://github.com/rustsim/ncollide/issues). You will be
+issue on [GitHub](https://github.com/rustsim/nalgebra/issues). You will be
 listed above this paragraph.
 
 **Thanks** to all of you for your support!
