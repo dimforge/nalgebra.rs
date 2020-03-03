@@ -10,7 +10,7 @@ cat $cssfile >> $tmpcssfile
 cat custom_flatly/css/bootstrap-custom.min2.css >> $tmpcssfile
 cat custom_flatly/css/base2.css >> $tmpcssfile
 cat custom_flatly/css/font-awesome.min.css >> $tmpcssfile
-sed -i '' -e 's/margin-left:[ ]*230px;//g' $tmpcssfile
+sed -i -e 's/margin-left:[ ]*230px;//g' $tmpcssfile
 mv $tmpcssfile $cssfile
 
 files=`find ./docs/$1 -name \*.html -printf '%p '`
@@ -29,19 +29,19 @@ favicon='<link rel="shortcut icon" href="/img/favicon.ico">'
 for file in `echo $files`
 do
   echo "Patching $file."
-  sed -i '' -e "s#$head#${head}${favicon}#g" $file
-  sed -i '' -e "s#$sidebar#${container}${class3}${sidebar}#g" $file
-  sed -i '' -e "s#$sub#${end_div}${class9}${sub}#g" $file
-  sed -i '' -e "s#$footer#${end_div}${end_div}${footer}#g" $file
-  sed -i '' -e "s#</body>\|</html>##g" $file
-  sed -i '' -e "s#</head>#${css}</head>#g" $file
+  sed -i -e "s#$head#${head}${favicon}#g" $file
+  sed -i -e "s#$sidebar#${container}${class3}${sidebar}#g" $file
+  sed -i -e "s#$sub#${end_div}${class9}${sub}#g" $file
+  sed -i -e "s#$footer#${end_div}${end_div}${footer}#g" $file
+  sed -i -e "s#</body>\|</html>##g" $file
+  sed -i -e "s#</head>#${css}</head>#g" $file
 
   nav='
   <div id='"'"'nav_placeholder'"'"'> </div>
   <script src="/jquery.js"></script>
   <script>
     var the_footer;
-    $.get("/rustdoc_nalgebra/index.html", function(data) {
+    $.get("/'$2'/index.html", function(data) {
         data = data.split("../").join("/");
         data = data.split("..").join("/");
         var $data = $(data);
@@ -50,7 +50,7 @@ do
   </script>'
 
   escaped_nav=`echo $nav | sed ':a;N;$!ba;s/\n/ /g'`
-  sed -i '' -e "s%${body}%&${escaped_nav}%g" $file
+  sed -i -e "s%${body}%&${escaped_nav}%g" $file
   fileend='
   <script>var base_url = "../" + window.rootPath;</script>
   <script src="/js/highlight.pack.js"></script>

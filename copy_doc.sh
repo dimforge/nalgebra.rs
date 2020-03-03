@@ -1,7 +1,7 @@
 #! /bin/sh
 
 out_dir=./docs/rustdoc
-nalgebra_dir=../rust-dev/nalgebra-dev
+nalgebra_dir=../nalgebra
 
 echo "Generating the documentation..."
 cd $nalgebra_dir; rm -r target/doc; cargo doc -p nalgebra --no-deps --all-features
@@ -11,7 +11,7 @@ cp -r $nalgebra_dir/target/doc $out_dir
 
 echo "... documentation for nalgebra generated!"
 
-./fix_rustdoc.sh rustdoc
+./fix_rustdoc.sh rustdoc rustdoc_nalgebra
 
 
 echo "Generating the documentation..."
@@ -24,5 +24,5 @@ cp -r $nalgebra_dir/target/doc $out_dir
 
 echo "... documentation for nalgebra-glm generated!"
 
-./fix_rustdoc.sh rustdoc_glm
+./fix_rustdoc.sh rustdoc_glm rustdoc_nalgebra_glm
 

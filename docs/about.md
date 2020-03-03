@@ -73,7 +73,7 @@ significant amount of time for open source activities. You may use Patreon (firs
 button, monthly donations only) or Liberapay (second button, weekly, monthly, or
 yearly donations):
 <div style="text-align:center">
-<a href="https://www.patreon.com/bePatron?u=7111380" ><img src="../img/become_a_patron_button.png" alt="Become a Patron!" /></a>
+<a href="https://www.patreon.com/bePatron?u=7111380" ><img src="/img/become_a_patron_button.png" alt="Become a Patron!" /></a>
 &nbsp;&nbsp;&nbsp;&nbsp;
 <script src="https://liberapay.com/sebcrozet/widgets/button.js"></script>
 <noscript><a href="https://liberapay.com/sebcrozet/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>

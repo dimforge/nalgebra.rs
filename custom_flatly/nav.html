@@ -44,12 +44,12 @@
               {% else %}
                 <li {% if nav_item.active %}class="active"{% endif %}>
                   {% if nav_item.title == "Home" %}
-                  <a id="noborder" href="{{ nav_item.url }}">
+                  <a id="noborder" href="{{ nav_item.url|url }}">
                     <span id="hide_small" class="navbar_icon" height = "1em"></span>
                     <span id="show_small"><i class="fa fa-home"></i> Home</span>
                   </a>
                   {% else %}
-                  <a href="{{ nav_item.url }}">
+                  <a href="{{ nav_item.url|url }}">
                     <span>{{ nav_item.title }}</span>
                   </a>
                   {% endif %}
@@ -68,13 +68,13 @@
                     </a>
                 </li>
                 -->
-          <li id="hide_medium" {% if not previous_page %}class="disabled"{% endif %}>
-          <a rel="next" {% if previous_page %}href="{{ previous_page.url }}"{% endif %}>
+          <li id="hide_medium" {% if not page.previous_page or page.previous_page.title == "nalgebra" or page.previous_page.title == "nalgebra-glm" %}class="disabled"{% endif %}>
+          <a rel="next" {% if page.previous_page %}href="{{ page.previous_page.url|url }}"{% endif %}>
             <i class="fa fa-arrow-left"></i> Previous
           </a>
           </li>
-          <li id="hide_medium" {% if not next_page %}class="disabled"{% endif %}>
-          <a rel="prev" {% if next_page %}href="{{ next_page.url }}"{% endif %}>
+          <li id="hide_medium" {% if not page.next_page or page.next_page.title == "nalgebra" or page.next_page.title == "nalgebra-glm" %}class="disabled"{% endif %}>
+          <a rel="prev" {% if page.next_page %}href="{{ page.next_page.url|url }}"{% endif %}>
             Next <i class="fa fa-arrow-right"></i>
           </a>
           </li>

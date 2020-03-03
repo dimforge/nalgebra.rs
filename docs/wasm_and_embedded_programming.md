@@ -46,7 +46,7 @@ dependency with `default-features = false`, i.e., like the following:
 
 ```toml
 [dependencies]
-nalgebra = { version = "0.18", default-features = false }
+nalgebra = { version = "0.20", default-features = false }
 ```
 
 This will affect what feature can be used. In particular:
@@ -63,5 +63,5 @@ This will affect what feature can be used. In particular:
 
 ```toml
 [dependencies]
-nalgebra = { version = "0.18", default-features = false, features = [ "alloc" ] }
+nalgebra = { version = "0.20", default-features = false, features = [ "alloc" ] }
 ```

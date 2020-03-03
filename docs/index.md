@@ -9,7 +9,7 @@
 [![License (3-Clause BSD)](https://img.shields.io/badge/license-BSD%203--Clause-blue.svg?style=flat)](https://opensource.org/licenses/BSD-3-Clause)
 <div style="text-align:center">
 <br/>
-<a href="https://www.patreon.com/bePatron?u=7111380" ><img src="../img/become_a_patron_button.png" alt="Become a Patron!" /></a>
+<a href="https://www.patreon.com/bePatron?u=7111380" ><img src="/img/become_a_patron_button.png" alt="Become a Patron!" /></a>
 </div>
 
 -----
@@ -23,7 +23,7 @@
 
 <table markdown="1">
   <tr>
-      <td>[![](../img/reference.svg)](../quick_reference)</td>
+      <td>[![](/img/reference.svg)](../quick_reference)</td>
       <td style="vertical-align:middle">
       <a href="../quick_reference" id="no_highlight">
       <div>
@@ -37,7 +37,7 @@
   </tr>
 
   <tr>
-      <td>[![](../img/lego.svg)](../vectors_and_matrices)</td>
+      <td>[![](/img/lego.svg)](../vectors_and_matrices)</td>
       <td style="vertical-align:middle">
       <a href="../vectors_and_matrices" id="no_highlight">
       <div>
@@ -53,7 +53,7 @@
   </tr>
 
   <tr>
-      <td>[![](../img/decomposition.svg)](../decompositions_and_lapack)</td>
+      <td>[![](/img/decomposition.svg)](../decompositions_and_lapack)</td>
       <td style="vertical-align:middle">
       <a href="../decompositions_and_lapack" id="no_highlight">
       <div>
@@ -69,7 +69,7 @@
   </tr>
 
   <tr>
-      <td>[![](../img/rotation.svg)](../points_and_transformations)</td>
+      <td>[![](/img/rotation.svg)](../points_and_transformations)</td>
       <td style="vertical-align:middle">
       <a href="../points_and_transformations" id="no_highlight">
       <div>
@@ -85,7 +85,7 @@
   </tr>
 
   <tr>
-      <td>[![](../img/camera.svg)](../projections)</td>
+      <td>[![](/img/camera.svg)](../projections)</td>
       <td style="vertical-align:middle">
       <a href="../projections" id="no_highlight">
       <div>
@@ -100,7 +100,7 @@
   </tr>
 
   <tr>
-      <td>[![](../img/cupcake.svg)](../cg_recipes)</td>
+      <td>[![](/img/cupcake.svg)](../cg_recipes)</td>
       <td style="vertical-align:middle">
       <a href="../cg_recipes" id="no_highlight">
       <div>
@@ -115,7 +115,7 @@
   </tr>
   
   <tr>
-      <td>[![](../img/logo_glm.svg)](../nalgebra_glm)</td>
+      <td>[![](/img/logo_glm.svg)](../nalgebra_glm)</td>
       <td style="vertical-align:middle">
       <a href="../nalgebra_glm" id="no_highlight">
       <div>
@@ -130,7 +130,7 @@
   </tr>
 
   <tr>
-      <td>[![](../img/performance.svg)](../performance_tricks)</td>
+      <td>[![](/img/performance.svg)](../performance_tricks)</td>
       <td style="vertical-align:middle">
       <a href="../performance_tricks" id="no_highlight">
       <div>
@@ -144,7 +144,7 @@
   </tr>
 
   <tr>
-      <td>[![](../img/cpu.svg)](../wasm_and_embedded_programming)</td>
+      <td>[![](/img/cpu.svg)](../wasm_and_embedded_programming)</td>
       <td style="vertical-align:middle">
       <a href="../wasm_and_embedded_programming" id="no_highlight">
       <div>
@@ -159,7 +159,7 @@
   </tr>
 
   <tr>
-      <td>[![](../img/genericity.svg)](../generic_programming)</td>
+      <td>[![](/img/genericity.svg)](../generic_programming)</td>
       <td style="vertical-align:middle">
       <a href="../generic_programming" id="no_highlight">
       <div>

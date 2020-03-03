@@ -9,7 +9,7 @@ Device Coordinates_ (corresponding to the _clip-space_) by the computer
 graphics community:
 
 <center>
-![projection](../img/projection.svg)
+![projection](/img/projection.svg)
 </center>
 
 The actual shape to be transformed depends on the projection itself. Note that
@@ -58,7 +58,7 @@ The following example, shows the effect of an orthographic projections with its
 respectively as $l$, $r$, $b$, $t$, $zn$, and $zf$:
 
 <center>
-![orthographic projection](../img/orthographic.svg)
+![orthographic projection](/img/orthographic.svg)
 </center>
 
 ```rust
@@ -90,7 +90,7 @@ coordinates to apply to each point a scale factor that depends on its distance
 to the viewer.
 
 <center>
-![perspective projection](../img/perspective.svg)
+![perspective projection](/img/perspective.svg)
 </center>
 
 The viewer of the perspective projection is always assumed to be located at the
@@ -107,7 +107,7 @@ Property | Meaning
 `zfar`   | The distance between the viewer (the origin) and the furthest face of the frustum parallel to the $\mathbf{xy}$-plane. If used for a 3D rendering application, this is the furthest clipping plane. |
 
 <center>
-![perspective projection properties](../img/perspective_props.svg)
+![perspective projection properties](/img/perspective_props.svg)
 </center>
 
 ```rust

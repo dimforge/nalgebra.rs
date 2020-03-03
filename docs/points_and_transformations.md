@@ -22,7 +22,7 @@ point is a location in space while a vector is a translation, i.e., the
 displacement required to move from one point to another:
 
 <center>
-![point_vector_difference](../img/point_vs_vector.svg)
+![point_vector_difference](/img/point_vs_vector.svg)
 </center>
 
 Intuition can often be safely used to anticipate which operations are or are
@@ -209,7 +209,7 @@ transformation. It is commonly known by algebraists as the $n$-dimensional
 Special Orthogonal group $\mathbf{SO}(n)$:
 
 <center>
-![rotation](../img/rotation_transform.svg)
+![rotation](/img/rotation_transform.svg)
 </center>
 
 2D (resp. 3D) rotations are available as the `Rotation2` and `UnitComplex`
@@ -243,7 +243,7 @@ Note that isometries that are not direct because they include a reflexion are
 not yet supported by **nalgebra**.
 
 <center>
-![isometry](../img/isometry_transform.svg)
+![isometry](/img/isometry_transform.svg)
 </center>
 
 2D and 3D isometries are available as the `Isometry2` and `Isometry3`
@@ -286,7 +286,7 @@ lines. Orientation is lost if the scaling factor is negative. They are usually
 known by algebraists as the $n$-dimensional Similarity group $\mathbf{S}(n)$.
 
 <center>
-![similarity](../img/similarity_transform.svg)
+![similarity](/img/similarity_transform.svg)
 </center>
 
 Similarities share the same constructors as the isometry described in the
@@ -314,7 +314,7 @@ matrix representation (which components are numbered from $r_{11}$ to $r_{22}$) 
 complex number that represents the rotational part of the underlying isometry:
 
 <center>
-![homogeneous coordinates](../img/to_homogeneous_coordinates.svg)
+![homogeneous coordinates](/img/to_homogeneous_coordinates.svg)
 </center>
 
 
@@ -344,7 +344,7 @@ Computing a vector's homogeneous coordinates will append a `0` to it while
 computing a point's homogeneous coordinates will append a `1`:
 
 <center>
-![homogeneous coordinates of points vectors](../img/to_homogeneous_coordinates_vector_point.svg)
+![homogeneous coordinates of points vectors](/img/to_homogeneous_coordinates_vector_point.svg)
 </center>
 
 This subtle difference reflects the fact emphasized at the [beginning](#points)
@@ -359,7 +359,7 @@ removed. For points, the last coordinate will also be removed and every other
 coordinate will be divided by it:
 
 <center>
-![points vectors from homogeneous coordinates](../img/from_homogeneous_coordinates_vector_point.svg)
+![points vectors from homogeneous coordinates](/img/from_homogeneous_coordinates_vector_point.svg)
 </center>
 
 The following example shows the application of a transformation using two

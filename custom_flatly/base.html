@@ -1,4 +1,4 @@
-{% if page_title == '<i class="fa fa-align-left"></i>&nbsp API Documentation' %}
+{% if page.title == '<i class="fa fa-align-left"></i>&nbsp API Documentation' %}
 <script>window.location.replace("/rustdoc/nalgebra/index.html");</script>
 {% endif %}
 
@@ -14,7 +14,7 @@
         {% if favicon %}<link rel="shortcut icon" href="{{ favicon }}">
         {% else %}<link rel="shortcut icon" href="{{ base_url }}/img/favicon.ico">{% endif %}
 
-	<!-- <title>{% if page_title %}{{ page_title }} - {% endif %}{{ site_name }}</title> -->
+	<!-- <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site_name }}</title> -->
 	<title>{{ site_name }}</title>
 
         <link rel="stylesheet" href="//cdn.rawgit.com/piscis/github-fork-ribbon-css-bem/v0.1.22/dist/gh-fork-ribbon-bem.min.css" />
@@ -56,25 +56,25 @@
         {% include "nav.html" %}
 
         <div class="container">
-          {% if page_title %}
+            {% if not page.is_homepage and "all_examples" not in page.canonical_url %}
             <div class="col-md-3">{% include "toc.html" %}</div>
             <div class="col-md-9" role="main">
                 {% include "content.html" %}
 
-                {% if page_title != 'Release notes' %}
-                {% if page_title != 'Contributing' %}
+                {% if page.title != 'Release notes' %}
+                {% if page.title != 'Contributing' %}
                     <hr>
-                    {% if previous_page.title != "Home" %}
+                    {% if page.previous_page.title != "Home" %}
                         <span style="float:left">
-                        <a href="{{ previous_page.url }}">
-                            <i class="fa fa-arrow-left"></i> {{ previous_page.title }}
+                        <a href="{{ page.previous_page.url|url }}">
+                            <i class="fa fa-arrow-left"></i> {{ page.previous_page.title }}
                         </a>
                         </span>
                     {% endif %}
-                    {% if page_title != "FAQ" %}
+                    {% if page.title != "FAQ" %}
                         <span style="float:right">
-                        <a href="{{ next_page.url }}">
-                           {{ next_page.title }} <i class="fa fa-arrow-right"></i>
+                        <a href="{{ page.next_page.url|url }}">
+                           {{ page.next_page.title }} <i class="fa fa-arrow-right"></i>
                         </a>
                         </span>
                     {% endif %}
@@ -86,7 +86,7 @@
           {% endif %}
         </div>
 
-        {% if not page_title %}
+        {% if not page.title %}
           <footer class="col-md-12">
             <hr>
               <div align="left">Built with <a href="http://www.mkdocs.org/">MkDocs</a> and

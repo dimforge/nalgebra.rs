@@ -53,7 +53,7 @@ matrices and resolution of SDP linear systems.
 
 
 <center>
-![Cholesky decompositpion of a 3x3 matrix.](../img/cholesky.svg)
+![Cholesky decompositpion of a 3x3 matrix.](/img/cholesky.svg)
 </center>
 
 Method            | Effect
@@ -75,7 +75,7 @@ wikipedia article](https://en.wikipedia.org/wiki/QR_decomposition) for further
 details.
 
 <center>
-![QR decomposition of a 3x3 matrix.](../img/QR.svg)
+![QR decomposition of a 3x3 matrix.](/img/QR.svg)
 </center>
 
 Method             | Effect
@@ -110,7 +110,7 @@ less efficient but more numerically stable. See also [the wikipedia
 article](https://en.wikipedia.org/wiki/LU_decomposition) for further details.
 
 <center>
-![LU decomposition of a 3x3 matrix.](../img/LU.svg)
+![LU decomposition of a 3x3 matrix.](/img/LU.svg)
 </center>
 
 
@@ -139,7 +139,7 @@ of a wide variety of algorithms that can benefit from its structure close to
 the structure of an upper-triangular matrix.
 
 <center>
-![Hessenberg decomposition of a 3x3 matrix.](../img/hessenberg.svg)
+![Hessenberg decomposition of a 3x3 matrix.](/img/hessenberg.svg)
 </center>
 
 Method                   | Effect
@@ -167,7 +167,7 @@ eigenvalues $\sigma_2$ and $\sigma_3$ equal to the complex eigenvalues of the
 2x2 diagonal block in the middle.
 
 <center>
-![Schur decomposition of a 4x4 matrix.](../img/real_schur.svg)
+![Schur decomposition of a 4x4 matrix.](/img/real_schur.svg)
 </center>
 
 Method                   | Effect
@@ -187,7 +187,7 @@ accessible as public the fields `eigenvectors` and `eigenvalues` of the
 `SymmetricEigen` structure.
 
 <center>
-![Eigendecomposition of a 3x3 hermitian matrix.](../img/symmetric_eigen.svg)
+![Eigendecomposition of a 3x3 hermitian matrix.](/img/symmetric_eigen.svg)
 </center>
 
 Method                   | Effect
@@ -205,7 +205,7 @@ respectively stored on the public fields `singular_values`, `u` and `v_t`. Note
 that `v_t` represents the adjoint (i.e. conjugate-transpose) of the matrix $V$.
 
 <center>
-![SVD decomposition of a 3x3 matrix.](../img/SVD.svg)
+![SVD decomposition of a 3x3 matrix.](/img/SVD.svg)
 </center>
 
 Method                 | Effect

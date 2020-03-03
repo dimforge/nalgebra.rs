@@ -10,7 +10,7 @@
                 <a href="{{ base_url }}/rustdoc_glm/nalgebra_glm/index.html">{{ nav_item.title }}</a>
             </li>
             {% else %}
-            <a href="{{ nav_item.url }}">{{ nav_item.title }}</a>
+            <a href="{{ nav_item.url|url }}">{{ nav_item.title }}</a>
         {% endif %}
     {% endif %}
 </li>

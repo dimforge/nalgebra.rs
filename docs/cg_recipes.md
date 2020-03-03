@@ -247,7 +247,7 @@ different coordinate systems use in compute graphics can be found
 [there](https://learnopengl.com/#!Getting-started/Coordinate-Systems).
 
 <center>
-![3D-space to screen-space](../img/view_to_screen_space.svg)
+![3D-space to screen-space](/img/view_to_screen_space.svg)
 </center>
 
 Now observe that there is a bijective relationship between each point in
