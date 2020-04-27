@@ -362,25 +362,25 @@ It is possible to modify elements of a matrix when it is mutable, especially:
 
 ```rust
 let mut m = Matrix3x4::new(11, 12, 13, 14,
-                       21, 22, 23, 24,
-                       31, 32, 33, 34);
+                           21, 22, 23, 24,
+                           31, 32, 33, 34);
 m[(0,2)] = -13;
 
 assert_eq!(m, Matrix3x4::new(11, 12, -13, 14,
-                           21, 22, 23, 24,
-                           31, 32, 33, 34));
+                             21, 22, 23, 24,
+                             31, 32, 33, 34));
                        
-m.set_column(1, &nalgebra::Vector3::new(-12,-22,-32));
+m.set_column(1, &Vector3::new(-12,-22,-32));
 
-assert_eq!(m, nalgebra::Matrix3x4::new(11, -12, -13, 14,
-                                    21, -22, 23, 24,
-                                    31, -32, 33, 34));
+assert_eq!(m, Matrix3x4::new(11, -12, -13, 14,
+                             21, -22, 23, 24,
+                             31, -32, 33, 34));
 
-m.set_row(2, &nalgebra::Matrix1x4::new(-31, -32, -33, -34));
+m.set_row(2, &Matrix1x4::new(-31, -32, -33, -34));
 
-assert_eq!(m, nalgebra::Matrix3x4::new(11, -12, -13, 14,
-                                    21, -22, 23, 24,
-                                    -31, -32, -33, -34));
+assert_eq!(m, Matrix3x4::new(11, -12, -13, 14,
+                             21, -22, 23, 24,
+                             -31, -32, -33, -34));
 ```
 
 It is possible to change a column with a vector.
