@@ -353,6 +353,39 @@ let static_times_dynamic: Vector2<_> = static_m * dynamic_v;
 let dynamic_times_static: DVector<_> = dynamic_m * static_v;
 ```
 
+## Matrix element modification
+It is possible to modify elements of a matrix when it is mutable, especially:
+
+* Modifying a single element
+* Modifying an entire row/colum
+
+
+```rust
+let mut m = Matrix3x4::new(11, 12, 13, 14,
+                       21, 22, 23, 24,
+                       31, 32, 33, 34);
+m[(0,2)] = -13;
+
+assert_eq!(m, Matrix3x4::new(11, 12, -13, 14,
+                           21, 22, 23, 24,
+                           31, 32, 33, 34));
+                       
+m.set_column(1, &nalgebra::Vector3::new(-12,-22,-32));
+
+assert_eq!(m, nalgebra::Matrix3x4::new(11, -12, -13, 14,
+                                    21, -22, 23, 24,
+                                    31, -32, 33, 34));
+
+m.set_row(2, &nalgebra::Matrix1x4::new(-31, -32, -33, -34));
+
+assert_eq!(m, nalgebra::Matrix3x4::new(11, -12, -13, 14,
+                                    21, -22, 23, 24,
+                                    -31, -32, -33, -34));
+```
+
+It is possible to change a column with a vector.
+However, it is not possible to change a row with a vector, it must be a row matrix.
+
 ## Matrix slicing
 Matrix (and vector) slicing allows you to take a reference to a part of any
 matrix.  Slicing a matrix does not perform any copy, move, or allocation of the
