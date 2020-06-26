@@ -63,8 +63,8 @@ respectively as $l$, $r$, $b$, $t$, $zn$, and $zf$:
 
 ```rust
 // Arguments order: left, right, bottom, top, znear, zfar.
-let proj = Orthographic3::new(1.0, 2.0, -3.0, -2.5, 10.0, 900.0);
-let pt   = Point3::new(1.0, -3.0, 10.0);
+let orth = Orthographic3::new(1.0, 2.0, -3.0, -2.5, 10.0, 900.0);
+let pt   = Point3::new(1.0, -3.0, -10.0);
 let vec  = Vector3::new(21.0, 0.0, 0.0);
 
 assert_eq!(orth.project_point(&pt),   Point3::new(-1.0, -1.0, -1.0));
