@@ -121,6 +121,7 @@ The list of contributors can be found [there](https://github.com/rustsim/nalgebr
 * Connor McCluskey
 * Damien Dubé
 * Danny Fritz
+* EdorianDark
 * Eduard Knyshov
 * Embark Studios
 * Erlend Sogge Heggen
