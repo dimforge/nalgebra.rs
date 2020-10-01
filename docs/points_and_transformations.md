@@ -219,8 +219,8 @@ rotation matrices have three construction methods in common:
 
 Constructor                 | Effect
 ----------------------------|-----------
-`::from_axisangle(ax, ang)` | Builds a rotation of `ang` radians around the axis `ax`. |
-`::from_scaled_axis(axang)` | This is the same as `::from_axisangle(...)` with `axang = ax * an`. |
+`::from_axis_angle(ax, ang)` | Builds a rotation of `ang` radians around the axis `ax`. |
+`::from_scaled_axis(axang)` | This is the same as `::from_axis_angle(...)` with `axang = ax * an`. |
 `::from_euler_angles(...)`  | Builds a rotation from its roll, pitch, and yaw components applied in that order.   |
 
 
