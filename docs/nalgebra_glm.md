@@ -86,7 +86,7 @@ Vectors, matrices, and quaternions can be constructed using several approaches:
 * Using swizzling and conversions as described in the next sections.
 
 !!! Warning
-    Keep in mind that matrices are laid out in column-major order in merory. Thus, constructing a matrix from a slice
+    Keep in mind that matrices are laid out in column-major order in memory. Thus, constructing a matrix from a slice
     with the `glm::make_` functions requires the components to be arranged in column-major order too.
 
 ### Swizzling
