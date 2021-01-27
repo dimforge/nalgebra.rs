@@ -52,7 +52,7 @@ module.exports = {
           className: 'header-button-donate'
         },
         {
-          href: 'https://dimforge.com/about',
+          href: 'https://dimforge.com',
           label: 'Dimforge ↪',
           position: 'right',
         },

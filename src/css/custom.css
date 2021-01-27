@@ -17,6 +17,14 @@
   --ifm-code-font-size: 95%;
 }
 
+/*
+ * We use this because sometimes the border of some buttons
+ * don't appear for some reasons I ignore.
+ */
+.force-border {
+  border-style: solid;
+}
+
 .docusaurus-highlight-code-line {
   background-color: rgb(72, 77, 91);
   display: block;
