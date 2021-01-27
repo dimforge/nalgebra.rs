@@ -1,0 +1,66 @@
+---
+id: getting_started
+title: Getting started
+sidebar_label: Getting started
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+**nalgebra** relies on the official Rust package manager
+[Cargo](https://crates.io) for dependency resolution and compilation. Therefore,
+making **nalgebra** ready to be used by your project is simply a matter of
+adding a new dependency to your `Cargo.toml` file.
+
+```toml
+[dependencies]
+nalgebra = "*" # replace * by the latest version of the crate.
+```
+
+Until **nalgebra** reaches 1.0, it is strongly recommended to always use its
+latest version, though you might encounter breaking changes from time to time.
+Once your `Cargo.toml` file is set up, the corresponding crate must be imported
+by your project with the usual `extern crate` directive. We recommend using the
+`na` abbreviation for referencing the crate throughout your application.
+
+```rust
+extern crate nalgebra as na;
+```
+
+## Cargo example
+Here is a complete example of `Cargo.toml` file:
+
+```toml
+[package]
+name    = "example-using-nalgebra"
+version = "0.0.0"
+authors = [ "You" ]
+
+[dependencies]
+nalgebra = "*" # replace * by the latest version of the crate.
+
+[[bin]]
+name = "example"
+path = "./example.rs"
+```
+
+## Usage and cargo features
+**nalgebra** is a monolithic crate with all its functionalities exported at its
+root. Data types, traits, and functions that do not take mutable inputs are
+directly accessible behind the `nalgebra::` path (or `na::` if you use the
+recommended alias). However, methods that perform in-place modifications
+(normalization, appending a translation in-place, etc.) are not accessible as
+free-functions. Instead, see the details of each data structure and the traits
+they implement.
+
+Finally, many optional features can be enabled if needed:
+
+| Feature name | Effect |
+|--------------|--------|
+| **abomonation-serialize** | Makes it possible to serialize using [abomonation](https://crates.io/crates/abomonation) |
+| **arbitrary** | Makes it possible the use of [quickcheck](https://crates.io/crates/quickcheck) by adding implementations of their `Arbitrary` trait. |
+| **io** | For parsing matrices from files using the [matrix market format](https://math.nist.gov/MatrixMarket/). |
+| **libm** | For allowing the use of the [libm](https://crates.io/crates/libm) crate to make features based on special math functions work on `#[no-std]` targets. |
+| **libm-force** | For forcing the use of the [libm](https://crates.io/crates/libm) crate in order to make sure the implementations of all special math functions will be the same of all the platforms. |
+| **serde-serialize** | Makes it possible the use of [serde](https://serde.rs) by adding implementations of the `Serialize` and `Deserialize` traits. |
+| **sparse** | To make the `na::sparse` module available for sparse matrix computations. |

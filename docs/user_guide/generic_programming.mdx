@@ -1,0 +1,59 @@
+---
+id: generic_programming
+title: Generic programming
+sidebar_label: Generic programming
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+**nalgebra** allows several kind of generic programming, either through traits
+of the **simba** crate, or by keeping the various type parameters of the
+`Matrix<N, R, C, S>` structure and the likes. In the end, this allows for:
+* **Genericity wrt. scalars**: the most common kind of abstraction.
+  This allows you to write code that will work on any scalar group like `i32`
+  and fields like `f32` or `f64`.
+* **Dimensional genericity**: allows you to write code that will work
+  generically for 2D, 3D, and higher dimensions.
+
+
+## Genericity wrt. scalars
+This allows to write code that works with algebraic entities constructed on top
+of a generic scalar type, e.g., floating-point numbers like `f32` or `f64` and
+in some more restrictive cases integers like `i32` or `u64`.  This can be
+achieved by keeping generic the first type parameter `N` of any structure of
+**nalgebra** (including aliases). The mandatory trait bound of `N` is
+`na::Scalar` which imposes some simple non-mathematical properties, i.e., `N`
+must copyable, printable (using the `{:?}` [format
+string](https://doc.rust-lang.org/std/fmt/index.html#formatting-traits)), and
+comparable using the equality operator. Other commonly used trait bounds for
+`N` are `na::RealField` or `na::ComplexField` from the
+[simba](https://docs.rs/simba) crate. This
+enables operator overloading and useful mathematical functions for signed
+integers and floating point numbers respectively. Note that the `Scalar` trait
+bound does not have to be specified if `Real` already is.
+
+```rust
+use na::{RealField, Scalar, Vector3};
+
+fn print_vector<N: Scalar>(m: &Vector3<N>) {
+  println!("{:?}", m)
+}
+
+fn print_norm<N: RealField>(v: &Vector3<N>) {
+  // NOTE: alternatively, nalgebra already defines `v.norm()`.
+  let norm = v.dot(v).sqrt();
+
+  // The Real bound implies that N is Display so we can
+  // use "{}" instead of "{:?}" for the format string.
+  println!("{}", norm)
+}
+
+fn main() {
+  let v1 = Vector3::new(1, 2, 3);
+  let v2 = Vector3::new(1.0, 2.0, 3.0);
+
+  print_vector(&v1);
+  print_norm(&v2);
+}
+```

@@ -1,0 +1,48 @@
+---
+id: performance_tricks
+title: Performance tricks
+sidebar_label: Performance tricks
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
+**nalgebra** defines a few types that may save you valuable computation times.
+Those types have strong restrictions in their use and have a quite narrow
+semantic. However, they can sometimes save you a few square roots, corner-cases
+checking, or even avoid costly matrix multiplications.
+
+## The `Unit` wrapper
+
+Many geometrical algorithms require some of its inputs to have a unit norm.
+For example the normal of a triangle or a quaternion that represents a 3D
+rotation should have a magnitude equal to 1. That's why the `Unit` wrapper type
+is here to ensure that the underlying value has a unit norm. For example
+`Unit<Vector3<f32>>` is a normalized 3D vector, i.e., it lies on the unit
+3-dimensional sphere $\mathbb{S}^2$. Also note that the `UnitQuaternion<T>`
+representing a 3D rotation is actually a type alias for `Unit<Quaternion<T>>`.
+In general, the `Unit` wrapper should be used whenever you write an algorithm
+that expects a normalized direction as an input. Doing so, you avoid the need
+to normalize the input vector yourself and don't have to deal with special
+cases where the given direction is zero. Here is a simple example that computes
+the length of one vector along a given direction:
+
+```rust
+fn length_on_direction(v: &Vector3<f32>, dir: &Unit<Vector3<f32>>) -> f32 {
+  // No need to normalize `dir`: we know that it is non-zero and normalized.
+  na::dot(v, dir.as_ref())
+}
+
+// Version witout using `Unit`:
+fn length_on_direction(v: &Vector3<f32>, dir: &Vector3<f32>) -> f32 {
+  // Obligatory normalization of the direction vector (and test, for robustness).
+  if let Some(unit_dir) = dir.try_normalize(1.0e-6) {
+    na::dot(v, &unit_dir)
+  }
+  else {
+    // Normalization failed because the norm was too small.
+    panic!("Invalid input direction.")
+  }
+}
+```
