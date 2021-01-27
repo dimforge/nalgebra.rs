@@ -104,7 +104,7 @@ function Home() {
                 'button button--outline button--lg --ifm-color-prim force-border', /*button--secondary*/
                 styles.getStarted,
               )}
-              to={useBaseUrl('docs/')}>
+              to={useBaseUrl('docs/user_guide/getting_started')}>
               Get Started
             </Link>
           </div>
