@@ -18,8 +18,7 @@ a _bag of coordinates_ (relative to a suitable basis). Points will not be
 useful for you as they support much less operations than vectors. Vectors
 support most common operations like cross product, dot product, componentwise
 binary operations, etc. Simply search for the name of the operation you want on
-the root module [documentation](rustdoc_nalgebra) or the [quick
-reference](../quick_reference) and it will likely be listed as a free
+the root module [documentation](https://docs.rs/nalgebra) and it will likely be listed as a free
 function or a method. If you can't find what you need, feel free to open an
 [issue](https://github.com/rustsim/nalgebra/issues) or ask about it on the
 [user forum](https://discourse.nphysics.org/c/nalgebra).
@@ -125,7 +124,7 @@ aliases for the parametrized type `TransformBase<..., Category>` where its last
 type parameter `Category` specifies which of the three variants is represented.
 Note that raw matrices can also be interpreted as general transformations that
 are not necessarily invertible. This may be useful in a [generic
-context](../generic_programming/#transformation-genericity).
+context](generic_programming/#transformation-genericity).
 
 Transformations can be composed (by multiplication) even if they do not have
 the same type. The type of the composition result is the most general

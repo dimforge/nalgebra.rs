@@ -16,7 +16,7 @@ to be used through operator overloading.
 ## The generic `Matrix` type
 We first give a short description of the generic `Matrix` type. Readers
 interested in the implementation details are referred to the section about
-[implementation internals](../generic_programming/#implementation-internals).
+[implementation internals](generic_programming/#implementation-internals).
 In practice, most use-cases are covered by type aliases that hide the most
 complicated type parameters.
 
@@ -104,7 +104,7 @@ the latter prefers static allocation indirectly using a `GenericArray` from the
 is made possible by using different concrete types for the `S` type parameter
 of the `Matrix` structure, depending on the values of the `R` and `C`
 parameters for the matrix shape. See the section dedicated to [storage
-buffers](../generic_programming/#storage-buffers) for more details.
+buffers](generic_programming/#storage-buffers) for more details.
 
 
 ## Matrix construction
@@ -250,7 +250,7 @@ assert_eq!(Vector6::c(), Vector6::new(0.0, 0.0, 0.0, 0.0, 0.0, 1.0));
 
 Adding a `_axis` suffix to those constructors, e.g., `::y_axis()`, will create
 a unit vector wrapped into the `Unit`
-[structure](../performance_tricks/#the-unit-wrapper). For example,
+[structure](performance_tricks/#the-unit-wrapper). For example,
 `Vector2::y_axis()` will create a `Unit<Vector2<N>>` with its the second
 component of the underlying vector set to `1`.
 

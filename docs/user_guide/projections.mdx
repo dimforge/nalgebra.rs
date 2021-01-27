@@ -41,11 +41,11 @@ much more efficient than calling the inverse method on the raw homogeneous
 Projection types can transform points and vectors using the
 `.project_point(...)` and `.project_vector(...)` methods. The latter ignores
 the translational part of the projection because the input is a vector
-(remember the [semantic difference](./points_and_transformations/#points)
+(remember the [semantic difference](points_and_transformations/#points)
 between points and vectors). Because projections following our convention are
 invertible, it is possible to apply the inverse projection to points using
 `.unproject_point(...)`. This is typically used for screen-space coordinates to
-view-space coordinates [conversion](/cg_recipes/#screen-space-to-view-space).
+view-space coordinates [conversion](cg_recipes/#screen-space-to-view-space).
 
 ## Orthographic projection
 An orthographic projection `Orthographic3` maps a rectangular axis-aligned
