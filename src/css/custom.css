@@ -36,6 +36,7 @@
   background-color: #bb799c;
   border-color: #865767;
   color: var(--ifm-font-color-base-inverse);
+  border-radius: 5px;
 }
 
 .header-github-link:hover {
