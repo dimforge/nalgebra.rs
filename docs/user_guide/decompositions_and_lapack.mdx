@@ -287,16 +287,15 @@ on what properties the matrix involved in the linear solve has:
 
 :::info
 If the given `b` is a matrix then `.solve(&b)` and `.solve_mut(&mut b)` will still solve `Ax = b`, where `x` is
-also a matrix. This is equivalent to solving several systems with different right-hand-sidesß (each being one column
+also a matrix. This is equivalent to solving several systems with different right-hand-sides (each being one column
 of the `b` matrix).
 :::
 
 # Lapack integration
 
-
 The [**nalgebra-lapack**](https://crates.io/crates/nalgebra-lapack)
 crate is based on bindings to C or Fortran implementation of the Linear Algebra
-PACKage, aka. [LAPACK](). The factorizations supported by **nalgebra-lapack**
+PACKage, aka. LAPACK. The factorizations supported by **nalgebra-lapack**
 are the same as those supported by the pure-Rust version. They are all computed
 by the constructor of a Rust structure:
 

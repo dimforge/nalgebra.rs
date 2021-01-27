@@ -8,18 +8,18 @@ module.exports = {
   baseUrl: '/',
   onBrokenLinks: 'error', // 'throw',
   favicon: 'img/favicon.png',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'dimforge', // Usually your GitHub org/user name.
+  projectName: 'nalgebra', // Usually your repo name.
   themeConfig: {
     prism: {
         theme: require('prism-react-renderer/themes/github'),
         additionalLanguages: ['toml', 'rust'],
     },
-    announcementBar: {
-      id: 'supportus',
-      content:
-        '⭐️ If you like nalgebra, support us on <a target="_blank" rel="noopener noreferrer" href="https://github.com/sponsors/dimforge">GitHub Sponsor</a>! ⭐️',
-    },
+    // announcementBar: {
+    //   id: 'supportus',
+    //   content:
+    //     '⭐️ If you like nalgebra, support us on <a target="_blank" rel="noopener noreferrer" href="https://github.com/sponsors/dimforge">GitHub Sponsor</a>! ⭐️',
+    // },
     navbar: {
       title: '',
       logo: {
@@ -29,10 +29,16 @@ module.exports = {
       hideOnScroll: true,
       items: [
         {
-          to: 'docs/',
-          activeBasePath: 'docs',
-          label: 'Docs',
+          type: 'doc',
           position: 'left',
+          docId: 'about_nalgebra',
+          label: 'Docs',
+        },
+        {
+          to: '/community',
+          position: 'left',
+          activeBaseRegex: `/community/`,
+          label: 'Community',
         },
         {
           href: 'https://dimforge.com/blog',
@@ -46,14 +52,15 @@ module.exports = {
           className: 'header-button-donate'
         },
         {
-          href: 'https://github.com/dimforge/nalgebra',
-          label: 'GitHub ↪',
-          position: 'right',
-        },
-        {
           href: 'https://dimforge.com/about',
           label: 'Dimforge ↪',
           position: 'right',
+        },
+        {
+          href: 'https://github.com/dimforge/nalgebra',
+          position: 'right',
+          className: 'header-github-link',
+          'aria-label': 'GitHub repository',
         },
       ],
     },
@@ -113,13 +120,26 @@ module.exports = {
       // copyright: `Copyright © ${new Date().getFullYear()} Dimforge EURL. Website built with Docusaurus.`,
     },
   },
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'community',
+        path: 'community',
+        routeBasePath: 'community',
+        sidebarPath: require.resolve('./sidebar_community.js'),
+        showLastUpdateTime: false,
+      }
+    ],
+  ],
   presets: [
     [
       '@docusaurus/preset-classic',
       {
         docs: {
-          homePageId: 'about_nalgebra',
-          sidebarPath: require.resolve('./sidebars.js'),
+          path: 'docs',
+          routeBasePath: 'docs',
+          sidebarPath: require.resolve('./sidebar_docs.js'),
           showLastUpdateTime: false,
           remarkPlugins: [math],
           rehypePlugins: [katex],
