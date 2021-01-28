@@ -12,9 +12,8 @@ const features = [
     imageUrl: 'img/lego.svg',
     description: (
       <>
-          The fundamental building blocks of any linear algebra library. Includes
-          both heap-allocated and stack-allocated objects parametrized by their
-          dimensions using type-level integers.
+          The fundamental building blocks of linear algebra: heap or stack-allocated vectors and
+          matrices parametrized by their dimensions.
       </>
     ),
   },

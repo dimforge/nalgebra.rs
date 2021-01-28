@@ -17,7 +17,7 @@ module.exports = {
       ]
     },
     {
-      'API documentations': [
+      'API documentation': [
         {
           type: 'link',
           label: 'nalgebra ↪',
