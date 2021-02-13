@@ -64,24 +64,24 @@ once const-generics are stabilized.
 :::
 
 ```
-use na::{U2, U3, Dynamic, MatrixArray, MatrixVec};
+use na::{U2, U3, Dynamic, ArrayStorage, VecStorage, Matrix};
 use typenum::U1000;
 
 // Statically sized and statically allocated 2x3 matrix using 32-bit floats.
-type Matrix2x3f = Matrix<f32, U2, U3, MatrixArray<f32, U2, U3>>;
+type Matrix2x3f = Matrix<f32, U2, U3, ArrayStorage<f32, U2, U3>>;
 
 // Half-dynamically sized and dynamically allocated matrix with
 // two rows using 64-bit floats.
-type Matrix2xXf64 = Matrix<f64, U2, Dynamic, MatrixVec<f64, U2, Dynamic>>;
+type Matrix2xXf64 = Matrix<f64, U2, Dynamic, VecStorage<f64, U2, Dynamic>>;
 
 // Dynamically sized and dynamically allocated matrix with
 // two rows and using 32-bit signed integers.
-type DMatrixi32 = Matrix<i32, Dynamic, Dynamic, MatrixVec<i32, Dynamic, Dynamic>>;
+type DMatrixi32 = Matrix<i32, Dynamic, Dynamic, VecStorage<i32, Dynamic, Dynamic>>;
 
 
 // Statically sized and statically allocated 1000x3 matrix using 32-bit floats.
 // Note that U1000 is imported from `typenum` while U3 comes from `nalgebra`.
-type Matrix1000x3f = Matrix<f32, U1000, U3, MatrixArray<f32, U1000, U3>>;
+type Matrix1000x3f = Matrix<f32, U1000, U3, ArrayStorage<f32, U1000, U3>>;
 ```
 
 Note that vectors are just type aliases for matrices. For a column vector
@@ -296,7 +296,7 @@ error[E0277]: the trait bound `na::constraint::ShapeConstraint: na::constraint::
    = help:   <na::constraint::ShapeConstraint as na::constraint::DimEq<D, na::Dynamic>>
    = help:   <na::constraint::ShapeConstraint as na::constraint::DimEq<na::Dynamic, D>>
    = note: required because of the requirements on the impl of `na::constraint::AreMultipliable<na::U2, na::U3, na::U4, na::U4>` for `na::constraint::ShapeConstraint`
-   = note: required because of the requirements on the impl of `std::ops::Mul<na::Matrix<{float}, na::U4, na::U4, na::MatrixArray<{float}, na::U4, na::U4>>>` for `na::Matrix<{float}, na::U2, na::U3, na::MatrixArray<{float}, na::U2, na::U3>>`
+   = note: required because of the requirements on the impl of `std::ops::Mul<na::Matrix<{float}, na::U4, na::U4, na::ArrayStorage<{float}, na::U4, na::U4>>>` for `na::Matrix<{float}, na::U2, na::U3, na::ArrayStorage<{float}, na::U2, na::U3>>`
 ```
 
 If at least one matrix dimension to be checked is `Dynamic` then the check is
@@ -333,7 +333,7 @@ dimensions:
   here). Indeed, the number of rows can be deduced from the first argument but
   the number of columns depends on the run-time value stored by the second
   argument.
-  
+
 ```rust
 let static_m  = Matrix2::zero();
 let dynamic_m = DMatrix::from_element(2, 2, 0.0);
@@ -373,7 +373,7 @@ m[(0, 2)] = -13;
 assert_eq!(m, Matrix3x4::new(11, 12, -13, 14,
                              21, 22, 23, 24,
                              31, 32, 33, 34));
-                       
+
 m.set_column(1, &Vector3::new(-12, -22, -32));
 
 assert_eq!(m, Matrix3x4::new(11, -12, -13, 14,
