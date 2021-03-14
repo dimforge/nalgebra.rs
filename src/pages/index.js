@@ -89,8 +89,8 @@ function Home() {
   const {siteConfig = {}} = context;
   return (
     <Layout
-      title={`${siteConfig.title} physics engine`}
-      description="Fast and cross-platform physics engine">
+      title={`${siteConfig.title} linear-algebra library`}
+      description="Fast and cross-platform linear-algebra library">
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
         <div className="container">
             <div className="">
