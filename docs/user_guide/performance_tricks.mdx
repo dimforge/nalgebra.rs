@@ -34,7 +34,7 @@ fn length_on_direction(v: &Vector3<f32>, dir: &Unit<Vector3<f32>>) -> f32 {
   na::dot(v, dir.as_ref())
 }
 
-// Version witout using `Unit`:
+// Version without using `Unit`:
 fn length_on_direction(v: &Vector3<f32>, dir: &Vector3<f32>) -> f32 {
   // Obligatory normalization of the direction vector (and test, for robustness).
   if let Some(unit_dir) = dir.try_normalize(1.0e-6) {

@@ -330,7 +330,7 @@ only. Refer to [Lapack integration](#nalgebra-lapack) for lapack-based decomposi
 `.svd()`                      <span style={{float:'right'}}>Singular Value Decomposition.</span><br />
 
 Iterative methods may take extra parameters to control their convergence: an
-error tolenence `eps` (set to machine epsilon by default) and maximum number of
+error tolerance `eps` (set to machine epsilon by default) and maximum number of
 iteration (set to infinite by default):
 
 `.try_schur(eps, max_niter)`           <span style={{float:'right'}}>Schur decomposition of a square matrix.</span><br />

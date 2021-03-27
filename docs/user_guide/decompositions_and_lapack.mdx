@@ -44,7 +44,7 @@ In the following, all `.unpack` methods consume the decomposition data structure
 produce the factors with as little allocations as possible.
 
 ## Cholesky decomposition
-The Cholesky decompositon of a `n × n` Hermitian Definite Positive (SDP) matrix
+The Cholesky decomposition of a `n × n` Hermitian Definite Positive (SDP) matrix
 $M$ is composed of a `n × n` lower-triangular matrix $L$ such that $M = LL^*$.
 Where $L^*$ designates the conjugate-transpose of $L$.  If the input matrix is
 not SDP, such a decomposition does not exist and the matrix method
@@ -61,7 +61,7 @@ matrices and resolution of SDP linear systems.
 
 <div style={{textAlign: 'center'}}>
 
-![Cholesky decompositpion of a 3x3 matrix.](/img/cholesky.svg)
+![Cholesky decomposition of a 3x3 matrix.](/img/cholesky.svg)
 
 </div>
 
@@ -310,7 +310,7 @@ Symmetric eigendecomposition | $U ~ \Lambda ~ U^*$ | `SymmetricEigen::new(matrix
 SVD                      | $U ~ \Sigma ~ V^*$        | `SVD::new(matrix)` or `SVD::try_new(matrix)`
 
 The `::try_new` constructors return `None` if the decomposition fails while
-`::new` constructiors panic.
+`::new` constructors panic.
 
 
 The next subsections describe how to select the desired Lapack implementation,
