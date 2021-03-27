@@ -221,7 +221,7 @@ converted to, a `Rotation2/3` by `::from_rotation_matrix(...)` and
 Direct isometries are rotations followed by translations, i.e., they preserve
 orientations and distances, but not the origin. They are commonly known by
 algebraists as the $n$-dimensional Special Euclidean group $\mathbf{SE}(n)$.
-Note that isometries that are not direct because they include a reflexion are
+Note that isometries that are not direct because they include a reflection are
 not yet supported by **nalgebra**.
 
 <div style={{textAlign: 'center'}}>
@@ -360,7 +360,7 @@ While the end-results are the same, using dedicated types is much more concise
 and efficient.
 
 ```rust
-// With dedicated trasform types.
+// With dedicated transform types.
 let iso = Isometry2::new(Vector2::new(1.0, 1.0), f32::consts::PI);
 let pt  = Point2::new(1.0, 0.0);
 let vec = Vector2::x();
@@ -373,7 +373,7 @@ assert_relative_eq!(transformed_vec, Vector2::new(-1.0, 0.0));
 ```
 
 ```rust
-// With homogeneous coordinates (lpain matrices).
+// With homogeneous coordinates (plain matrices).
 let iso = Isometry2::new(Vector2::new(1.0, 1.0), f32::consts::PI);
 let pt  = Point2::new(1.0, 0.0);
 let vec = Vector2::x();

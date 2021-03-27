@@ -49,7 +49,7 @@ points computation can be handled by the [ncollide](https://ncollide.org) projec
 In addition, because Rust does not allows function overloading, all functions must be given a unique name.
 Here are a few rules chosen arbitrarily for **nalgebra-glm**:
 
-* Functions operating in 2d will usually end with the `2d` suffix, e.g., `glm::rotade2d` is for 2D while `glm::rotate` is for 3D.
+* Functions operating in 2d will usually end with the `2d` suffix, e.g., `glm::rotate2d` is for 2D while `glm::rotate` is for 3D.
 * Functions operating on vector will often end with the `_vec` suffix, possibly followed by the dimension of vector, e.g., `glm::rotate_vec2`.
   Similar functions operating on scalar numbers only often end with the `_scalar` suffix.
 * Every function related to quaternions start with the `quat_` prefix, e.g., `glm::quat_dot(q1, q2)`.
