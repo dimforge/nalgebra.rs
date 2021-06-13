@@ -90,8 +90,8 @@ fn main() {
 }
 ```
 
-The following examples won't compile, as the `OVector` type is a placeholder
-for either static or dynamic type, but they must all match:
+The following example won't compile, as the `OVector` type is a placeholder
+for either static or dynamic type, but they must match:
 
 ```rust
       add_vectors(&dynamic_vector1, &static_vector1);
@@ -109,7 +109,7 @@ error[E0308]: mismatched types
    = note: expected reference `&Matrix<f64, Dynamic, Const<1_usize>, VecStorage<f64, Dynamic, Const<1_usize>>>`
               found reference `&Matrix<f64, Const<2_usize>, Const<1_usize>, ArrayStorage<f64, 2_usize, 1_usize>>`
 ```
-For static vectors, the dimensions are check at compile-time:
+For static vectors, you benefit from a compile-time dimensions check:
 
 ```rust
     let static_vector1 = nalgebra::vector![1.0, 2.0];
@@ -118,7 +118,7 @@ For static vectors, the dimensions are check at compile-time:
     add_vectors(&static_vector1, &static_vector2);
 ```
 
-This previous code will fail to compile:
+This previous code will fail to compile, with the following error message:
 
 ```rust
 error[E0308]: mismatched types
@@ -131,8 +131,8 @@ error[E0308]: mismatched types
               found reference `&Matrix<{float}, Const<3_usize>, Const<1_usize>, ArrayStorage<{float}, 3_usize, 1_usize>>`
 ```
 
-However, if your are passing dynamic vectors, no check will be perform
-and the code will panic at runtime as your trying to add two vectors of different sizes:
+However, if your are passing dynamic vectors, no check will be performed
+and the code will panic at runtime as you are trying to add two vectors of different sizes:
 
 ```rust
     let dynamic_vector1 = nalgebra::dvector![1.0, 2.0];
@@ -147,6 +147,9 @@ thread 'main' panicked at 'assertion failed: `(left == right)`
   left: `(2, 1)`,
  right: `(3, 1)`: Matrix addition/subtraction dimensions mismatch.
 ```
+
+You can either implement a check within your code to avoid the panic and return an error,
+or you leave it the the function caller responsability to pass the correct arguments.
 
 ### Struct
 
@@ -190,7 +193,7 @@ fn main() {
         equations_right_side: &dynamic_vector2,
     };
 
-    assert_eq!(dynamic_equations.difference(), nalgebra::vector![-1.0, -1.0]);
+    assert_eq!(dynamic_equations.difference(), nalgebra::dvector![-1.0, -1.0]);
 }
 ```
 
