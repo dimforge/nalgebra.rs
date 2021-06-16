@@ -91,11 +91,12 @@ fn main() {
 }
 ```
 
-The following example won't compile, as the `OVector` type is a placeholder
-for either static or dynamic type, but they must match:
+The `OVector` type is a placeholder for either static or dynamic type,
+with the first argument matching the second argument.
+If you add the following line in the previous main, it will fail to compile:
 
 ```rust
-      add_vectors(&dynamic_vector1, &static_vector1);
+add_vectors(&dynamic_vector1, &static_vector1);
 ```
 
 The error message is quite explicit:
@@ -110,13 +111,15 @@ error[E0308]: mismatched types
    = note: expected reference `&Matrix<f64, Dynamic, Const<1_usize>, VecStorage<f64, Dynamic, Const<1_usize>>>`
               found reference `&Matrix<f64, Const<2_usize>, Const<1_usize>, ArrayStorage<f64, 2_usize, 1_usize>>`
 ```
-For static vectors, you benefit from a compile-time dimensions check:
+
+For static vectors, you benefit from a compile-time dimensions check.
+
+If you try adding to the previous main, the following lines that contains a size mismatch:
 
 ```rust
-    let static_vector1 = nalgebra::vector![1.0, 2.0];
-    let static_vector2 = nalgebra::vector![0.0, 1.0, 2.0];
-
-    add_vectors(&static_vector1, &static_vector2);
+let static_vector1 = nalgebra::vector![1.0, 2.0];
+let static_vector2 = nalgebra::vector![0.0, 1.0, 2.0];
+add_vectors(&static_vector1, &static_vector2);
 ```
 
 This previous code will fail to compile, with the following error message:
@@ -133,13 +136,13 @@ error[E0308]: mismatched types
 ```
 
 However, if your are passing dynamic vectors, no check will be performed
-and the code will panic at runtime as you are trying to add two vectors of different sizes:
+and the code will panic at runtime as you are trying to add two vectors of different sizes,
+which is an operation not allowed by the `+` operator of nalgebra:
 
 ```rust
-    let dynamic_vector1 = nalgebra::dvector![1.0, 2.0];
-    let dynamic_vector2 = nalgebra::dvector![0.0, 1.0, 2.0];
-
-    add_vectors(&dynamic_vector1, &dynamic_vector2);
+let dynamic_vector1 = nalgebra::dvector![1.0, 2.0];
+let dynamic_vector2 = nalgebra::dvector![0.0, 1.0, 2.0];
+add_vectors(&dynamic_vector1, &dynamic_vector2);
 ```
 
 ```rust
@@ -198,13 +201,12 @@ fn main() {
 }
 ```
 
-
 ### Trait
 
 It is possible to use the same pattern for trait.
 
 However, when implementing the given trait for specific cases,
-one has to indicate the type for each it is implemented, either:
+one has to indicate the type for which it is implemented, either:
 - `nalgebra::Dynamic`
 - `nalgebra::Const`
 
@@ -270,7 +272,8 @@ a `DVectorWrapper` with a static vector or a `SVectorWrapper` with a dynamic vec
 
 ### Matrix
 
-Matrices works the same as vector and you have `DMatrix`, `SMatrix` and `OMatrix`.
+Matrices works the same as vectors.
+You have the types `DMatrix`, `SMatrix` and `OMatrix`.
 
 For square matrices, you will do the following:
 
@@ -315,12 +318,11 @@ fn main() {
     print_matrix(&static_matrix);
     print_matrix(&dynamic_matrix);
 }
-
 ```
 
 ### Vectors and Matrices
 
-You can also mix vectors and matrix and constraint dimensions
+You can also mix vector and matrix while constraining dimensions
 
 The following example show a vector and a square matrix with the same dimensions:
 
