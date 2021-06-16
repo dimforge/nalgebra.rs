@@ -61,6 +61,7 @@ fn main() {
 ```
 
 ## Allocation type genericity
+
 This allow you to write code that can operate on either the static or dynamic types
 provided by nalgebra.
 
@@ -200,4 +201,149 @@ fn main() {
 
 ### Trait
 
+It is possible to use the same pattern for trait.
+
+However, when implementing the given trait for specific cases,
+one has to indicate the type for each it is implemented, either:
+- `nalgebra::Dynamic`
+- `nalgebra::Const`
+
+
+```rust
+pub trait Trait<D>
+where
+    D: nalgebra::Dim,
+    nalgebra::DefaultAllocator: nalgebra::base::allocator::Allocator<f64, D>,
+{
+    fn copy_elements(&self) -> nalgebra::OVector<f64, D>;
+}
+
+pub struct DVectorWrapper<'a> {
+    vector: &'a nalgebra::DVector<f64>,
+}
+
+impl<'a> DVectorWrapper<'a> {
+    pub fn new(vector: &'a nalgebra::DVector<f64>) -> Self {
+        DVectorWrapper { vector }
+    }
+}
+
+impl<'a> Trait<nalgebra::Dynamic> for DVectorWrapper<'a> {
+    fn copy_elements(&self) -> nalgebra::DVector<f64> {
+        let output: nalgebra::DVector<f64> = self.vector.clone();
+        output
+    }
+}
+
+pub struct SVectorWrapper<'a> {
+    vector: &'a nalgebra::SVector<f64, 2>,
+}
+
+impl<'a> SVectorWrapper<'a> {
+    pub fn new(vector: &'a nalgebra::SVector<f64, 2>) -> Self {
+        SVectorWrapper { vector }
+    }
+}
+
+impl<'a> Trait<nalgebra::Const<2>> for SVectorWrapper<'a> {
+    fn copy_elements(&self) -> nalgebra::SVector<f64, 2> {
+        let output: nalgebra::SVector<f64, 2> = self.vector.clone();
+        output
+    }
+}
+
+fn main() {
+    let static_vector = nalgebra::vector![1.0, 2.0];
+    let dynamic_vector = nalgebra::dvector![1.0, 2.0];
+
+    let dynamic_wrapper = DVectorWrapper::new(&dynamic_vector);
+    let static_wrapper = SVectorWrapper::new(&static_vector);
+
+    assert_eq!(dynamic_wrapper.copy_elements(), dynamic_vector);
+    assert_eq!(static_wrapper.copy_elements(), static_vector);
+}
+```
+
+In this previous example, you will get a compile-time error if you try to instanciate
+a `DVectorWrapper` with a static vector or a `SVectorWrapper` with a dynamic vector
+
+
 ### Matrix
+
+Matrices works the same as vector and you have `DMatrix`, `SMatrix` and `OMatrix`.
+
+For square matrices, you will do the following:
+
+```rust
+fn print_matrix<D>(input: &nalgebra::OMatrix<f64, D, D>)
+where
+    D: nalgebra::Dim,
+    nalgebra::DefaultAllocator: nalgebra::base::allocator::Allocator<f64, D, D>,
+{
+    for elt in input {
+        println!("{}", elt);
+    }
+}
+
+fn main() {
+    let static_matrix = nalgebra::matrix![1.0, 2.0; 3.0, 4.0];
+    let dynamic_matrix = nalgebra::dmatrix![5.0, 6.0; 7.0, 8.0];
+
+    print_matrix(&static_matrix);
+    print_matrix(&dynamic_matrix);
+}
+```
+
+For non-square matrices, you will do:
+
+```rust
+fn print_matrix<D, E>(input: &nalgebra::OMatrix<f64, D, E>)
+where
+    D: nalgebra::Dim,
+    E: nalgebra::Dim,
+    nalgebra::DefaultAllocator: nalgebra::base::allocator::Allocator<f64, D, E>,
+{
+    for elt in input {
+        println!("{}", elt);
+    }
+}
+
+fn main() {
+    let static_matrix = nalgebra::matrix![1.0, 2.0, 3.0; 4.0, 5.0, 6.0];
+    let dynamic_matrix = nalgebra::dmatrix![5.0, 6.0, 7.0; 8.0, 9.0, 10.0];
+
+    print_matrix(&static_matrix);
+    print_matrix(&dynamic_matrix);
+}
+
+```
+
+### Vectors and Matrices
+
+You can also mix vectors and matrix and constraint dimensions
+
+The following example show a vector and a square matrix with the same dimensions:
+
+```rust
+fn print_elements<D>(vector: &nalgebra::OVector<f64, D>, matrix: &nalgebra::OMatrix<f64, D, D>)
+where
+    D: nalgebra::Dim,
+    nalgebra::DefaultAllocator: nalgebra::base::allocator::Allocator<f64, D>,
+    nalgebra::DefaultAllocator: nalgebra::base::allocator::Allocator<f64, D, D>,
+{
+    for elt in vector {
+        println!("{}", elt);
+    }
+
+    for elt in matrix {
+        println!("{}", elt);
+    }
+}
+
+fn main() {
+    let static_matrix = nalgebra::matrix![1.0, 2.0; 4.0, 5.0];
+    let static_vector = nalgebra::vector![1.0, 2.0];
+
+    print_elements(&static_vector, &static_matrix);
+}
+```
