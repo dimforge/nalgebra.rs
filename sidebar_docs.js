@@ -30,6 +30,11 @@ module.exports = {
         },
         {
           type: 'link',
+          label: 'nalgebra-sparse ↪',
+          href: 'https://docs.rs/nalgebra-sparse'
+        },
+        {
+          type: 'link',
           label: 'nalgebra-lapack ↪',
           href: 'https://docs.rs/nalgebra-lapack'
         },

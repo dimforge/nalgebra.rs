@@ -14,97 +14,76 @@ In either case, they allow common operations (additions, multiplications, etc.)
 to be used through operator overloading.
 
 ## The generic `Matrix` type
-We first give a short description of the generic `Matrix` type. Readers
-interested in the implementation details are referred to the section about
-[implementation internals](generic_programming/#implementation-internals).
-In practice, most use-cases are covered by type aliases that hide the most
-complicated type parameters.
 
+**nalgebra** represents both matrices and vectors of arbitrary dimensions (known at
+compile-time or at runtime), using the same generic `Matrix` structure. Vectors are just
+matrices with only one column. But in practice, users will generally rely on some more
+convenient aliased for this generic matrix type:
 
-The `Matrix<N, R, C, S>` type is a column-major matrix with a shape that may or
-may not be known at compile-time. It takes four type parameters:
+* `SMatrix<T, R, C>` are statically-sized matrices with R rows and C columns, e.g.,
+  `SMatrix<f32, 24, 10>`.
+* `SVector<T, D>` is a statically-sized column vector with `D` rows, e.g., `SVector<f32, 10>`.
+* `DVector<T>` and `DMatrix<T>`: are respectively a dynamically-sized column
+  vector and a dynamically-sized matrix.
 
-* `N`: the scalar type, i.e., the type of the matrix components. Typical values
+Aliases exist for statically-sized vectors and matrices with small dimensions:
+
+* `Vector1<T>` .. `Vector6<T>`: are column vectors of dimension 1 to 6.
+* `Matrix1<T>` .. `Matrix6<T>`: are square matrices of dimension 1x1 to 6x6.
+* Rectangular matrices have the form `MatrixIxJ<T>` where `I` and `J` are any
+  value from 1 to 6, e.g., `Matrix4x5<T>`.
+
+In its most general form, the `Matrix<T, R, C, S>` type takes four type parameters:
+* `T`: the scalar type, i.e., the type of the matrix components. Typical values
   are `f32` or `f64`.
 * `R`: a type characterizing the number of rows on this matrix.
 * `C`: a type characterizing the number of columns on this matrix.
-* `S`: the buffer that contains all the matrix components and (if necessary)
-  metadata about its shape at run-time. Of all the type parameters, this is the
-  only element actually instantiated by a `Matrix`.
+* `S`: the buffer that contains all the matrix components.
 
 The type parameters `R` and `C` completely determine whether or not the matrix
 shape is known at compile-time or only at run-time. They can have two kinds of
 values:
 
-1. **Type-level integers:** because the Rust programming language does not
-   support parametrization over integer values (yet), we have to simulate this
-   feature using types instead of literals. For example, instead of writing
-   `Matrix<N, 2, 4, S>` for a 2x4 matrix, we have to write `Matrix<N, U2, U4,
-   S>`, where `U2` and `U4` are types exported by the root module of
-   **nalgebra**, e.g., `use nalgebra::U2;`. Note that **nalgebra** only defines
-   types from `U1` to `U127`.  If you need type-level integers greater than
-   127, you have to grab them from the
-   [typenum](https://docs.rs/typenum/1.5.1/typenum/) crate instead, e.g.
-   `typenum::U1000`. Redefining `U1` to `U127` instead of using types from
-   **typenum** right away was necessary to improve significantly the quality of
-   error messages when matrices with incompatible dimensions are, say, added or
-   multiplied.
-2. **The special `Dynamic` type:** using this instead of a type-level integer
+1. **Constant integers:** Represented by the type `Const<const D: usize>`.
+    For example, `Matrix<T, Const<2>, Const<4>, S>` represents a matrix with
+    2 rows and 4 columns.
+2. **The `Dynamic` type:** using `Dynamic` instead of a `Const<N>` integer
    indicates that the corresponding matrix dimension is not known at
-   compile-time. For example, `Matrix<N, Dynamic, Dynamic, S>` has a number of
+   compile-time. For example, `Matrix<T, Dynamic, Dynamic, S>` has a number of
    rows and number of columns that can only be known at runtime. Another
-   typical example is a dynamically-sized column vector: `Matrix<N, Dynamic,
-   U1, S>`.
+   typical example is a dynamically-sized column vector: `Matrix<T, Dynamic,
+   Const<1>, S>`.
 
-:::caution
-Using type-level number from **typenum** for vector/matrix dimensions lower or equal
-to 127 will not compile. Type-level numbers `nalgebra::U1, .., nalgebra::U127` from
-**nalgebra** must be used instead for these low dimensions. This oddity will disappear
-once const-generics are stabilized.
+:::note
+For all constant integers in `[0; 127]`, you may use `U1, U2, ..., U127` which
+are shorter aliases for `Const<1>, Const<2>, ..., Const<127>`.
 :::
 
-```
+```rust
 use na::{U2, U3, Dynamic, ArrayStorage, VecStorage, Matrix};
-use typenum::U1000;
 
 // Statically sized and statically allocated 2x3 matrix using 32-bit floats.
-type Matrix2x3f = Matrix<f32, U2, U3, ArrayStorage<f32, U2, U3>>;
+type Matrix2x3f = SMatrix<f32, 2, 3>;
 
 // Half-dynamically sized and dynamically allocated matrix with
 // two rows using 64-bit floats.
-type Matrix2xXf64 = Matrix<f64, U2, Dynamic, VecStorage<f64, U2, Dynamic>>;
+//
+// The `OMatrix` alias is a matrix that owns its data (as opposed to
+// matrix slices which borrow their data from another matrix).
+type Matrix2xXf64 = OMatrix<f64, U2, Dynamic>;
 
 // Dynamically sized and dynamically allocated matrix with
 // two rows and using 32-bit signed integers.
-type DMatrixi32 = Matrix<i32, Dynamic, Dynamic, VecStorage<i32, Dynamic, Dynamic>>;
-
+type DMatrixi32 = OMatrix<i32, Dynamic, Dynamic>;
 
 // Statically sized and statically allocated 1000x3 matrix using 32-bit floats.
-// Note that U1000 is imported from `typenum` while U3 comes from `nalgebra`.
-type Matrix1000x3f = Matrix<f32, U1000, U3, ArrayStorage<f32, U1000, U3>>;
+type Matrix1000x3f = SMatrix<f32, 1000, 3>;
 ```
-
-Note that vectors are just type aliases for matrices. For a column vector
-(resp. row vector), we simply use a matrix with `C` set to `U1` (resp. `R` set
-to `U1`). Common low-dimensional matrices and vectors are exposed as type
-aliases so that the user does not have to deal with anything but the scalar
-type parameter `N`:
-
-* `Vector1<N>` .. `Vector6<N>`: are column vectors of dimension 1 to 6.
-* `Matrix1<N>` .. `Matrix6<N>`: are square matrices of dimension 1x1 to 6x6.
-* Rectangular matrices have the form `MatrixIxJ<N>` where `I` and `J` are any
-  value from 1 to 6, e.g., `Matrix4x5<N>`.
-* `DVector<N>` and `DMatrix<N>`: are respectively a dynamically-sized column
-  vector and a dynamically-sized matrix.
 
 Internally, dynamically- and statically-sized matrices do not use the same data
 storage type. While the former is always allocated on the heap using a `Vec`,
-the latter prefers static allocation indirectly using a `GenericArray` from the
-[generic-array](https://crates.io/crates/generic-array) crate. This distinction
-is made possible by using different concrete types for the `S` type parameter
-of the `Matrix` structure, depending on the values of the `R` and `C`
-parameters for the matrix shape. See the section dedicated to [storage
-buffers](generic_programming/#storage-buffers) for more details.
+the latter prefers static allocation indirectly using a column-major 2D array
+`[[T; R]; C]` for better performances.
 
 
 ## Matrix construction
@@ -124,23 +103,7 @@ let m = Matrix3x4::new(11, 12, 13, 14,
                        31, 32, 33, 34);
 ```
 
-Depending on the values of the `R` and `C` type parameters for the matrix
-shape, the matrix construction methods listed below may have different
-signatures. In particular, each constructor takes one `usize` parameter for
-each matrix dimension that is set to `Dynamic`. Specifically:
-
-* If `R` and `C` are both type-level integers, `::from_element(e)` takes only
-  one parameter which is the element to fill the matrix with.
-* If `R` is `Dynamic` and `C` a type-level integer, `::from_element(nrows, e)`
-  takes two parameters: one for the number of matrix rows and one for the
-  element to fill the matrix with.
-* If `R` is a type-level integer and `C` is `Dynamic`, `::from_element(ncols,
-  e)` takes two parameters: one for the number of matrix columns and one for
-  the element to fill the matrix with.
-* If both `R` and `C` are equal to `Dynamic`, then `::from_element(nrows,
-  ncols, e)` takes three parameters: one for the number of matrix rows, one for
-  the number of columns, and the last one for the element to fill the matrix
-  with.
+Other construction methods include:
 
 Method                          | Description
 --------------------------------|------------
@@ -153,7 +116,7 @@ Method                          | Description
 `::from_row_slice(...)`        | Creates a matrix filled with the content of the given slice. Elements of the slice are provided in row-major order (which is the usual mathematical notation.) |
 `::from_column_slice(...)`     | Creates a matrix filled with the content of the given slice. Elements of the slice are provided in column-major order.
 `::from_vec(...)`              | Creates a matrix filled with the content of the given `Vec`. Elements of the vec are provided in column-major order. Constructing a dynamically-sized matrix this way consumes the vec to avoid allocations. |
-`::from_fn(...)`               | Creates a matrix filled with the values returned by the given closure of type `FnMut(usize, usize) -> N`. This closure is called exactly once per matrix component and is given as parameter each matrix component's 0-based indices. |
+`::from_fn(...)`               | Creates a matrix filled with the values returned by the given closure of type `FnMut(usize, usize) -> T`. This closure is called exactly once per matrix component and is given as parameter each matrix component's 0-based indices. |
 `::identity(...)`              | Creates a matrix with `1` on its diagonal and `0` elsewhere. If the matrix to be constructed is not square, only the largest square submatrix formed by its first rows and columns is set to the identity matrix. All the other components are `0`. |
 `::from_diagonal_element(...)` | Creates a matrix with its diagonal filled with the given element and `0` elsewhere. If the matrix to be constructed is not square, only the largest square submatrix formed by its first rows and columns is set to the identity matrix. All the other components are set to `0`. |
 `::new_random(...)`            | Creates a matrix with all its components initialized at random using the default random generator of the `rand` crate, i.e., the `rand::random()` function. |
@@ -194,8 +157,9 @@ assert_eq!(m, m1); assert_eq!(m, m2); assert_eq!(m, m3);
 assert_eq!(m, m4); assert_eq!(m, m5); assert_eq!(m, m6);
 
 // All the following matrices are equal but constructed in different ways.
-// This time, we used a dynamically-sized matrix to show the extra arguments
-// for the matrix shape.
+//
+// This time, we used a dynamically-sized matrix so we must specify the
+// dimensions of the matrix with the first two arguments.
 let dm = DMatrix::from_row_slice(4, 3, &[
     1.0, 0.0, 0.0,
     0.0, 1.0, 0.0,
@@ -213,14 +177,16 @@ let dm5 = DMatrix::from_iterator(4, 3, [
     0.0, 0.0, 1.0, 0.0
 ].iter().cloned());
 
+// Here is a dynamically-sized vector. The first constructor argument specifies its number of elements.
+let dm1 = DMatrix::from_vec(4, vec![1.0, 2.0, 3.0, 4.0]);
+
 assert_eq!(dm, dm1); assert_eq!(dm, dm2);
 assert_eq!(dm, dm3); assert_eq!(dm, dm4);
 assert_eq!(dm, dm5);
 ```
 
 
-Matrices with sizes known at compile-time also implement some construction
-traits from the `num` crate at well:
+Matrices with sizes known at compile-time implement some construction traits from the `num` crate at well:
 
 Trait method            | Description
 ------------------------|------------
@@ -230,7 +196,7 @@ Trait method            | Description
 `Bounded::max_value()`  | Creates a matrix filled with the maximal value of the matrix scalar type. |
 
 
-Column vectors (which are just `Matrix` with `C` set to `U1`) with low dimensions
+Column vectors (which are just matrices with a single column) with low dimensions
 from 1 to 6 have additional constructors:
 
 * `::x()`, `::y()`, and `::z()` create a vector with, respectively, the first,
@@ -251,7 +217,7 @@ assert_eq!(Vector6::c(), Vector6::new(0.0, 0.0, 0.0, 0.0, 0.0, 1.0));
 Adding a `_axis` suffix to those constructors, e.g., `::y_axis()`, will create
 a unit vector wrapped into the `Unit`
 [structure](performance_tricks/#the-unit-wrapper). For example,
-`Vector2::y_axis()` will create a `Unit<Vector2<N>>` with its the second
+`Vector2::y_axis()` will create a `Unit<Vector2<T>>` with its the second
 component of the underlying vector set to `1`.
 
 ```rust
@@ -274,7 +240,7 @@ require both matrices to have compatible shapes. In particular:
 
 Those restrictions are either checked at compile-time or at runtime, depending
 on the inputs types. In particular, if the matrix dimensions to be checked are
-type-level integers then the check is performed at compile-time. The following
+const integers then the check is performed at compile-time. The following
 shows an example of compilation error for attempting to multiply a 2x3 matrix
 with a 4x4 matrix:
 
@@ -329,7 +295,7 @@ dimensions:
   adding a `Matrix2x3` to a `DMatrix` will return a `Matrix2x3`. However,
   multiplying a `Matrix2x3` to a `DMatrix` will return a matrix with one
   dimension known at compile-time, and a second one known at run-time, i.e.,
-  `Matrix<N, U2, Dynamic, S>` (where `N` and `S` are some types not detailed
+  `Matrix<T, U2, Dynamic, S>` (where `T` and `S` are some types not detailed
   here). Indeed, the number of rows can be deduced from the first argument but
   the number of columns depends on the run-time value stored by the second
   argument.
@@ -360,6 +326,7 @@ let dynamic_times_static: DVector<_> = dynamic_m * static_v;
 ```
 
 ## Matrix element modification
+
 It is possible to modify elements of a matrix when it is mutable. The following examples show in particular how to:
 * Modify a single element.
 * Modify an entire row/column.
@@ -387,7 +354,9 @@ assert_eq!(m, Matrix3x4::new(11, -12, -13, 14,
                              -31, -32, -33, -34));
 ```
 
-Because types like `Vector3` are column vectors, i.e., matrices with dimension 3×1, they can only be used with `.set_column(...)`. For setting a row with `.set_row(...)` it is necessary to use a row vector. For example `RowVector4` is a 4D row vector, i.e., a matrix with dimensions 4×1.
+Because types like `Vector3` are column vectors, i.e., matrices with dimension 3×1, they can only be used with
+`.set_column(...)`. For setting a row with `.set_row(...)` it is necessary to use a row vector. For example `RowVector4`
+is a 4D row vector, i.e., a matrix with dimensions 4×1.
 
 ## Matrix slicing
 Matrix (and vector) slicing allows you to take a reference to a part of any
@@ -396,19 +365,16 @@ original matrix data. Instead, it stores a pointer to that data together with
 some metadata about the slice size and strides. Note that taking a slice of a
 matrix slice is allowed!
 
-Because a matrix slice also has a type like `Matrix<N, R, C, S>` (with some
-special value for the buffer `S`) it can usually be used just like a plain,
-non-slice matrix besides three exceptions:
+Because a matrix slice is also just special-case of the generic `Matrix<T, R, C, S>`
+type, it can usually be used just like a plain, non-slice matrix besides three exceptions:
 
 1. Methods that require a `&mut self` cannot be called on non-mutable slices.
 2. Matrix slices cannot be created out of thin air using the methods shown in
    the [Matrix construction](#matrix_construction) section. One must already
-   have an allocated matrix or another slice and use one of the dedicated
+   have a instance of a matrix or another slice and use one of the dedicated
    methods shown thereafter.
 3. Assignment operators do not work on any kind of slice, i.e., one cannot
-   write `a *= b` if `a` even if `a` is a mutable matrix slice. This is
-   actually a limitation of the current design of **nalgebra** that will be
-   fixed in the future. Use `a.copy_from(&(a * b))` as a workaround.
+   write `a *= b` if `a` even if `a` is a mutable matrix slice.
 
 There are three variations of matrix slicing methods. Mutable slices follow the
 same semantics, except that the method names end with `_mut`:
@@ -421,9 +387,9 @@ Method                             | Description
 -----------------------------------|------------
 `.row(i)`                          | Reference to the i-th row of `self`. |
 `.column(i)`                       | Reference to the i-th column of `self`. |
-`.fixed_rows::<D>(i)`              | Reference to the submatrix with `D` consecutive rows of `self`, starting with the i-th. `D` must be a type-level integer. |
-`.fixed_columns::<D>(i)`           | Reference to the submatrix with `D` consecutive columns of `self`, starting with the i-th. `D` must be a type-level integer. |
-`.fixed_slice::<R, C>(irow, icol)` | Reference to the submatrix with `R` consecutive rows and `C` consecutive columns, starting with the `irow`-th row and `icol`-th column. `R` and `C` are type-level integers. |
+`.fixed_rows::<D>(i)`              | Reference to the submatrix with `D` consecutive rows of `self`, starting with the i-th. `D` must be an integer. |
+`.fixed_columns::<D>(i)`           | Reference to the submatrix with `D` consecutive columns of `self`, starting with the i-th. `D` must be an integer. |
+`.fixed_slice::<R, C>(irow, icol)` | Reference to the submatrix with `R` consecutive rows and `C` consecutive columns, starting with the `irow`-th row and `icol`-th column. `R` and `C` are integers. |
 
 <div style={{textAlign: 'center'}}>
 

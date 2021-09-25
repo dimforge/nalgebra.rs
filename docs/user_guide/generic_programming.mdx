@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 **nalgebra** allows several kind of generic programming, either through traits
 of the **simba** crate, or by keeping the various type parameters of the
-`Matrix<N, R, C, S>` structure and the likes. In the end, this allows for:
+`Matrix<T, R, C, S>` structure and the likes. In the end, this allows for:
 * **Genericity wrt. scalars**: the most common kind of abstraction.
   This allows you to write code that will work on any scalar group like `i32`
   and fields like `f32` or `f64`.
@@ -21,13 +21,13 @@ of the **simba** crate, or by keeping the various type parameters of the
 This allows to write code that works with algebraic entities constructed on top
 of a generic scalar type, e.g., floating-point numbers like `f32` or `f64` and
 in some more restrictive cases integers like `i32` or `u64`.  This can be
-achieved by keeping generic the first type parameter `N` of any structure of
-**nalgebra** (including aliases). The mandatory trait bound of `N` is
-`na::Scalar` which imposes some simple non-mathematical properties, i.e., `N`
+achieved by keeping generic the first type parameter `T` of any structure of
+**nalgebra** (including aliases). The mandatory trait bound of `T` is
+`na::Scalar` which imposes some simple non-mathematical properties, i.e., `T`
 must copyable, printable (using the `{:?}` [format
 string](https://doc.rust-lang.org/std/fmt/index.html#formatting-traits)), and
 comparable using the equality operator. Other commonly used trait bounds for
-`N` are `na::RealField` or `na::ComplexField` from the
+`T` are `na::RealField` or `na::ComplexField` from the
 [simba](https://docs.rs/simba) crate. This
 enables operator overloading and useful mathematical functions for signed
 integers and floating point numbers respectively. Note that the `Scalar` trait
@@ -36,15 +36,15 @@ bound does not have to be specified if `Real` already is.
 ```rust
 use na::{RealField, Scalar, Vector3};
 
-fn print_vector<N: Scalar>(m: &Vector3<N>) {
+fn print_vector<T: Scalar>(m: &Vector3<T>) {
   println!("{:?}", m)
 }
 
-fn print_norm<N: RealField>(v: &Vector3<N>) {
+fn print_norm<T: RealField>(v: &Vector3<T>) {
   // NOTE: alternatively, nalgebra already defines `v.norm()`.
   let norm = v.dot(v).sqrt();
 
-  // The Real bound implies that N is Display so we can
+  // The Real bound implies that T is Display so we can
   // use "{}" instead of "{:?}" for the format string.
   println!("{}", norm)
 }
@@ -57,3 +57,7 @@ fn main() {
   print_norm(&v2);
 }
 ```
+
+:::note
+This section about dimensional-genericity hasn't been written yet.
+:::

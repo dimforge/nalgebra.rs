@@ -27,7 +27,7 @@ Serialization with [serde](https://serde.rs) can be enabled by enabling the
 
 ### Matrices and vectors
 
-* Within this reference, `N` is the scalar type, `R`, `C` and `D` are type-level integers.
+* Within this reference, `T` is the scalar type, `R`, `C` and `D` are type-level integers.
 * Matrices are stored in column-major order.
 * Vectors are type aliases for matrices with only one column or one row.
 * Overloaded operators: `*`, `/`, `+`, `-` (binary and unary), and corresponding assignment operators.
@@ -37,20 +37,20 @@ Serialization with [serde](https://serde.rs) can be enabled by enabling the
 
 -----
 
-`Matrix<...>`                                       <span style={{float:'right'}}>Generic matrix type.</span><br/>
-`Matrix1<N> .. Matrix6<N>`, `MatrixN<N, D>`         <span style={{float:'right'}}>Statically-sized square matrix.</span><br/>
-`Matrix1x2<N> .. Matrix6x5<N>`, `MatrixMN<N, R, C>` <span style={{float:'right'}}>Statically-sized rectangular matrix.</span><br/>
-`DMatrix<N>`                                        <span style={{float:'right'}}>Dynamically-sized matrix.</span>
+`Matrix<...>`                                      <span style={{float:'right'}}>Generic matrix type.</span><br/>
+`Matrix1<T> .. Matrix6<T>`, `SMatrix<T, D, D>`     <span style={{float:'right'}}>Statically-sized square matrix.</span><br/>
+`Matrix1x2<T> .. Matrix6x5<T>`, `SMatrix<T, R, C>` <span style={{float:'right'}}>Statically-sized rectangular matrix.</span><br/>
+`DMatrix<T>`                                       <span style={{float:'right'}}>Dynamically-sized matrix.</span>
 
 <br/>
 
-`Vector1<N> .. Vector6<N>`, `VectorN<N, D>` <span style={{float:'right'}}>Statically-sized column vector.</span><br/>
-`DVector<N>`                                <span style={{float:'right'}}>Dynamically-sized column vector.</span>
+`Vector1<T> .. Vector6<T>`, `SVector<T, D>` <span style={{float:'right'}}>Statically-sized column vector.</span><br/>
+`DVector<T>`                                <span style={{float:'right'}}>Dynamically-sized column vector.</span>
 
 <br/>
 
-`RowVector1<N> .. RowVector6<N>`, `RowVectorN<N, D>` <span style={{float:'right'}}>Statically-sized row vector.</span><br/>
-`RowDVector<N>`                                      <span style={{float:'right'}}>Dynamically-sized row vector.</span>
+`RowVector1<T> .. RowVector6<T>`, `RowSVector<T, D>` <span style={{float:'right'}}>Statically-sized row vector.</span><br/>
+`RowDVector<T>`                                      <span style={{float:'right'}}>Dynamically-sized row vector.</span>
 
 <br/>
 
@@ -58,18 +58,18 @@ Serialization with [serde](https://serde.rs) can be enabled by enabling the
 
 <br/>
 
-`MatrixSlice1<N> .. MatrixSlice6<N>`, `MatrixSliceN<N, D>`         <span style={{float:'right'}}>Statically-sized square matrix slice.</span><br/>
-`MatrixSlice1x2<N> .. MatrixSlice6x5<N>`, `MatrixSliceMN<N, R, C>` <span style={{float:'right'}}>Statically-sized rectangular matrix slice.</span><br/>
-`MatrixSlice1xX<N> .. MatrixSlice6xX<N>`                           <span style={{float:'right'}}>Rectangular matrix slice with a dynamic number of columns.</span><br/>
-`MatrixSliceXx1<N> .. MatrixSliceXx6<N>`                           <span style={{float:'right'}}>Rectangular matrix slice with a dynamic number of rows.</span><br/>
-`DMatrixSlice<N>`                                                  <span style={{float:'right'}}>Dynamically-sized matrix slice.</span><br/>
+`MatrixSlice1<T> .. MatrixSlice6<T>`, `MatrixSlice<T, D, D>`     <span style={{float:'right'}}>Statically-sized square matrix slice.</span><br/>
+`MatrixSlice1x2<T> .. MatrixSlice6x5<T>`, `MatrixSlice<T, R, C>` <span style={{float:'right'}}>Statically-sized rectangular matrix slice.</span><br/>
+`MatrixSlice1xX<T> .. MatrixSlice6xX<T>`                         <span style={{float:'right'}}>Rectangular matrix slice with a dynamic number of columns.</span><br/>
+`MatrixSliceXx1<T> .. MatrixSliceXx6<T>`                         <span style={{float:'right'}}>Rectangular matrix slice with a dynamic number of rows.</span><br/>
+`DMatrixSlice<T>`                                                <span style={{float:'right'}}>Dynamically-sized matrix slice.</span><br/>
 
-Add `Mut` before the dimension numbers for mutable slice types, e.g., `MatrixSliceMut1x2<N>`, `DMatrixSliceMut<N>`.
+Add `Mut` before the dimension numbers for mutable slice types, e.g., `MatrixSliceMut1x2<T>`, `DMatrixSliceMut<T>`.
 
 <br/>
 
-`VectorSlice1<N> .. VectorSlice6<N>`, `VectorSliceN<N, D>` <span style={{float:'right'}}>Statically-sized column vector.</span><br/>
-`DVectorSlice<N>`                                          <span style={{float:'right'}}>Dynamically-sized column vector.</span><br/>
+`VectorSlice1<T> .. VectorSlice6<N>`, `VectorSlice<N, D>` <span style={{float:'right'}}>Statically-sized column vector slice.</span><br/>
+`DVectorSlice<N>`                                         <span style={{float:'right'}}>Dynamically-sized column vector slice.</span><br/>
 
 Add `Mut` before the dimension numbers for mutable slice types, e.g., `VectorSliceMut3<N>`, `DVectorSliceMut<N>`.
 

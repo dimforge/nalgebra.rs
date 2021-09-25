@@ -10,3 +10,7 @@ docs/rustdoc
 docs/rustdoc_glm
 site
 .idea
+node_modules
+build
+.DS_Store
+.docusaurus
