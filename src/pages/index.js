@@ -48,12 +48,30 @@ const features = [
     ),
 },
 {
+    title: <>nalgebra-sparse, for sparce matrices</>,
+    imageUrl: 'img/sparse_matrix.svg',
+    description: (
+        <>
+            Use the nalgebra-sparse crate to work with sparse matrices based on the
+            CSC and CSR formats.
+        </>
+    ),
+},
+{
     title: <>Wasm and Embedded programming</>,
     imageUrl: 'img/cpu.svg',
     description: (
         <>
             Use and compile nalgebra for browser applications or embedded targets
             that do not support the Rust standard library.
+        </>
+    ),
+},
+{
+    title: <></>,
+    description: (
+        <>
+            {/* This is just a placeholder to align the next item properly on the grid. */}
         </>
     ),
 },
