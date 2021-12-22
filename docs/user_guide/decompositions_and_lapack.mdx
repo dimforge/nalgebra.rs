@@ -95,7 +95,7 @@ Method             | Effect
 `.r()`             | Retrieves the upper-triangular matrix $R$ part of the decomposition.
 `.q_tr_mul(rhs)`   | Overwrites `rhs` with the result of `self.q() * rhs`. This is much more efficient than computing $Q$ explicitly. |
 `.is_invertible()` | Determines if the decomposed matrix is invertible. |
-`.try_inverse`     | Computes the inverse of the decomposed matrix.
+`.try_inverse()`   | Computes the inverse of the decomposed matrix.
 `.solve(b)`        | Solves the system $Ax = b$ where $A$ is represented by `self` and $x$ the unknown. |
 `.solve_mut(b)`    | Overwrites `b` with the solution of the system $Ax = b$ where `A` is represented by `self` and $x$ the unknown. |
 `.unpack()`        | Consumes `self` to return the two factors $(Q, R)$ of this decomposition. |
