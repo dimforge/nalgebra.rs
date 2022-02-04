@@ -48,7 +48,7 @@ const features = [
     ),
 },
 {
-    title: <>nalgebra-sparse, for sparce matrices</>,
+    title: <>nalgebra-sparse, for sparse matrices</>,
     imageUrl: 'img/sparse_matrix.svg',
     description: (
         <>
