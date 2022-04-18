@@ -12,8 +12,8 @@ const features = [
     imageUrl: 'img/lego.svg',
     description: (
       <>
-          The fundamental building blocks of linear algebra: heap or stack-allocated vectors and
-          matrices parametrized by their dimensions.
+        The fundamental building blocks of linear algebra: heap or stack-allocated vectors and
+        matrices parametrized by their dimensions.
       </>
     ),
   },
@@ -22,72 +22,72 @@ const features = [
     imageUrl: 'img/decomposition.svg',
     description: (
       <>
-          Compute matrix decompositions, and solutions to linear systems.
-          Benefit from efficient Rust implementations, or Lapack bindings.
+        Compute matrix decompositions, and solutions to linear systems.
+        Benefit from efficient Rust implementations, or Lapack bindings.
       </>
     ),
   },
-{
+  {
     title: <>Points and transformations</>,
     imageUrl: 'img/rotation.svg',
     description: (
-        <>
-            Strongly typed geometric entities like points, rotation
-            matrices, quaternions, isometries, similarities, projections, etc.
-        </>
+      <>
+        Strongly typed geometric entities like points, rotation
+        matrices, quaternions, isometries, similarities, projections, etc.
+      </>
     ),
-},
-{
+  },
+  {
     title: <>nalgebra-glm, for computer graphics</>,
     imageUrl: 'img/logo_glm.svg',
     description: (
-        <>
-            Use the nalgebra-glm crate for a simpler, straight-to-the-point, graphics programming-oriented API.
-            Inspired by the C++ GLM library.
-        </>
+      <>
+        Use the nalgebra-glm crate for a simpler, straight-to-the-point, graphics programming-oriented API.
+        Inspired by the C++ GLM library.
+      </>
     ),
-},
-{
+  },
+  {
     title: <>nalgebra-sparse, for sparse matrices</>,
     imageUrl: 'img/sparse_matrix.svg',
     description: (
-        <>
-            Use the nalgebra-sparse crate to work with sparse matrices based on the
-            CSC and CSR formats.
-        </>
+      <>
+        Use the nalgebra-sparse crate to work with sparse matrices based on the
+        CSC and CSR formats.
+      </>
     ),
-},
-{
+  },
+  {
     title: <>Wasm and Embedded programming</>,
     imageUrl: 'img/cpu.svg',
     description: (
-        <>
-            Use and compile nalgebra for browser applications or embedded targets
-            that do not support the Rust standard library.
-        </>
+      <>
+        Use and compile nalgebra for browser applications or embedded targets
+        that do not support the Rust standard library.
+      </>
     ),
-},
-{
+  },
+  {
     title: <></>,
     description: (
-        <>
-            {/* This is just a placeholder to align the next item properly on the grid. */}
-        </>
+      <>
+        {/* This is just a placeholder to align the next item properly on the grid. */}
+      </>
     ),
-},
-{
+  },
+  {
     title: <>Forever free and Open-Source</>,
     imageUrl: 'img/undraw_open_source.svg',
     description: (
-        <>
-            Built with a FOSS mindset, we aim to empower the Rust and web communities
-            with an efficient linear algebra library.
-        </>
+      <>
+        Built with a FOSS mindset, we aim to empower the Rust and web communities
+        with an efficient linear algebra library.
+      </>
     ),
-},
+  },
 ];
 
-function Feature({imageUrl, title, description}) {
+function Feature({ imageUrl, title, description }) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
     <div className={clsx('col col--4', styles.feature)}>
@@ -104,18 +104,18 @@ function Feature({imageUrl, title, description}) {
 
 function Home() {
   const context = useDocusaurusContext();
-  const {siteConfig = {}} = context;
+  const { siteConfig = {} } = context;
   return (
     <Layout
       title={`${siteConfig.title} linear-algebra library`}
       description="Fast and cross-platform linear-algebra library">
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
         <div className="container">
-            <div className="">
-                <img src="img/logo_nalgebra.svg" width="60%" alt="Project Logo" />
-            </div>
-            <p className="hero__subtitle">{siteConfig.tagline}</p>
-            <div className={styles.buttons}>
+          <div className="">
+            <img src="img/logo_nalgebra.svg" width="60%" alt="Project Logo" />
+          </div>
+          <p className="hero__subtitle">{siteConfig.tagline}</p>
+          <div className={styles.buttons}>
             <Link
               className={clsx(
                 'button button--outline button--lg --ifm-color-prim force-border', /*button--secondary*/
@@ -139,20 +139,39 @@ function Home() {
             </div>
           </section>
         )}
-          <section className={styles.sponsors}>
-              <div className="container" align={"center"}>
-                  <h1>Sponsors</h1>
-                  nalgebra is supported by the community and companies.
-                  <hr/>
-                  <h2>Platinum Sponsors</h2>
-                  <br/>
-                  <p>
-                      <a href="https://embark-studios.com">
-                          <img src="https://www.embark.dev/img/logo_black.png" width="400px"/>
-                      </a>
-                  </p>
-              </div>
-          </section>
+        <section className={styles.sponsors}>
+          <div className="container" align={"center"}>
+            <h1>Sponsors</h1>
+            nalgebra is supported by the community and companies.
+            <hr />
+            <h2>Iridium Sponsors</h2>
+            <br />
+            <p>
+              <a href="https://croquet.io">
+                <img src="/img/croquet_logo.png" width="400px" />
+              </a>
+            </p>
+            <hr />
+            <h3>Platinum Sponsors</h3>
+            <br />
+            <p>
+              <a href="https://embark-studios.com">
+                <img src="https://www.embark.dev/img/logo_black.png" width="400px" />
+              </a>
+            </p>
+            <hr />
+            <h4>Gold Sponsors</h4>
+            <br />
+            <p>
+              <a href="https://fragcolor.com/">
+                <img src="/img/fragcolor_logo2_color_black.svg" width="300px" />
+              </a>
+              <a href="https://resolutiongames.com/">
+                <img src="/img/logo_resolution_games.png" width="300px" />
+              </a>
+            </p>
+          </div>
+        </section>
       </main>
     </Layout>
   );
