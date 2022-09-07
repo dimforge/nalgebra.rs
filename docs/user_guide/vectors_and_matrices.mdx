@@ -502,29 +502,7 @@ compile-time.
 
 </div>
 
-## Matrix Macros 
- 
-#### dmatrix!
-Construct a dynamic matrix directly from data. The syntax is exactly the same as for `matrix!`, but instead of producing instances of `SMatrix`, it produces instances of `DMatrix`.
-
-At the moment it is not usable in `const fn` contexts.
-
-```rust
-use nalgebra::dmatrix;
-let a = dmatrix![ 1, 2, 3;                  
-                  4, 5, 6;                  
-                  7, 8, 9];
-```
-
-#### dvector! 
-Construct a dynamic column vector directly from data.
-
-The syntax is exactly the same as for `vector!`, but instead of producing instances of `SVector`, it produces instances of `DVector`. At the moment it is not usable in `const fn` contexts.
-
-```rust
-use nalgebra::dmatrix;
-let a = dvector![ 1, 2, 3];
-```
+## Matrix Macros  
 
 #### matrix!
 Construct a fixed-size matrix directly from data. 
@@ -556,6 +534,20 @@ let r = matrix![ theta.cos(), -theta.sin();
                  theta.sin(),  theta.cos() ];
 ```
 
+#### vector!  	
+
+Construct a fixed-size column vector directly from data. 
+
+Similarly to `matrix!`, this macro facilitates easy construction of fixed-size vectors. However, whereas the `matrix!` macro expects each row to be separated by a semi-colon, the syntax of this macro is instead similar to `vec!`, in that the elements of the vector are simply listed consecutively. 
+
+`vector!` is intended to be the most readable and performant way of constructing small, fixed-size vectors, and it is usable in `const fn` contexts.
+
+```rust 
+use nalgebra::vector;
+// Produces a Vector3<_> == SVector<_, 3>
+let v = vector![ 1, 2, 3 ];
+```
+
 #### point!
 Construct a fixed-size point directly from data. 
 
@@ -569,16 +561,24 @@ use nalgebra::point;
 let v = point![ 1, 2, 3 ];
 ```
 
-#### vector!  	
+#### dmatrix!
+Construct a dynamic matrix directly from data. The syntax is exactly the same as for `matrix!`, but instead of producing instances of `SMatrix`, it produces instances of `DMatrix`.
 
-Construct a fixed-size column vector directly from data. 
+At the moment it is not usable in `const fn` contexts.
 
-Similarly to `matrix!`, this macro facilitates easy construction of fixed-size vectors. However, whereas the `matrix!` macro expects each row to be separated by a semi-colon, the syntax of this macro is instead similar to `vec!`, in that the elements of the vector are simply listed consecutively. 
+```rust
+use nalgebra::dmatrix;
+let a = dmatrix![ 1, 2, 3;                  
+                  4, 5, 6;                  
+                  7, 8, 9];
+```
 
-`vector!` is intended to be the most readable and performant way of constructing small, fixed-size vectors, and it is usable in `const fn` contexts.
+#### dvector! 
+Construct a dynamic column vector directly from data.
 
-```rust 
-use nalgebra::vector;
-// Produces a Vector3<_> == SVector<_, 3>
-let v = vector![ 1, 2, 3 ];
+The syntax is exactly the same as for `vector!`, but instead of producing instances of `SVector`, it produces instances of `DVector`. At the moment it is not usable in `const fn` contexts.
+
+```rust
+use nalgebra::dmatrix;
+let a = dvector![ 1, 2, 3];
 ```
