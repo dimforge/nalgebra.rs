@@ -16,7 +16,7 @@
    id="svg5874"
    version="1.1"
    inkscape:version="0.91 r"
-   sodipodi:docname="dynamic_slices.svg">
+   sodipodi:docname="dynamic_views.svg">
   <defs
      id="defs5876" />
   <sodipodi:namedview
@@ -828,6 +828,6 @@
          sodipodi:role="line"
          x="698.70758"
          y="212.28444"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.1392498px;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#bd447f;fill-opacity:1">.slice((0, 1), (2, 2))</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.1392498px;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#bd447f;fill-opacity:1">.view((0, 1), (2, 2))</tspan></text>
   </g>
 </svg>

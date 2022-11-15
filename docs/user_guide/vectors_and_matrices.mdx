@@ -69,7 +69,7 @@ type Matrix2x3f = SMatrix<f32, 2, 3>;
 // two rows using 64-bit floats.
 //
 // The `OMatrix` alias is a matrix that owns its data (as opposed to
-// matrix slices which borrow their data from another matrix).
+// matrix view which borrow their data from another matrix).
 type Matrix2xXf64 = OMatrix<f64, U2, Dynamic>;
 
 // Dynamically sized and dynamically allocated matrix with
@@ -358,29 +358,29 @@ Because types like `Vector3` are column vectors, i.e., matrices with dimension 3
 `.set_column(...)`. For setting a row with `.set_row(...)` it is necessary to use a row vector. For example `RowVector4`
 is a 4D row vector, i.e., a matrix with dimensions 4×1.
 
-## Matrix slicing
-Matrix (and vector) slicing allows you to take a reference to a part of any
-matrix.  Slicing a matrix does not perform any copy, move, or allocation of the
+## Matrix views
+Matrix (and vector) views allow you to take a reference to a part of any
+matrix. A view does not perform any copy, move, or allocation of the
 original matrix data. Instead, it stores a pointer to that data together with
-some metadata about the slice size and strides. Note that taking a slice of a
-matrix slice is allowed!
+some metadata about the view size and strides. Note that taking a view of a
+matrix view is allowed!
 
-Because a matrix slice is also just special-case of the generic `Matrix<T, R, C, S>`
-type, it can usually be used just like a plain, non-slice matrix besides three exceptions:
+Because a matrix view is also just a special case of the generic `Matrix<T, R, C, S>`
+type, it can usually be used just like a plain, non-view matrix besides three exceptions:
 
-1. Methods that require a `&mut self` cannot be called on non-mutable slices.
-2. Matrix slices cannot be created out of thin air using the methods shown in
+1. Methods that require a `&mut self` cannot be called on non-mutable views.
+2. Matrix views cannot be created out of thin air using the methods shown in
    the [Matrix construction](#matrix_construction) section. One must already
-   have a instance of a matrix or another slice and use one of the dedicated
+   have an instance of a matrix or another view and use one of the dedicated
    methods shown thereafter.
-3. Assignment operators do not work on any kind of slice, i.e., one cannot
-   write `a *= b` if `a` even if `a` is a mutable matrix slice.
+3. Assignment operators do not work on any kind of view, i.e., one cannot
+   write `a *= b` even if `a` is a mutable matrix view.
 
-There are three variations of matrix slicing methods. Mutable slices follow the
+There are three variations of matrix view methods. Mutable views follow the
 same semantics, except that the method names end with `_mut`:
 
-* **"Fixed" slices:** slices with numbers of rows and columns known at
-  compile-time. The name of the corresponding slicing methods usually start
+* **"Fixed" views:** views with numbers of rows and columns known at
+  compile-time. The name of the corresponding view methods usually start
   with the prefix `fixed_`.
 
 Method                             | Description
@@ -389,69 +389,69 @@ Method                             | Description
 `.column(i)`                       | Reference to the i-th column of `self`. |
 `.fixed_rows::<D>(i)`              | Reference to the submatrix with `D` consecutive rows of `self`, starting with the i-th. `D` must be an integer. |
 `.fixed_columns::<D>(i)`           | Reference to the submatrix with `D` consecutive columns of `self`, starting with the i-th. `D` must be an integer. |
-`.fixed_slice::<R, C>(irow, icol)` | Reference to the submatrix with `R` consecutive rows and `C` consecutive columns, starting with the `irow`-th row and `icol`-th column. `R` and `C` are integers. |
+`.fixed_view::<R, C>(irow, icol)` | Reference to the submatrix with `R` consecutive rows and `C` consecutive columns, starting with the `irow`-th row and `icol`-th column. `R` and `C` are integers. |
 
 <div style={{textAlign: 'center'}}>
 
-![Fixed slices](/img/fixed_slices.svg)
+![Fixed views](/img/fixed_views.svg)
 
 </div>
 
 ----
 
 
-* **"Dynamic" slices:** slices with numbers of rows and columns known at
+* **"Dynamic" views:** views with numbers of rows and columns known at
   run-time only.
 
 Method                 | Description
 -----------------------|------------
 `.rows(i, size)`       | Reference to `size` rows of `self`, starting with the i-th. |
 `.columns(i, size)`    | Reference to `size` columns of `self`, starting with the i-th. |
-`.slice(start, shape)` | Reference to the submatrix with `shape.0` rows and `shape.1` columns, starting with the `start.0`-th row and `start.1`-th column. `start` and `shape` are both tuples. |
+`.view(start, shape)` | Reference to the submatrix with `shape.0` rows and `shape.1` columns, starting with the `start.0`-th row and `start.1`-th column. `start` and `shape` are both tuples. |
 
 <div style={{textAlign: 'center'}}>
 
-![Dynamic slices](/img/dynamic_slices.svg)
+![Dynamic views](/img/dynamic_views.svg)
 
 </div>
 
 ----
 
-* **Slices with strides:** fixed or dynamic slices that reference
+* **Views with strides:** fixed or dynamic views that reference
   non-consecutive (but regularly spaced) rows and columns of the original
-  matrix. The name of the corresponding slicing methods end with `_with_step`.
+  matrix. The name of the corresponding view methods end with `_with_step`.
 
 Method                                         | Description
 -----------------------------------------------|------------
 `.fixed_rows_with_step::<D>(i, step)`          | Reference to `D` non-consecutive rows of `self`, starting with the i-th. `step` rows of `self` are skipped between each referenced row. |
 `.fixed_columns_with_step::<D>(i, step)`       | Reference to `D` non-consecutive columns of `self`, starting with the i-th. `step` columns of `self` are skipped between each referenced column. |
-`.fixed_slice_with_steps::<R, C>(start, step)` | Reference to `R` and `C` non-consecutive rows and columns, starting with the component `(start.0, start.1)`. `step.0` (resp. `step.1`) rows (resp. columns) are skipped between each referenced row (resp. column). |
+`.fixed_view_with_steps::<R, C>(start, step)` | Reference to `R` and `C` non-consecutive rows and columns, starting with the component `(start.0, start.1)`. `step.0` (resp. `step.1`) rows (resp. columns) are skipped between each referenced row (resp. column). |
 `.rows_with_step(i, size, step)`               | Reference to `size` rows of `self`, starting with the i-th. `step` rows are skipped between each referenced row. |
 `.columns_with_step(i, size, step)`            | Reference to `size` columns of `self`, starting with the i-th. `step` columns are skipped between each reference column. |
-`.slice_with_steps(start, shape, steps)`       | Reference to `shape.0` rows and `shape.1` columns, starting with the `(start.0, start.1)`-th component. `step.0` (resp. `step.1`) rows (resp. columns) are skipped between each referenced row (resp. column). |
+`.view_with_steps(start, shape, steps)`       | Reference to `shape.0` rows and `shape.1` columns, starting with the `(start.0, start.1)`-th component. `step.0` (resp. `step.1`) rows (resp. columns) are skipped between each referenced row (resp. column). |
 
 <div style={{textAlign: 'center'}}>
 
-![Slices with strides](/img/slices_with_strides.svg)
+![Views with strides](/img/views_with_strides.svg)
 
 </div>
 
 Note that the method `.clone_owned()` may be used to create a plain matrix from
-a slice, i.e., actually copying the referenced components into a new matrix
+a view, i.e., actually copying the referenced components into a new matrix
 structure that owns its data. Whether or not the result of this cloning is a
-dynamically- or statically-sized matrix depends on the kind of slice.
-Fixed slices will yield a statically-sized matrix while dynamic slices yield
+dynamically- or statically-sized matrix depends on the kind of view.
+Fixed views will yield a statically-sized matrix while dynamic views yield
 a dynamically-sized matrix.
 
 <div style={{textAlign: 'center'}}>
 
-![slice.clone_owned()](/img/slice_clone_owned.svg)
+![view.clone_owned()](/img/view_clone_owned.svg)
 
 </div>
 
 ## Matrix resizing
 The number of rows or columns of a matrix can be modified by adding or removing
-some of them. Similarly to [slicing](#matrix-slicing), two variants exist:
+some of them. Similarly to [views](#matrix-views), two variants exist:
 
 
 * **"Fixed resizing"** where the number of rows or columns to be removed or

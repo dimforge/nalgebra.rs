@@ -14,7 +14,7 @@
    id="svg7890"
    version="1.1"
    inkscape:version="1.0.2 (394de47547, 2021-03-26)"
-   sodipodi:docname="slices_with_strides.svg">
+   sodipodi:docname="views_with_strides.svg">
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -1203,7 +1203,7 @@
          y="425.52298"
          x="240.7157"
          id="tspan10878"
-         sodipodi:role="line">.fixed_slice_with_step::&lt;2, 2&gt;((1, 0), (1, 2))</tspan></text>
+         sodipodi:role="line">.fixed_view_with_step::&lt;2, 2&gt;((1, 0), (1, 2))</tspan></text>
     <g
        id="g10880"
        transform="matrix(2.7800364,0,0,-2.7800364,-371.31236,2357.4277)"
@@ -1396,6 +1396,6 @@
          id="tspan10938"
          x="240.7157"
          y="449.76666"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.1392px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#bd447f;fill-opacity:1">.slice_with_step((1, 0), (2, 2), (1, 2))</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.1392px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#bd447f;fill-opacity:1">.view_with_step((1, 0), (2, 2), (1, 2))</tspan></text>
   </g>
 </svg>

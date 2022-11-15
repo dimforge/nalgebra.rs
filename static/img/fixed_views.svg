@@ -8,7 +8,7 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="fixed_slices.svg"
+   sodipodi:docname="fixed_views.svg"
    inkscape:version="1.0.2 (394de47547, 2021-03-26)"
    version="1.1"
    id="svg10435"
@@ -939,7 +939,7 @@
          y="488.71869"
          x="28.594997"
          sodipodi:role="line"
-         id="tspan5283">.fixed_slice::&lt;2, 2&gt;(0, 1)</tspan></text>
+         id="tspan5283">.fixed_view::&lt;2, 2&gt;(0, 1)</tspan></text>
     <g
        transform="translate(-342.25969,-17.142857)"
        id="g5381">
