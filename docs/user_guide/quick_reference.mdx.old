@@ -58,20 +58,20 @@ Serialization with [serde](https://serde.rs) can be enabled by enabling the
 
 <br/>
 
-`MatrixSlice1<T> .. MatrixSlice6<T>`, `MatrixSlice<T, D, D>`     <span style={{float:'right'}}>Statically-sized square matrix slice.</span><br/>
-`MatrixSlice1x2<T> .. MatrixSlice6x5<T>`, `MatrixSlice<T, R, C>` <span style={{float:'right'}}>Statically-sized rectangular matrix slice.</span><br/>
-`MatrixSlice1xX<T> .. MatrixSlice6xX<T>`                         <span style={{float:'right'}}>Rectangular matrix slice with a dynamic number of columns.</span><br/>
-`MatrixSliceXx1<T> .. MatrixSliceXx6<T>`                         <span style={{float:'right'}}>Rectangular matrix slice with a dynamic number of rows.</span><br/>
-`DMatrixSlice<T>`                                                <span style={{float:'right'}}>Dynamically-sized matrix slice.</span><br/>
+`MatrixView1<T> .. MatrixView6<T>`, `MatrixView<T, D, D>`     <span style={{float:'right'}}>Statically-sized square matrix view.</span><br/>
+`MatrixView1x2<T> .. MatrixView6x5<T>`, `MatrixView<T, R, C>` <span style={{float:'right'}}>Statically-sized rectangular matrix view.</span><br/>
+`MatrixView1xX<T> .. MatrixView6xX<T>`                         <span style={{float:'right'}}>Rectangular matrix view with a dynamic number of columns.</span><br/>
+`MatrixViewXx1<T> .. MatrixViewXx6<T>`                         <span style={{float:'right'}}>Rectangular matrix view with a dynamic number of rows.</span><br/>
+`DMatrixView<T>`                                                <span style={{float:'right'}}>Dynamically-sized matrix view.</span><br/>
 
-Add `Mut` before the dimension numbers for mutable slice types, e.g., `MatrixSliceMut1x2<T>`, `DMatrixSliceMut<T>`.
+Add `Mut` before the dimension numbers for mutable view types, e.g., `MatrixViewMut1x2<T>`, `DMatrixViewMut<T>`.
 
 <br/>
 
-`VectorSlice1<T> .. VectorSlice6<N>`, `VectorSlice<N, D>` <span style={{float:'right'}}>Statically-sized column vector slice.</span><br/>
-`DVectorSlice<N>`                                         <span style={{float:'right'}}>Dynamically-sized column vector slice.</span><br/>
+`VectorView1<T> .. VectorView6<N>`, `VectorView<N, D>` <span style={{float:'right'}}>Statically-sized column vector view.</span><br/>
+`DVectorView<N>`                                         <span style={{float:'right'}}>Dynamically-sized column vector view.</span><br/>
 
-Add `Mut` before the dimension numbers for mutable slice types, e.g., `VectorSliceMut3<N>`, `DVectorSliceMut<N>`.
+Add `Mut` before the dimension numbers for mutable view types, e.g., `VectorViewMut3<N>`, `DVectorViewMut<N>`.
 
 <br/>
 
@@ -129,7 +129,7 @@ compile-time of the matrix being created.
 `.shape()`   <span style={{float:'right'}}>The number of rows and columns.</span><br/>
 `.nrows()`   <span style={{float:'right'}}>The number of rows.</span><br/>
 `.ncols()`   <span style={{float:'right'}}>The number of columns.</span><br/>
-`.strides()` <span style={{float:'right'}}>Number of skipped original rows/columns in-between each row/column of a slice.</span><br/>
+`.strides()` <span style={{float:'right'}}>Number of skipped original rows/columns in-between each row/column of a view.</span><br/>
 
 <br/>
 
@@ -210,12 +210,12 @@ compile-time of the matrix being created.
 
 ---------
 
-### Slicing
-Slice are references to sub-matrices. They do not own their data and cannot be
+### Views
+Views are references to sub-matrices. They do not own their data and cannot be
 converted to arrays as their data buffer may not be contiguous in memory.
-Mutable slices are obtained using the same methods suffixed by `_mut`, e.g.,
+Mutable views are obtained using the same methods suffixed by `_mut`, e.g.,
 `.row_mut(i)`. They can also be constructed from a data array `&[N]` using the
-constructors of matrix slice type aliases, e.g., `MatrixSlice3::from_slice(data)`.
+constructors of matrix view type aliases, e.g., `MatrixView3::from_slice(data)`.
 
 
 `.row(i)`                             <span style={{float:'right'}}>A matrix row.</span><br />
@@ -234,10 +234,10 @@ constructors of matrix slice type aliases, e.g., `MatrixSlice3::from_slice(data)
 
 <br/>
 
-`.slice((i, j), (nrows, ncols))`                           <span style={{float:'right'}}>Consecutive rows and columns.</span><br />
-`.slice_with_steps((i, j), (nrows, ncols), (rstep, cstep)` <span style={{float:'right'}}>Non consecutive rows and columns.</span><br />
-`.fixed_slice::<R, C>((i, j))`                             <span style={{float:'right'}}>Compile-time number of consecutive rows and columns.</span><br />
-`.fixed_slice_with_steps::<R, C>((i, j), (rstep, cstep))`  <span style={{float:'right'}}>Compile-time number of non consecutive rows and columns.</span><br />
+`.view((i, j), (nrows, ncols))`                           <span style={{float:'right'}}>Consecutive rows and columns.</span><br />
+`.view_with_steps((i, j), (nrows, ncols), (rstep, cstep)` <span style={{float:'right'}}>Non-consecutive rows and columns.</span><br />
+`.fixed_view::<R, C>((i, j))`                             <span style={{float:'right'}}>Compile-time number of consecutive rows and columns.</span><br />
+`.fixed_view_with_steps::<R, C>((i, j), (rstep, cstep))`  <span style={{float:'right'}}>Compile-time number of non consecutive rows and columns.</span><br />
 
 -----
 
@@ -476,6 +476,6 @@ instead.
 ### Implementors
 `MatrixArray<...>`      <span style={{float:'right'}}>A stack-allocated owned data storage.</span><br/>
 `MatrixVec<...>`        <span style={{float:'right'}}>A heap-allocated owned data storage.</span><br/>
-`MatrixSlice<...>`      <span style={{float:'right'}}>A non-mutable reference to a piece of another data storage.</span><br/>
-`MatrixSliceMut<...>`   <span style={{float:'right'}}>A mutable reference to a piece of another data storage.</span><br/>
+`MatrixView<...>`      <span style={{float:'right'}}>A non-mutable reference to a piece of another data storage.</span><br/>
+`MatrixViewMut<...>`   <span style={{float:'right'}}>A mutable reference to a piece of another data storage.</span><br/>
 `DefaultAllocator<...>` <span style={{float:'right'}}>Allocates `MatrixArray` for statically sized matrices, and `MatrixVec` otherwise.</span><br/>

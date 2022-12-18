@@ -14,7 +14,7 @@
    id="svg7890"
    version="1.1"
    inkscape:version="1.0.2 (394de47547, 2021-03-26)"
-   sodipodi:docname="slice_clone_owned.svg">
+   sodipodi:docname="view_clone_owned.svg">
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -121,7 +121,7 @@
          y="431.23727"
          x="240.7157"
          id="tspan10878"
-         sodipodi:role="line">.fixed_slice_with_step::&lt;2, 2&gt;((1, 0), (1, 2))</tspan></text>
+         sodipodi:role="line">.fixed_view_with_step::&lt;2, 2&gt;((1, 0), (1, 2))</tspan></text>
     <g
        id="g4535"
        transform="translate(12.857143,1.4336285)">
@@ -568,7 +568,7 @@
          id="tspan10938"
          x="240.7157"
          y="453.35913"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.1392px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#bd447f;fill-opacity:1">.slice_with_step((1, 0), (2, 2), (1, 2))</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.1392px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#bd447f;fill-opacity:1">.view_with_step((1, 0), (2, 2), (1, 2))</tspan></text>
     <g
        id="g4511"
        transform="translate(28.220445,8.6158407)">
