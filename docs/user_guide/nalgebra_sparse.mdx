@@ -1,0 +1,88 @@
+---
+id: nalgebra_sparse
+title: The nalgebra-sparse crate
+sidebar_label: The nalgebra-sparse crate
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+The [**nalgebra-sparse**](https://crates.io/crates/nalgebra-sparse) crate extends nalgebra with sparse matrix
+formats and operations on sparse matrices.
+
+## Getting started
+To use **nalgebra-sparse** in your project, you should add it as a dependency to your `Crates.toml`:
+
+```toml
+[dependencies]
+nalgebra-sparse = "*" # Replace the * by the latest version number.
+```
+
+and link it with:
+
+```rust
+extern crate nalgebra_sparse;
+```
+
+# Features overview
+**nalgebra-sparse** supports:
+
+* [`CSR`](https://docs.rs/nalgebra-sparse/latest/nalgebra_sparse/csr/struct.CsrMatrix.html), [`CSC`](https://docs.rs/nalgebra-sparse/latest/nalgebra_sparse/csc/struct.CscMatrix.html), and [`COO`](https://docs.rs/nalgebra-sparse/latest/nalgebra_sparse/coo/struct.CooMatrix.html) formats, and conversions between them.
+* Common arithmetic operations are implemented. See the [`ops`](https://docs.rs/nalgebra-sparse/latest/nalgebra_sparse/ops/index.html) module.
+* Matrix market format support when the `io` feature is enabled.
+* Sparse-Sparse multiples, and Sparse-Dense multiples. Dense-Sparse is not yet supported.
+* [`matrixcompare`](https://crates.io/crates/matrixcompare) support for effortless (approximate) comparison of matrices in test code (requires the `compare` feature).
+ 
+## Background
+
+COO (Coordinate) is best used for constructing matrices, which can then be converted to CSR/CSC formats.
+CSR (Compressed Sparse Row) is best used when you need fast *row* access.
+CSC (Compressed Sparse Column) is best used when you need fast *column* access.
+
+## Construction Example
+
+```rust
+use nalgebra_sparse::{coo::CooMatrix, csr::CsrMatrix, csc::CscMatrix};
+
+// Initialize a matrix with all zeros (no explicitly stored entries).
+let mut coo = CooMatrix::new(4, 4);
+// Or initialize it with a set of triplets
+coo = CooMatrix::try_from_triplets(4, 4, vec![1, 2], vec![0, 1], vec![3.0, 4.0]).unwrap();
+
+// Push a few triplets
+coo.push(2, 0, 1.0);
+coo.push(0, 1, 2.0);
+
+// Convert to other matrix formats
+let csr = CsrMatrix::from(&coo);
+let csc = CscMatrix::from(&coo);
+```
+
+## Multiplication Example
+
+```rust
+use nalgebra_sparse::csr::CsrMatrix;                                                                                                           
+use nalgebra::{DMatrix, Matrix4x3};                                                                                                            
+                                                                                                                                               
+fn main() {                                                                                                                                    
+                                                                                                                                               
+    let row_offsets = vec![0, 3, 3, 5];                                                                                                        
+    let col_indices = vec![0, 1, 3, 1, 2];                                                                                                     
+    let values = vec![1.0, 2.0, 3.0, 4.0, 5.0];                                                                                                
+                                                                                                                                               
+    // 3x4 matrix in CSR format                                                                                                                
+    let lhs = CsrMatrix::try_from_csr_data(3, 4, row_offsets, col_indices, values).unwrap();                                                   
+                                                                                                                                               
+    // 4x3 matrix                                                                                                                              
+    let rhs = Matrix4x3::new(1.0, 2.0, 0.0,                                                                                                    
+                            0.0, 3.0, 0.0,                                                                                                     
+                            0.0, 4.0, 5.0,                                                                                                     
+                            3.0, 2.0, 1.0);                                                                                                    
+    // 3x3 matrix                                                                                                                              
+    let expected = DMatrix::from_row_slice(3,3, &[10.0, 14.0, 3.0, 0.0, 0.0, 0.0, 0.0, 32.0, 25.0]);                                           
+    let result = lhs * rhs;                                                                                                                    
+                                                                                                                                               
+    println!("{}", result);                                                                                                                    
+    assert_eq!(result, expected);                                                                                                              
+}
+```
