@@ -11,6 +11,7 @@ module.exports = {
         'user_guide/projections',
         'user_guide/cg_recipes',
         'user_guide/nalgebra_glm',
+        'user_guide/nalgebra_sparse',
         'user_guide/performance_tricks',
         'user_guide/wasm_and_embedded_targets',
         'user_guide/generic_programming',
