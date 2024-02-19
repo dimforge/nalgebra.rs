@@ -82,7 +82,7 @@ type Matrix1000x3f = SMatrix<f32, 1000, 3>;
 
 Internally, dynamically- and statically-sized matrices do not use the same data
 storage type. While the former is always allocated on the heap using a `Vec`,
-the latter prefers static allocation indirectly using a column-major 2D array
+the latter prefers static allocation indirectly using a row-major 2D array
 `[[T; R]; C]` for better performances.
 
 
