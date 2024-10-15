@@ -20,22 +20,22 @@ module.exports = {
       'API documentation': [
         {
           type: 'link',
-          label: 'nalgebra ↪',
+          label: 'nalgebra',
           href: 'https://docs.rs/nalgebra'
         },
         {
           type: 'link',
-          label: 'nalgebra-glm ↪',
+          label: 'nalgebra-glm',
           href: 'https://docs.rs/nalgebra-glm'
         },
         {
           type: 'link',
-          label: 'nalgebra-sparse ↪',
+          label: 'nalgebra-sparse',
           href: 'https://docs.rs/nalgebra-sparse'
         },
         {
           type: 'link',
-          label: 'nalgebra-lapack ↪',
+          label: 'nalgebra-lapack',
           href: 'https://docs.rs/nalgebra-lapack'
         },
       ]
