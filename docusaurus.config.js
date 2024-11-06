@@ -13,8 +13,8 @@ const config = {
   themeConfig: {
     algolia: {
       apiKey: '560f0aedaeb84c1e338d2bda850e21cd',
-      // TODO: appId
-      appId: "todo",
+      // TODO: appId ; this is rapier.rs, no no!
+      appId: "MDOZU7PTCV",
       indexName: 'nalgebra',
     },
     prism: {
