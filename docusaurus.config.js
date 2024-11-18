@@ -1,23 +1,24 @@
 const math = require('remark-math')
 const katex = require('rehype-katex')
 
-module.exports = {
+const config = {
   title: 'nalgebra',
   tagline: 'Linear algebra library for the Rust programming language.',
   url: 'https://nalgebra.org',
   baseUrl: '/',
-  onBrokenLinks: 'error', // 'throw',
+  onBrokenLinks: 'throw',
   favicon: 'img/favicon.png',
   organizationName: 'dimforge', // Usually your GitHub org/user name.
   projectName: 'nalgebra', // Usually your repo name.
   themeConfig: {
     algolia: {
-      apiKey: '560f0aedaeb84c1e338d2bda850e21cd',
+      apiKey: 'dc653f4be1e412b4a496c861accf765c',
+      appId: "HT2SL2LH5V",
       indexName: 'nalgebra',
     },
     prism: {
-        theme: require('prism-react-renderer/themes/github'),
-        additionalLanguages: ['toml', 'rust'],
+      theme: require('prism-react-renderer').themes.github,
+      additionalLanguages: ['toml', 'rust'],
     },
     // announcementBar: {
     //   id: 'supportus',
@@ -46,18 +47,18 @@ module.exports = {
         },
         {
           href: 'https://dimforge.com/blog',
-          label: 'Blog ↪',
+          label: 'Blog',
           position: 'left',
         },
         {
-          href: 'https://github.com/sponsors/dimforge',
-          label: 'Donate ♥',
+          value: '<a class="header-button-donate" href="https://github.com/sponsors/dimforge" target="_blank" rel="noopener noreferrer">Donate ♥</a>',
           position: 'right',
-          className: 'header-button-donate'
+          className: 'header-button-donate',
+          type: 'html',
         },
         {
           href: 'https://dimforge.com',
-          label: 'Dimforge ↪',
+          label: 'Dimforge',
           position: 'right',
         },
         {
@@ -85,7 +86,7 @@ module.exports = {
               to: 'docs/',
             },
             {
-              label: 'Blog ↪',
+              label: 'Blog',
               href: 'https://dimforge.com/blog',
             },
           ],
@@ -161,6 +162,8 @@ module.exports = {
     ],
   ],
   stylesheets: [
-      'https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css'
+    'https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css'
   ]
 };
+
+export default config;
