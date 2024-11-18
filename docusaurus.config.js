@@ -12,7 +12,7 @@ const config = {
   projectName: 'nalgebra', // Usually your repo name.
   themeConfig: {
     algolia: {
-      apiKey: '560f0aedaeb84c1e338d2bda850e21cd',
+      apiKey: 'dc653f4be1e412b4a496c861accf765c',
       appId: "HT2SL2LH5V",
       indexName: 'nalgebra',
     },
