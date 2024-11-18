@@ -53,7 +53,7 @@ Here are a few rules chosen arbitrarily for **nalgebra-glm**:
 * Functions operating on vector will often end with the `_vec` suffix, possibly followed by the dimension of vector, e.g., `glm::rotate_vec2`.
   Similar functions operating on scalar numbers only often end with the `_scalar` suffix.
 * Every function related to quaternions start with the `quat_` prefix, e.g., `glm::quat_dot(q1, q2)`.
-* All the conversion functions have unique names as described [below](#conversions).
+* All the conversion functions have unique names as described [below](./nalgebra_glm.mdx#conversions).
 
 ### Should I use nalgebra or nalgebra-glm?
 That depends on your tastes and your background. **nalgebra** is more powerful overall since it allows stronger typing,
@@ -72,7 +72,7 @@ Keep in mind that **nalgebra-glm** is just a different API for **nalgebra**! You
 and benefit from both their advantages: use **nalgebra-glm** when type-level restrictions are not important,
 and **nalgebra** itself when you need more expressive types, and more powerful linear algebra operations like
 matrix factorizations and slicing. Remember that all the **nalgebra-glm** types are just aliases to **nalgebra** types,
-and keep in mind it is possible to convert, e.g., an `Isometry3` to a `Mat4` and vice-versa (see the [conversions section](#conversions)).
+and keep in mind it is possible to convert, e.g., an `Isometry3` to a `Mat4` and vice-versa (see the [conversions section](nalgebra_glm.mdx#conversions)).
 :::
 
 # Features overview
@@ -81,7 +81,7 @@ on the rustdoc-generated [documentation](https://docs.rs/nalgebra-glm). Mathemat
 speaking, **nalgebra-glm** supports all the common transformations like rotations, translations, scaling, shearing,
 and projections but operating in homogeneous coordinates. This means all the 2D transformations are
 expressed as 3x3 matrices, and all the 3D transformations as 4x4 matrices. This is less computationally-efficient
-and memory-efficient than nalgebra's [transformation types](https://www.nalgebra.org/points_and_transformations/#transformations),
+and memory-efficient than nalgebra's [transformation types](./points_and_transformations/#transformations),
 but this has the benefit of being simpler to use.
 
 ### Vector and matrix construction

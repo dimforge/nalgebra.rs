@@ -9,18 +9,18 @@ import TabItem from '@theme/TabItem';
 
 Free functions are noted with a leading `::` while methods start with a dot.
 Most types are type aliases. Refer to the [API
-documentation](../rustdoc_nalgebra) for details about the functions arguments
+documentation](../rustdoc_nalgebra.mdx) for details about the functions arguments
 and type parameters.
 
-* [Matrices and vectors](#matrices-and-vectors)
-    * [Construction](#construction), [Common methods](#common-methods), [Slicing](#slicing), [Resizing](#resizing)
-    * [Blas operations](#blas-operations)
-    * [Decompositions](#decompositions)
-    * [Computer graphics](#computer-graphics)
-* [Geometry](#geometry)
-    * [Points and transformations](#geometry)
-    * [Projections](#projections)
-* [Data storages and allocators](#data-storage-and-allocators)
+* [Matrices and vectors](./quick_reference.mdx#matrices-and-vectors)
+    * [Construction](./quick_reference.mdx#construction), [Common methods](./quick_reference.mdx#common-methods), [Slicing](./quick_reference.mdx#slicing), [Resizing](./quick_reference.mdx#resizing)
+    * [Blas operations](./quick_reference.mdx#blas-operations)
+    * [Decompositions](./quick_reference.mdx#decompositions)
+    * [Computer graphics](./quick_reference.mdx#computer-graphics)
+* [Geometry](./quick_reference.mdx#geometry)
+    * [Points and transformations](./quick_reference.mdx#geometry)
+    * [Projections](./quick_reference.mdx#projections)
+* [Data storages and allocators](./quick_reference.mdx#data-storage-and-allocators)
 
 Serialization with [serde](https://serde.rs) can be enabled by enabling the
 **serde-serialize** feature.
@@ -316,7 +316,7 @@ Other operations that work like blas operations (i.e., in-place and real coeffic
 
 ### Decompositions
 All matrix decompositions are implemented in Rust and operate on Real matrices
-only. Refer to [Lapack integration](#nalgebra-lapack) for lapack-based decompositions.
+only. Refer to [Lapack integration](./quick_reference.mdx#nalgebra-lapack) for lapack-based decompositions.
 
 `.bidiagonalize()`            <span style={{float:'right'}}>Bidiagonalization of a general matrix.</span><br />
 `.symmetric_tridiagonalize()` <span style={{float:'right'}}>Tridiagonalization of a general matrix.</span><br />
@@ -342,7 +342,7 @@ iteration (set to infinite by default):
 ### Lapack integration
 Lapack-based decompositions are available using the **nalgebra-lapack** crate.
 Refer the the [dedicated
-section](decompositions_and_lapack/#lapack-integration) for details regarding
+section](./decompositions_and_lapack.mdx#lapack-integration) for details regarding
 its use and the choice of backend (OpenBLAS, netlib, or Accelerate) The
 following factorization are implemented:
 

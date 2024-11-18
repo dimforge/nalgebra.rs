@@ -216,7 +216,7 @@ assert_eq!(Vector6::c(), Vector6::new(0.0, 0.0, 0.0, 0.0, 0.0, 1.0));
 
 Adding a `_axis` suffix to those constructors, e.g., `::y_axis()`, will create
 a unit vector wrapped into the `Unit`
-[structure](performance_tricks/#the-unit-wrapper). For example,
+[structure](./performance_tricks.mdx#the-unit-wrapper). For example,
 `Vector2::y_axis()` will create a `Unit<Vector2<T>>` with its the second
 component of the underlying vector set to `1`.
 
@@ -370,7 +370,7 @@ type, it can usually be used just like a plain, non-view matrix besides three ex
 
 1. Methods that require a `&mut self` cannot be called on non-mutable views.
 2. Matrix views cannot be created out of thin air using the methods shown in
-   the [Matrix construction](#matrix_construction) section. One must already
+   the [Matrix construction](./vectors_and_matrices.mdx#matrix_construction) section. One must already
    have an instance of a matrix or another view and use one of the dedicated
    methods shown thereafter.
 3. Assignment operators do not work on any kind of view, i.e., one cannot
@@ -451,7 +451,7 @@ a dynamically-sized matrix.
 
 ## Matrix resizing
 The number of rows or columns of a matrix can be modified by adding or removing
-some of them. Similarly to [views](#matrix-views), two variants exist:
+some of them. Similarly to [views](./vectors_and_matrices.mdx#matrix-views), two variants exist:
 
 
 * **"Fixed resizing"** where the number of rows or columns to be removed or
