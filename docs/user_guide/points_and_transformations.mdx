@@ -47,10 +47,10 @@ point. In particular:
 * For convenience, you may compute the center of two points using the
   free function `na::center(a, b)`.
 * The [homogeneous
-  coordinates](#homogeneous-coordinates) of a point
+  coordinates](./points_and_transformations.mdx#homogeneous-coordinates) of a point
   usually end with a `1` while those of a vector always ends with a `0`.
 * Points are affected by the translational component of
-  [transformations](#transformations) while vectors are only rotated and
+  [transformations](./points_and_transformations.mdx#transformations) while vectors are only rotated and
   scaled:
 
 ```rust
@@ -73,7 +73,7 @@ Constructor                 | Effect
 ----------------------------|-----------
 `::origin()`                | Builds the point with all its coordinates set to zero.
 `::from_coordinates(v)`     | Builds the point with coordinates vector equal to `v`.
-`::from_homogeneous(v)`     | Builds a point with the given [homogeneous coordinates](#homogeneous-coordinates), i.e., with all its components divided by the last one (which is then removed).
+`::from_homogeneous(v)`     | Builds a point with the given [homogeneous coordinates](./points_and_transformations.mdx#homogeneous-coordinates), i.e., with all its components divided by the last one (which is then removed).
 `::new(x, y, ...)`          | Builds the point with the given coordinates. Works only for points with a dimension known at compile-time and smaller than 6. |
 `Bounded::max_value()`      | Builds the point with all its coordinates set to the maximal value of the underlying scalar type.
 `Bounded::min_value()`      | Builds the point with all its coordinates set to the minimal value of the underlying scalar type.
@@ -124,7 +124,7 @@ aliases for the parametrized type `TransformBase<..., Category>` where its last
 type parameter `Category` specifies which of the three variants is represented.
 Note that raw matrices can also be interpreted as general transformations that
 are not necessarily invertible. This may be useful in a [generic
-context](generic_programming/#transformation-genericity).
+context](./generic_programming.mdx#transformation-genericity).
 
 Transformations can be composed (by multiplication) even if they do not have
 the same type. The type of the composition result is the most general
@@ -325,7 +325,7 @@ computing a point's homogeneous coordinates will append a `1`:
 
 </div>
 
-This subtle difference reflects the fact emphasized at the [beginning](#points)
+This subtle difference reflects the fact emphasized at the [beginning](./points_and_transformations.mdx#points)
 of this chapter: transformations do not have the same effect on points as on
 vectors. The `0` appended to vectors will cancel the translational component of
 any transformation; the `1` appended to points will let it be translated

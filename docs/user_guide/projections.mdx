@@ -29,8 +29,8 @@ e.g., OpenGL, because the coordinate system of the screen is left-handed.
 
 
 Currently, **nalgebra** defines only the 3D [orthographic
-projection](#orthographic-projection) and the 3D [perspective
-projection](#perspective-projection), aka., `Orthographic3` and `Perspective3`.
+projection](./projections.mdx#orthographic-projection) and the 3D [perspective
+projection](./projections.mdx#perspective-projection), aka., `Orthographic3` and `Perspective3`.
 They both store a 4x4 homogeneous transformation matrix internally which can be
 retrieved by-value using the `.unwrap()` or `.to_homogeneous()` methods. A
 reference can be obtained with `.as_matrix()`. The projection matrix inverse
@@ -41,11 +41,11 @@ much more efficient than calling the inverse method on the raw homogeneous
 Projection types can transform points and vectors using the
 `.project_point(...)` and `.project_vector(...)` methods. The latter ignores
 the translational part of the projection because the input is a vector
-(remember the [semantic difference](points_and_transformations/#points)
+(remember the [semantic difference](./points_and_transformations.mdx#points)
 between points and vectors). Because projections following our convention are
 invertible, it is possible to apply the inverse projection to points using
 `.unproject_point(...)`. This is typically used for screen-space coordinates to
-view-space coordinates [conversion](cg_recipes/#screen-space-to-view-space).
+view-space coordinates [conversion](./cg_recipes.mdx#screen-space-to-view-space).
 
 ## Orthographic projection
 An orthographic projection `Orthographic3` maps a rectangular axis-aligned
@@ -110,7 +110,7 @@ to the viewer.
 The viewer of the perspective projection is always assumed to be located at the
 origin and to look toward the $-z$ axis. Changing the viewer position and
 orientation requires an additional isometry (in a separate data structure) to
-form a [view-projection](cg_recipes/#build-a-mvp-matrix) transformation. A
+form a [view-projection](./cg_recipes.mdx#build-a-mvp-matrix) transformation. A
 perspective projection is characterized by:
 
 Property | Meaning

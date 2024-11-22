@@ -9,12 +9,12 @@ import TabItem from '@theme/TabItem';
 
 Matrix decomposition is a family of methods that aim to represent a matrix as
 the product of several matrices. Those factors can either allow more efficient
-operations like inversion or [linear system resolution](#linear-system-resolution), and might provide some
+operations like inversion or [linear system resolution](./decompositions_and_lapack.mdx#linear-system-resolution), and might provide some
 insight regarding intrinsic properties of some data to be analysed (e.g. by
 observing singular values, eigenvectors, etc.) Some decompositions are
 implemented in pure Rust or available as bindings to a Fortran Lapack
 implementation (refer to the section on
-[nalgebra-lapack](#lapack-integration)). In this section, we present
+[nalgebra-lapack](./decompositions_and_lapack.mdx#lapack-integration)). In this section, we present
 decompositions implemented in pure Rust for **real or complex** matrices:
 
 Decomposition            | Factors                   | Rust methods

@@ -11,14 +11,14 @@ import TabItem from '@theme/TabItem';
 This section describes how to perform some operations common for Computer
 Graphics (CG). Note that while the 3D Computer Graphics community is used to
 work almost exclusively with 4×4 matrices, **nalgebra** defines a wider number
-of [transformation types](points_and_transformations/#transformations) that
+of [transformation types](./points_and_transformations.mdx#transformations) that
 the user is strongly encouraged to use instead.
 
 :::info
 You are encouraged to look at the [**nalgebra-glm**](https://crates.io/crates/nalgebra-glm) crate as well. This provides
 a simpler interface for manipulating vectors and matrices using homogeneous
 coordinates. It is inspired from the popular C++ [GLM](https://glm.g-truc.net/) library. You will find
-more details on a [dedicated page](nalgebra_glm.mdx) of this user guide.
+more details on a [dedicated page](./nalgebra_glm.mdx) of this user guide.
 :::
 
 ## Transformations using Matrix4
@@ -30,7 +30,7 @@ so-called *homogeneous coordinates*, they do not have provide strong guarantees
 regarding their properties. For example, a method that takes a `Matrix4` in
 argument cannot have the guarantee that it is a pure rotation, an
 isometry, or even an arbitrary but invertible transformation! That's why all
-the [transformation types](points_and_transformations/#transformations) are
+the [transformation types](./points_and_transformations.mdx#transformations) are
 recommended instead of raw matrices.
 
 However, it is sometimes convenient to work directly with 4x4 matrices.
@@ -51,8 +51,8 @@ Method                     | Description
 `::new_rotation_wrt_point(axang, pt)` | A composition of rotation and translation such that the point `pt` is left invariant. The rotational part is specified as a rotation axis multiplied by the rotation angle. |
 `::from_scaled_axis(axang)`   | A pure rotation matrix specified by a rotation axis multiplied by the rotation angle. |
 `::from_euler_angle(r, p, y)` | A pure rotation matrix from Euler angles applied in order: roll - pitch - yaw. |
-`::new_orthographic(...)`     | An [orthographic](projections/#orthographic-projection) projection matrix.  |
-`::new_perspective(...)`      | A [perspective](projections/#perspective-projection) projection matrix.     |
+`::new_orthographic(...)`     | An [orthographic](./projections.mdx#orthographic-projection) projection matrix.  |
+`::new_perspective(...)`      | A [perspective](./projections.mdx#perspective-projection) projection matrix.     |
 `::new_observer_frame(eye, target, up)` | A composition of rotation and translation corresponding to the local frame of a viewer standing at the point `eye` and looking toward `target`. The `up` direction is the vertical direction. |
 `::look_at_rh(...)`           | A right-handed look-at view matrix. |
 `::look_at_lh(...)`           | A left-handed look-at view matrix.  |
@@ -163,7 +163,7 @@ of three transformations:
    different for every camera.
 3. The <u>projection</u> that translates and stretches the displayable part of
    the scene so that it fits into the double unit cube (aka. Normalized Device
-   Coordinates). We already discussed it [there](projections). There is
+   Coordinates). We already discussed it [there](./projections.mdx). There is
    usually only one projection per display.
 
 Note that it is also common to construct only a View-Projection matrix and let
@@ -174,7 +174,7 @@ completeness, our example will deal with the model transformation as well.
 The model and view transformations are direct isometries. Thus, we can simply
 use the dedicated `Isometry3` type. The projection is not an isometry and
 requires the use of a raw `Matrix4` or a dedicated
-[projection](projections) type like `Perspective3`.
+[projection](./projections.mdx) type like `Perspective3`.
 
 ```rust
 // Our object is translated along the x axis.
@@ -213,7 +213,7 @@ let model_view_projection = projection.unwrap() * (view * model).to_homogeneous(
 
 ## Screen-space to view-space
 It is the projection matrix task to stretch and translate the displayable 3D
-objects into the [double unit cube](projections), i.e., it transforms points
+objects into the [double unit cube](./projections.mdx), i.e., it transforms points
 from view-coordinates (the camera local coordinate system) to Normalized Device
 Coordinates (aka. clip-space).  Then, the screen itself will contain everything
 that can be seen from the cube's face located on the plane $z = -1$.
@@ -278,7 +278,7 @@ specific way in-memory. Using the `.as_slice()` method of raw matrices and
 vectors, one can retrieve a reference to a contiguous array containing all
 components in column-major order. Note that this method will not exist for
 matrices that do not own their data, e.g. [matrix
-slices](vectors_and_matrices/#matrix-slicing).
+slices](./vectors_and_matrices.mdx#matrix-slicing).
 
 ```rust
 let v = Vector3::new(1.0f32, 0.0, 1.0);
@@ -303,7 +303,7 @@ be converted into arrays directly so you will have to convert them to raw
 matrices first. The underlying 3×3 or 4×4 matrix of `RotationMatrix3` and
 `RotationMatrix2` can be directly retrieved by the `.matrix()` method. All the
 other transformations must first be converted into their [homogeneous
-coordinates](points_and_transformations/#homogeneous-coordinates) representation
+coordinates](./points_and_transformations.mdx#homogeneous-coordinates) representation
 using the method `.to_homogeneous()`. This will return a `Matrix2` or a
 `Matrix3` that may then be reinterpreted as arrays.
 
