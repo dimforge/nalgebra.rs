@@ -375,7 +375,7 @@ type, it can usually be used just like a plain, non-view matrix besides three ex
    methods shown thereafter.
 3. Assignment operators do not work on any kind of view, i.e., one cannot
    write `view_a = b` even if `view_a` is a mutable view matrix and `b` is a non-view matrix.
-   Furthermore it is not allowed changing the content of a matrix targeted by `view_a` writing `view_a = view_b`. 
+   Furthermore it is not allowed to change the content of a matrix targeted by `view_a` writing `view_a = view_b`. 
 
 There are three variations of matrix view methods. Mutable views follow the
 same semantics, except that the method names end with `_mut`:
