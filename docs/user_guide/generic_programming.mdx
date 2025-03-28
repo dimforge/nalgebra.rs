@@ -79,7 +79,7 @@ fn add_vectors<D>(
 ) -> OVector<f64, D>
 where
     D: Dim,
-    DefaultAllocator: nalgebra::base::allocator::Allocator<f64, D>,
+    DefaultAllocator: nalgebra::base::allocator::Allocator<D>,
 {
     x + y
 }
@@ -171,7 +171,7 @@ use nalgebra::{DefaultAllocator, Dim, OVector, dvector, vector};
 struct Equations<'a, D>
 where
     D: Dim,
-    DefaultAllocator: nalgebra::base::allocator::Allocator<f64, D>,
+    DefaultAllocator: nalgebra::base::allocator::Allocator<D>,
 {
     pub equations_left_side: &'a OVector<f64, D>,
     pub equations_right_side: &'a OVector<f64, D>,
@@ -180,7 +180,7 @@ where
 impl<'a, D> Equations<'a, D>
 where
     D: Dim,
-    DefaultAllocator: nalgebra::base::allocator::Allocator<f64, D>,
+    DefaultAllocator: nalgebra::base::allocator::Allocator<D>,
 {
     fn difference(&self) -> OVector<f64, D> {
         self.equations_left_side - self.equations_right_side
@@ -228,7 +228,7 @@ use nalgebra::{
 pub trait Trait<D>
 where
     D: Dim,
-    DefaultAllocator: nalgebra::base::allocator::Allocator<f64, D>,
+    DefaultAllocator: nalgebra::base::allocator::Allocator<D>,
 {
     fn copy_elements(&self) -> OVector<f64, D>;
 }
@@ -301,7 +301,7 @@ use nalgebra::{DefaultAllocator, Dim, OMatrix, dmatrix, matrix};
 fn print_matrix<D>(input: &OMatrix<f64, D, D>)
 where
     D: Dim,
-    DefaultAllocator: base::allocator::Allocator<f64, D, D>,
+    DefaultAllocator: base::allocator::Allocator<D, D>,
 {
     for elt in input {
         println!("{}", elt);
@@ -327,7 +327,7 @@ fn print_matrix<R, C>(input: &OMatrix<f64, R, C>)
 where
     R: Dim,
     C: Dim,
-    DefaultAllocator: nalgebra::base::allocator::Allocator<f64, R, C>,
+    DefaultAllocator: nalgebra::base::allocator::Allocator<R, C>,
 {
     for elt in input {
         println!("{}", elt);
@@ -355,8 +355,8 @@ use nalgebra::{DefaultAllocator, Dim, OMatrix, OVector, matrix, vector};
 fn print_elements<D>(vector: &OVector<f64, D>, matrix: &OMatrix<f64, D, D>)
 where
     D: Dim,
-    DefaultAllocator: nalgebra::base::allocator::Allocator<f64, D>,
-    DefaultAllocator: nalgebra::base::allocator::Allocator<f64, D, D>,
+    DefaultAllocator: nalgebra::base::allocator::Allocator<D>,
+    DefaultAllocator: nalgebra::base::allocator::Allocator<D, D>,
 {
     for elt in vector {
         println!("{}", elt);
