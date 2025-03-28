@@ -60,40 +60,46 @@ fn main() {
 }
 ```
 
-## Allocation type genericity
+## Genericity wrt. dimension and allocation type
 
-This allow you to write code that can operate on either the static or dynamic types
-provided by nalgebra.
+This allows you to write generic code that can operate on both static or dynamic types
+provided by nalgebra. As a generale rule, any vector or matrix with
+numbers of rows and columns specified with compile-time integers `const D: usize`
+or `Const<const D: usize>` will be stack-allocated. Any matrix of vector with
+a number of rows and/or number of columns set to `Dynamic` will be heap-allocated.
 
 ### Functions
 
 ```rust
+use nalgebra::{DefaultAllocator, Dim, OVector, dvector, vector};
+
 fn add_vectors<D>(
-    x: &nalgebra::OVector<f64, D>,
-    y: &nalgebra::OVector<f64, D>,
-) -> nalgebra::OVector<f64, D>
+    x: &OVector<f64, D>,
+    y: &OVector<f64, D>,
+) -> OVector<f64, D>
 where
-    D: nalgebra::Dim,
-    nalgebra::DefaultAllocator: nalgebra::base::allocator::Allocator<f64, D>,
+    D: Dim,
+    DefaultAllocator: nalgebra::base::allocator::Allocator<f64, D>,
 {
     x + y
 }
 
 fn main() {
-    let static_vector1 = nalgebra::vector![1.0, 2.0];
-    let static_vector2 = nalgebra::vector![2.0, 3.0];
+    let static_vector1 = vector![1.0, 2.0];
+    let static_vector2 = vector![2.0, 3.0];
 
-    let dynamic_vector1 = nalgebra::dvector![1.0, 2.0];
-    let dynamic_vector2 = nalgebra::dvector![2.0, 3.0];
+    let dynamic_vector1 = dvector![1.0, 2.0];
+    let dynamic_vector2 = dvector![2.0, 3.0];
 
-    assert_eq!(add_vectors(&static_vector1, &static_vector2), nalgebra::vector![3.0, 5.0]);
-    assert_eq!(add_vectors(&dynamic_vector1, &dynamic_vector2), nalgebra::dvector![3.0, 5.0]);
+    assert_eq!(add_vectors(&static_vector1, &static_vector2), vector![3.0, 5.0]);
+    assert_eq!(add_vectors(&dynamic_vector1, &dynamic_vector2), dvector![3.0, 5.0]);
 }
 ```
 
-The `OVector` type is a placeholder for either static or dynamic type,
-with the first argument matching the second argument.
-If you add the following line in the previous main, it will fail to compile:
+The `OVector` type is a placeholder for either static or dynamic type.
+In this example both arguments of `add_vectors` require the same dimension type. So
+if you add the following line in the previous main, it will fail to compile because one
+dimension is a compile-time constant, whereas the other one is `Dynamic`:
 
 ```rust
 add_vectors(&dynamic_vector1, &static_vector1);
@@ -153,51 +159,53 @@ thread 'main' panicked at 'assertion failed: `(left == right)`
 ```
 
 You can either implement a check within your code to avoid the panic and return an error,
-or you leave it the the function caller responsability to pass the correct arguments.
+or you can leave the responsibility to pass the correct arguments to the function caller.
 
 ### Struct
 
-It is possible to use the same tricks in order to declare structs:
+It is possible to use the same patterns in order to declare structs:
 
 ```rust
+use nalgebra::{DefaultAllocator, Dim, OVector, dvector, vector};
+
 struct Equations<'a, D>
 where
-    D: nalgebra::Dim,
-    nalgebra::DefaultAllocator: nalgebra::base::allocator::Allocator<f64, D>,
+    D: Dim,
+    DefaultAllocator: nalgebra::base::allocator::Allocator<f64, D>,
 {
-    pub equations_left_side: &'a nalgebra::OVector<f64, D>,
-    pub equations_right_side: &'a nalgebra::OVector<f64, D>,
+    pub equations_left_side: &'a OVector<f64, D>,
+    pub equations_right_side: &'a OVector<f64, D>,
 }
 
 impl<'a, D> Equations<'a, D>
 where
-    D: nalgebra::Dim,
-    nalgebra::DefaultAllocator: nalgebra::base::allocator::Allocator<f64, D>,
+    D: Dim,
+    DefaultAllocator: nalgebra::base::allocator::Allocator<f64, D>,
 {
-    fn difference(&self) -> nalgebra::OVector<f64, D> {
+    fn difference(&self) -> OVector<f64, D> {
         self.equations_left_side - self.equations_right_side
     }
 }
 fn main() {
-    let static_vector1 = nalgebra::vector![1.0, 2.0];
-    let static_vector2 = nalgebra::vector![2.0, 3.0];
+    let static_vector1 = vector![1.0, 2.0];
+    let static_vector2 = vector![2.0, 3.0];
 
-    let dynamic_vector1 = nalgebra::dvector![1.0, 2.0];
-    let dynamic_vector2 = nalgebra::dvector![2.0, 3.0];
+    let dynamic_vector1 = dvector![1.0, 2.0];
+    let dynamic_vector2 = dvector![2.0, 3.0];
 
     let static_equations = Equations {
         equations_left_side: &static_vector1,
         equations_right_side: &static_vector2,
     };
 
-    assert_eq!(static_equations.difference(), nalgebra::vector![-1.0, -1.0]);
+    assert_eq!(static_equations.difference(), vector![-1.0, -1.0]);
 
     let dynamic_equations = Equations {
         equations_left_side: &dynamic_vector1,
         equations_right_side: &dynamic_vector2,
     };
 
-    assert_eq!(dynamic_equations.difference(), nalgebra::dvector![-1.0, -1.0]);
+    assert_eq!(dynamic_equations.difference(), dvector![-1.0, -1.0]);
 }
 ```
 
@@ -205,58 +213,63 @@ fn main() {
 
 It is possible to use the same pattern for trait.
 
-However, when implementing the given trait for specific cases,
-one has to indicate the type for which it is implemented, either:
+When implementing the given trait for specific cases,
+one can indicate the type for which it is implemented, either:
 - `nalgebra::Dynamic`
 - `nalgebra::Const`
 
 
 ```rust
+use nalgebra::{
+    Const, DefaultAllocator, Dim, DVector, Dynamic,
+    OVector, SVector, dvector, vector
+};
+
 pub trait Trait<D>
 where
-    D: nalgebra::Dim,
-    nalgebra::DefaultAllocator: nalgebra::base::allocator::Allocator<f64, D>,
+    D: Dim,
+    DefaultAllocator: nalgebra::base::allocator::Allocator<f64, D>,
 {
-    fn copy_elements(&self) -> nalgebra::OVector<f64, D>;
+    fn copy_elements(&self) -> OVector<f64, D>;
 }
 
 pub struct DVectorWrapper<'a> {
-    vector: &'a nalgebra::DVector<f64>,
+    vector: &'a DVector<f64>,
 }
 
 impl<'a> DVectorWrapper<'a> {
-    pub fn new(vector: &'a nalgebra::DVector<f64>) -> Self {
+    pub fn new(vector: &'a DVector<f64>) -> Self {
         DVectorWrapper { vector }
     }
 }
 
-impl<'a> Trait<nalgebra::Dynamic> for DVectorWrapper<'a> {
-    fn copy_elements(&self) -> nalgebra::DVector<f64> {
-        let output: nalgebra::DVector<f64> = self.vector.clone();
+impl<'a> Trait<Dynamic> for DVectorWrapper<'a> {
+    fn copy_elements(&self) -> DVector<f64> {
+        let output: DVector<f64> = self.vector.clone();
         output
     }
 }
 
 pub struct SVectorWrapper<'a> {
-    vector: &'a nalgebra::SVector<f64, 2>,
+    vector: &'a SVector<f64, 2>,
 }
 
 impl<'a> SVectorWrapper<'a> {
-    pub fn new(vector: &'a nalgebra::SVector<f64, 2>) -> Self {
+    pub fn new(vector: &'a SVector<f64, 2>) -> Self {
         SVectorWrapper { vector }
     }
 }
 
-impl<'a> Trait<nalgebra::Const<2>> for SVectorWrapper<'a> {
-    fn copy_elements(&self) -> nalgebra::SVector<f64, 2> {
-        let output: nalgebra::SVector<f64, 2> = self.vector.clone();
+impl<'a> Trait<Const<2>> for SVectorWrapper<'a> {
+    fn copy_elements(&self) -> SVector<f64, 2> {
+        let output: SVector<f64, 2> = self.vector.clone();
         output
     }
 }
 
 fn main() {
-    let static_vector = nalgebra::vector![1.0, 2.0];
-    let dynamic_vector = nalgebra::dvector![1.0, 2.0];
+    let static_vector = vector![1.0, 2.0];
+    let dynamic_vector = dvector![1.0, 2.0];
 
     let dynamic_wrapper = DVectorWrapper::new(&dynamic_vector);
     let static_wrapper = SVectorWrapper::new(&static_vector);
@@ -272,16 +285,23 @@ a `DVectorWrapper` with a static vector or a `SVectorWrapper` with a dynamic vec
 
 ### Matrix
 
-Matrices works the same as vectors.
-You have the types `DMatrix`, `SMatrix` and `OMatrix`.
+Matrices works the same as vectors. You have the types:
+- `DMatrix`: dynamically-sized matrices (heap-allocated).
+- `SMatrix`: matrices with sizes known at compile-time (stack-allocated).
+- `OMatrix`: generic matrix that may be dynamically-sized or compile-time sized (heap-allocated if any of its
+             dimensions is `Dynamic`; stack-allocated otherwise).
 
-For square matrices, you will do the following:
+For square matrices, you can specify the same dimension type for the number of rows and columns.
+Note that squareness is only enforced at compile-time if both dimension types are compile-time
+integers `Const`.
 
 ```rust
-fn print_matrix<D>(input: &nalgebra::OMatrix<f64, D, D>)
+use nalgebra::{DefaultAllocator, Dim, OMatrix, dmatrix, matrix};
+
+fn print_matrix<D>(input: &OMatrix<f64, D, D>)
 where
-    D: nalgebra::Dim,
-    nalgebra::DefaultAllocator: nalgebra::base::allocator::Allocator<f64, D, D>,
+    D: Dim,
+    DefaultAllocator: base::allocator::Allocator<f64, D, D>,
 {
     for elt in input {
         println!("{}", elt);
@@ -289,22 +309,25 @@ where
 }
 
 fn main() {
-    let static_matrix = nalgebra::matrix![1.0, 2.0; 3.0, 4.0];
-    let dynamic_matrix = nalgebra::dmatrix![5.0, 6.0; 7.0, 8.0];
+    let static_matrix = matrix![1.0, 2.0; 3.0, 4.0];
+    let dynamic_matrix = dmatrix![5.0, 6.0; 7.0, 8.0];
 
     print_matrix(&static_matrix);
     print_matrix(&dynamic_matrix);
 }
 ```
 
-For non-square matrices, you will do:
+For non-square matrices, different type parameters can be passed for the number of rows `R` and the
+number of columns `C`:
 
 ```rust
-fn print_matrix<D, E>(input: &nalgebra::OMatrix<f64, D, E>)
+use nalgebra::{DefaultAllocator, Dim, OMatrix, dmatrix, matrix};
+
+fn print_matrix<R, C>(input: &OMatrix<f64, R, C>)
 where
-    D: nalgebra::Dim,
-    E: nalgebra::Dim,
-    nalgebra::DefaultAllocator: nalgebra::base::allocator::Allocator<f64, D, E>,
+    R: Dim,
+    C: Dim,
+    DefaultAllocator: nalgebra::base::allocator::Allocator<f64, R, C>,
 {
     for elt in input {
         println!("{}", elt);
@@ -312,8 +335,8 @@ where
 }
 
 fn main() {
-    let static_matrix = nalgebra::matrix![1.0, 2.0, 3.0; 4.0, 5.0, 6.0];
-    let dynamic_matrix = nalgebra::dmatrix![5.0, 6.0, 7.0; 8.0, 9.0, 10.0];
+    let static_matrix = matrix![1.0, 2.0, 3.0; 4.0, 5.0, 6.0];
+    let dynamic_matrix = dmatrix![5.0, 6.0, 7.0; 8.0, 9.0, 10.0];
 
     print_matrix(&static_matrix);
     print_matrix(&dynamic_matrix);
@@ -327,11 +350,13 @@ You can also mix vector and matrix while constraining dimensions
 The following example show a vector and a square matrix with the same dimensions:
 
 ```rust
-fn print_elements<D>(vector: &nalgebra::OVector<f64, D>, matrix: &nalgebra::OMatrix<f64, D, D>)
+use nalgebra::{DefaultAllocator, Dim, OMatrix, OVector, matrix, vector};
+
+fn print_elements<D>(vector: &OVector<f64, D>, matrix: &OMatrix<f64, D, D>)
 where
-    D: nalgebra::Dim,
-    nalgebra::DefaultAllocator: nalgebra::base::allocator::Allocator<f64, D>,
-    nalgebra::DefaultAllocator: nalgebra::base::allocator::Allocator<f64, D, D>,
+    D: Dim,
+    DefaultAllocator: nalgebra::base::allocator::Allocator<f64, D>,
+    DefaultAllocator: nalgebra::base::allocator::Allocator<f64, D, D>,
 {
     for elt in vector {
         println!("{}", elt);
@@ -343,8 +368,8 @@ where
 }
 
 fn main() {
-    let static_matrix = nalgebra::matrix![1.0, 2.0; 4.0, 5.0];
-    let static_vector = nalgebra::vector![1.0, 2.0];
+    let static_matrix = matrix![1.0, 2.0; 4.0, 5.0];
+    let static_vector = vector![1.0, 2.0];
 
     print_elements(&static_vector, &static_matrix);
 }
