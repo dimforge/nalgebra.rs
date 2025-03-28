@@ -68,6 +68,14 @@ numbers of rows and columns specified with compile-time integers `const D: usize
 or `Const<const D: usize>` will be stack-allocated. Any matrix of vector with
 a number of rows and/or number of columns set to `Dynamic` will be heap-allocated.
 
+:::info
+Functions, traits, or structs, involving vectors or matrices with generic dimensions
+will almost always require trait bounds like, e.g., `DefaultAllocator: Allocator<R, C> + Allocator<D>`
+to let the compiler automatically deduce the allocation strategy from the matrix dimensions.
+If you are seeing errors about missing `DefaultAllocator` trait bounds, be sure that there is an
+`Allocator<R, C>` bound for each matrix/vector dimensions in your generic code.
+:::
+
 ### Functions
 
 ```rust
@@ -355,8 +363,8 @@ use nalgebra::{DefaultAllocator, Dim, OMatrix, OVector, matrix, vector};
 fn print_elements<D>(vector: &OVector<f64, D>, matrix: &OMatrix<f64, D, D>)
 where
     D: Dim,
-    DefaultAllocator: nalgebra::base::allocator::Allocator<D>,
-    DefaultAllocator: nalgebra::base::allocator::Allocator<D, D>,
+    DefaultAllocator: nalgebra::base::allocator::Allocator<D> +
+                      nalgebra::base::allocator::Allocator<D, D>,
 {
     for elt in vector {
         println!("{}", elt);
